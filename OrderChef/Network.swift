@@ -6,7 +6,7 @@ let kISODateFormat = "YYYY-MM-dd\'T\'HH:mm:ss.SSS\'Z\'"
 let kNetworkDomainError = "Invalid Response"
 
 #if DEBUG
-	let kAPIEndpoint = "http://10.0.1.55:3000"
+	let kAPIEndpoint = "http://127.0.0.1:3000"
 #else
 	let kAPIEndpoint = "https://orderchef.ngapp.io"
 #endif

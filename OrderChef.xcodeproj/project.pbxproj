@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F14A93D1A62D5A50046D805 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A93C1A62D5A50046D805 /* Item.swift */; };
 		4F32723B1A61EEFF00DF5E3E /* OrderGroupTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723A1A61EEFF00DF5E3E /* OrderGroupTVC.swift */; };
 		4F32723D1A61EF0C00DF5E3E /* OrderGroupTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F32723C1A61EF0C00DF5E3E /* OrderGroupTVC.xib */; };
 		4F32723F1A61FC4500DF5E3E /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */; };
 		4F3272411A61FC5200DF5E3E /* SetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272401A61FC5200DF5E3E /* SetupVC.swift */; };
+		4F3272431A62C9D200DF5E3E /* OrderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272421A62C9D200DF5E3E /* OrderGroup.swift */; };
+		4F3272451A62C9DF00DF5E3E /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272441A62C9DF00DF5E3E /* Order.swift */; };
+		4F3272471A62C9E800DF5E3E /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272461A62C9E800DF5E3E /* OrderItem.swift */; };
 		4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE391A6166AD009AC555 /* User.swift */; };
 		4F5ACE3F1A61757D009AC555 /* SetupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ACE3E1A61757D009AC555 /* SetupVC.xib */; };
 		4F5ACE411A618153009AC555 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE401A618153009AC555 /* Table.swift */; };
@@ -37,10 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F14A93C1A62D5A50046D805 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		4F32723A1A61EEFF00DF5E3E /* OrderGroupTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderGroupTVC.swift; path = Controllers/OrderGroupTVC.swift; sourceTree = "<group>"; };
 		4F32723C1A61EF0C00DF5E3E /* OrderGroupTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderGroupTVC.xib; path = Controllers/OrderGroupTVC.xib; sourceTree = "<group>"; };
 		4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedStorage.swift; path = Models/SharedStorage.swift; sourceTree = "<group>"; };
 		4F3272401A61FC5200DF5E3E /* SetupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetupVC.swift; path = Controllers/SetupVC.swift; sourceTree = "<group>"; };
+		4F3272421A62C9D200DF5E3E /* OrderGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderGroup.swift; path = Models/OrderGroup.swift; sourceTree = "<group>"; };
+		4F3272441A62C9DF00DF5E3E /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = Models/Order.swift; sourceTree = "<group>"; };
+		4F3272461A62C9E800DF5E3E /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderItem.swift; path = Models/OrderItem.swift; sourceTree = "<group>"; };
 		4F5ACE391A6166AD009AC555 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		4F5ACE3E1A61757D009AC555 /* SetupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupVC.xib; path = Controllers/SetupVC.xib; sourceTree = "<group>"; };
 		4F5ACE401A618153009AC555 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = Models/Table.swift; sourceTree = "<group>"; };
@@ -192,6 +200,10 @@
 				4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */,
 				4F5ACE391A6166AD009AC555 /* User.swift */,
 				4F5ACE401A618153009AC555 /* Table.swift */,
+				4F3272421A62C9D200DF5E3E /* OrderGroup.swift */,
+				4F3272441A62C9DF00DF5E3E /* Order.swift */,
+				4F3272461A62C9E800DF5E3E /* OrderItem.swift */,
+				4F14A93C1A62D5A50046D805 /* Item.swift */,
 			);
 			name = Models;
 			path = OrderChef;
@@ -303,8 +315,12 @@
 				4F5ACE411A618153009AC555 /* Table.swift in Sources */,
 				4F32723B1A61EEFF00DF5E3E /* OrderGroupTVC.swift in Sources */,
 				4FE6515F1A616447006AE6EC /* AppDelegate.swift in Sources */,
+				4F3272431A62C9D200DF5E3E /* OrderGroup.swift in Sources */,
+				4F14A93D1A62D5A50046D805 /* Item.swift in Sources */,
+				4F3272471A62C9E800DF5E3E /* OrderItem.swift in Sources */,
 				4F3272411A61FC5200DF5E3E /* SetupVC.swift in Sources */,
 				4F32723F1A61FC4500DF5E3E /* SharedStorage.swift in Sources */,
+				4F3272451A62C9DF00DF5E3E /* Order.swift in Sources */,
 				4F5ACE5C1A618B4D009AC555 /* SVIndefiniteAnimatedView.m in Sources */,
 				4F5ACE5E1A618B4D009AC555 /* SVProgressHUD.m in Sources */,
 				4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */,

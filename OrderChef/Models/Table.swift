@@ -6,43 +6,43 @@ class SortedTable {
 	var type_id: Int? = nil
 	var tables: [Table] = []
 	
-	init(_response: [NSString: AnyObject]) {
-		self.type_name = _response["type_name"] as? String
-		self.type_id = _response["type_id"] as? Int
+	init(res: [NSString: AnyObject]) {
+		self.type_name = res["type_name"] as? String
+		self.type_id = res["type_id"] as? Int
 		
-		var tables: [[NSString: AnyObject]]? = _response["tables"] as? [[NSString: AnyObject]]
+		var tables: [[NSString: AnyObject]]? = res["tables"] as? [[NSString: AnyObject]]
 		
 		if tables != nil {
 			for table in tables! {
-				self.tables.append(Table(_response: table))
+				self.tables.append(Table(res: table))
 			}
 		}
 	}
 }
 
 class Table {
-	var id: Int = 0
+	var id: Int? = nil
 	var name: String? = nil
 	var table_number: String? = nil
 	var location: String? = nil
 	
 	init(){}
 	
-	init(_response: [NSString: AnyObject]) {
-		self.parse(_response)
+	init(res: [NSString: AnyObject]) {
+		self.parse(res)
 	}
 	
-	func parse (_response: [NSString: AnyObject]) {
-		self.id = _response["id"] as Int
-		self.name = _response["name"] as? String
-		self.table_number = _response["manager"] as? String
-		self.location = _response["location"] as? String
+	func parse (res: [NSString: AnyObject]) {
+		self.id = res["id"] as? Int
+		self.name = res["name"] as? String
+		self.table_number = res["manager"] as? String
+		self.location = res["location"] as? String
 	}
 	
 	func json() -> [NSObject: AnyObject] {
 		var json: [NSObject: AnyObject] = [:]
 		
-		json["id"] = id
+		if self.id != nil { json["id"] = id }
 		if self.name != nil { json["name"] = name }
 		if self.table_number != nil { json["table_number"] = self.table_number }
 		if self.location != nil { json["location"] = location }
@@ -60,11 +60,27 @@ class Table {
 			var lists: [SortedTable] = []
 			if json != nil {
 				for j in json! {
-					lists.append(SortedTable(_response: j))
+					lists.append(SortedTable(res: j))
 				}
 			}
 			
 			callback(err: nil, list: lists)
+		}, nil)
+	}
+	
+	func getGroup(callback: (err: NSError?, group: OrderGroup?) -> Void) {
+		doRequest(makeRequest("/tables/" + String(self.id!) + "/group", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
+			if err != nil {
+				return callback(err: err, group: nil)
+			}
+			
+			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
+			var group: OrderGroup? = nil
+			if json != nil {
+				group = OrderGroup(res: json!)
+			}
+			
+			callback(err: nil, group: group)
 		}, nil)
 	}
 }

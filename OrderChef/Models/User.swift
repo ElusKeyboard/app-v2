@@ -2,7 +2,7 @@
 import Foundation
 
 class User {
-	var id: Int = 0
+	var id: Int? = nil
 	var name: String = ""
 	var manager: Bool = false
 	var passkey: NSString = "0000"
@@ -10,25 +10,25 @@ class User {
 	
 	init(){}
 	
-	init(_response: [NSString: AnyObject]) {
-		self.parse(_response)
+	init(res: [NSString: AnyObject]) {
+		self.parse(res)
 	}
 	
-	func parse (_response: [NSString: AnyObject]) {
-		self.id = _response["id"] as Int
-		self.name = _response["name"] as String
-		self.manager = _response["manager"] as Bool
+	func parse (res: [NSString: AnyObject]) {
+		self.id = res["id"] as? Int
+		self.name = res["name"] as String
+		self.manager = res["manager"] as Bool
 		
-		let date: Int? = _response["last_login"] as? Int
+		let date: Int? = res["last_login"] as? Int
 		if date != nil {
 			self.last_login = NSDate(timeIntervalSince1970: NSTimeInterval(date! / 1000))
 		}
 	}
 	
 	class func find(_id: NSString, callback: (user: User?) -> Void) {
-		doRequest(makeRequest("/user/"+_id, nil), { (err: NSError?, data: AnyObject?) -> Void in
+		doRequest(makeRequest("/user/" + _id, nil), { (err: NSError?, data: AnyObject?) -> Void in
 			var json: [NSString: AnyObject] = data as [NSString: AnyObject]
-			var user = User(_response: json)
+			var user = User(res: json)
 			callback(user: user)
 		}, nil)
 	}
@@ -37,7 +37,7 @@ class User {
 		var json: [NSObject: AnyObject] = [:]
 		
 		json["name"] = name
-		json["id"] = id
+		if self.id != nil { json["id"] = self.id }
 		json["manager"] = manager
 		json["passkey"] = passkey
 		if self.last_login != nil {

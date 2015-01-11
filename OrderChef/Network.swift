@@ -16,9 +16,6 @@ var currentUser: User?
 var sessionCookie: String?
 var queueRequests: Bool = false
 var queuedRequests: [Request] = []
-var didRequestForNotifications: Bool = false
-
-var sharedGeolocationConnection: NSURLSessionDataTask? = nil
 
 class Request: NSObject {
 	var request: NSMutableURLRequest

@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		4F32723B1A61EEFF00DF5E3E /* OrderGroupTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723A1A61EEFF00DF5E3E /* OrderGroupTVC.swift */; };
 		4F32723D1A61EF0C00DF5E3E /* OrderGroupTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F32723C1A61EF0C00DF5E3E /* OrderGroupTVC.xib */; };
+		4F32723F1A61FC4500DF5E3E /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */; };
+		4F3272411A61FC5200DF5E3E /* SetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272401A61FC5200DF5E3E /* SetupVC.swift */; };
 		4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE391A6166AD009AC555 /* User.swift */; };
-		4F5ACE3D1A617566009AC555 /* SetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE3C1A617566009AC555 /* SetupVC.swift */; };
 		4F5ACE3F1A61757D009AC555 /* SetupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ACE3E1A61757D009AC555 /* SetupVC.xib */; };
 		4F5ACE411A618153009AC555 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE401A618153009AC555 /* Table.swift */; };
 		4F5ACE431A618267009AC555 /* TablesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE421A618267009AC555 /* TablesTVC.swift */; };
@@ -23,7 +24,6 @@
 		4FE651691A616447006AE6EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE651671A616447006AE6EC /* LaunchScreen.xib */; };
 		4FE651751A616447006AE6EC /* OrderChefTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE651741A616447006AE6EC /* OrderChefTests.swift */; };
 		4FE6517F1A616484006AE6EC /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6517E1A616484006AE6EC /* Network.swift */; };
-		4FE651821A616515006AE6EC /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE651811A616515006AE6EC /* SharedStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +39,9 @@
 /* Begin PBXFileReference section */
 		4F32723A1A61EEFF00DF5E3E /* OrderGroupTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderGroupTVC.swift; path = Controllers/OrderGroupTVC.swift; sourceTree = "<group>"; };
 		4F32723C1A61EF0C00DF5E3E /* OrderGroupTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderGroupTVC.xib; path = Controllers/OrderGroupTVC.xib; sourceTree = "<group>"; };
+		4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedStorage.swift; path = Models/SharedStorage.swift; sourceTree = "<group>"; };
+		4F3272401A61FC5200DF5E3E /* SetupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetupVC.swift; path = Controllers/SetupVC.swift; sourceTree = "<group>"; };
 		4F5ACE391A6166AD009AC555 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
-		4F5ACE3C1A617566009AC555 /* SetupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupVC.swift; sourceTree = "<group>"; };
 		4F5ACE3E1A61757D009AC555 /* SetupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupVC.xib; path = Controllers/SetupVC.xib; sourceTree = "<group>"; };
 		4F5ACE401A618153009AC555 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = Models/Table.swift; sourceTree = "<group>"; };
 		4F5ACE421A618267009AC555 /* TablesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TablesTVC.swift; path = Controllers/TablesTVC.swift; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		4FE651731A616447006AE6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FE651741A616447006AE6EC /* OrderChefTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderChefTests.swift; sourceTree = "<group>"; };
 		4FE6517E1A616484006AE6EC /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		4FE651811A616515006AE6EC /* SharedStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,7 @@
 		4F5ACE3B1A617527009AC555 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F5ACE3C1A617566009AC555 /* SetupVC.swift */,
+				4F3272401A61FC5200DF5E3E /* SetupVC.swift */,
 				4F5ACE3E1A61757D009AC555 /* SetupVC.xib */,
 				4F5ACE421A618267009AC555 /* TablesTVC.swift */,
 				4F5ACE441A618277009AC555 /* TablesTVC.xib */,
@@ -189,7 +189,7 @@
 		4FE651801A616505006AE6EC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4FE651811A616515006AE6EC /* SharedStorage.swift */,
+				4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */,
 				4F5ACE391A6166AD009AC555 /* User.swift */,
 				4F5ACE401A618153009AC555 /* Table.swift */,
 			);
@@ -301,11 +301,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F5ACE411A618153009AC555 /* Table.swift in Sources */,
-				4F5ACE3D1A617566009AC555 /* SetupVC.swift in Sources */,
 				4F32723B1A61EEFF00DF5E3E /* OrderGroupTVC.swift in Sources */,
 				4FE6515F1A616447006AE6EC /* AppDelegate.swift in Sources */,
+				4F3272411A61FC5200DF5E3E /* SetupVC.swift in Sources */,
+				4F32723F1A61FC4500DF5E3E /* SharedStorage.swift in Sources */,
 				4F5ACE5C1A618B4D009AC555 /* SVIndefiniteAnimatedView.m in Sources */,
-				4FE651821A616515006AE6EC /* SharedStorage.swift in Sources */,
 				4F5ACE5E1A618B4D009AC555 /* SVProgressHUD.m in Sources */,
 				4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */,
 				4FE6517F1A616484006AE6EC /* Network.swift in Sources */,

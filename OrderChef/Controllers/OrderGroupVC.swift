@@ -1,7 +1,7 @@
 
 import UIKit
 
-class OrderGroupTVC: UITableViewController {
+class OrderGroupVC: UITableViewController {
 	var sortedTable: SortedTable! // usually from previous vc.
 	var table: Table! // actual table.
 	

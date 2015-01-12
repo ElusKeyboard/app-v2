@@ -4,4 +4,9 @@
 
 #import "SVProgressHUD.h"
 
+// Font AWEsome
+#import "NSString+FontAwesome.h"
+#import "UIFont+FontAwesome.h"
+#import "FAImageView.h"
+
 #endif

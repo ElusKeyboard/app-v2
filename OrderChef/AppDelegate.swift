@@ -15,7 +15,7 @@ let iOS8 = floor(NSFoundationVersionNumber) > floor(NSFoundationVersionNumber_iO
 		checkLoggedIn()
 		
 //		var rootVC = SetupVC(nibName: "SetupVC", bundle: nil)
-		var rootVC = TablesTVC(nibName: "TablesTVC", bundle: nil)
+		var rootVC = TablesVC(nibName: "TablesVC", bundle: nil)
 		var navVC = UINavigationController(rootViewController: rootVC)
 		
 		window!.rootViewController = navVC
@@ -54,5 +54,11 @@ let iOS8 = floor(NSFoundationVersionNumber) > floor(NSFoundationVersionNumber_iO
 		
 		UINavigationBar.appearance().titleTextAttributes = attributes
 		UIBarButtonItem.appearance().setTitleTextAttributes(attributes, forState: UIControlState.Normal)
+	}
+	
+	class func makeFontAwesomeTextAttributesOfFontSize(size: CGFloat) -> [NSObject: AnyObject] {
+		return [
+			NSFontAttributeName: UIFont(name: "FontAwesome", size: size)!
+		] as [NSObject: AnyObject]
 	}
 }

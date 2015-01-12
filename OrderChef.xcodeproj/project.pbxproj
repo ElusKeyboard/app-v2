@@ -7,9 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F14A93D1A62D5A50046D805 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A93C1A62D5A50046D805 /* Item.swift */; };
-		4F32723B1A61EEFF00DF5E3E /* OrderGroupTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723A1A61EEFF00DF5E3E /* OrderGroupTVC.swift */; };
-		4F32723D1A61EF0C00DF5E3E /* OrderGroupTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F32723C1A61EF0C00DF5E3E /* OrderGroupTVC.xib */; };
+		4F14A9761A63AEA20046D805 /* ManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9751A63AEA20046D805 /* ManagerVC.swift */; };
+		4F14A9781A63AF750046D805 /* ManagerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9771A63AF750046D805 /* ManagerVC.xib */; };
+		4F14A97A1A63B3260046D805 /* ManagerCategoriesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9791A63B3260046D805 /* ManagerCategoriesVC.xib */; };
+		4F14A97C1A63B3370046D805 /* ManagerCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A97B1A63B3370046D805 /* ManagerCategoriesVC.swift */; };
+		4F14A97F1A63C1ED0046D805 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A97E1A63C1ED0046D805 /* Category.swift */; };
+		4F14A9811A63C2230046D805 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9801A63C2230046D805 /* Item.swift */; };
+		4F14A9961A63C2520046D805 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9881A63C2520046D805 /* FAImageView.m */; };
+		4F14A9971A63C2520046D805 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A98A1A63C2520046D805 /* NSString+FontAwesome.m */; };
+		4F14A9981A63C2520046D805 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A98C1A63C2520046D805 /* FontAwesome.ttf */; };
+		4F14A9991A63C2520046D805 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A98E1A63C2520046D805 /* UIFont+FontAwesome.m */; };
+		4F14A99A1A63C2520046D805 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9911A63C2520046D805 /* SVIndefiniteAnimatedView.m */; };
+		4F14A99B1A63C2520046D805 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9931A63C2520046D805 /* SVProgressHUD.bundle */; };
+		4F14A99C1A63C2520046D805 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9951A63C2520046D805 /* SVProgressHUD.m */; };
+		4F14A99E1A63CAB20046D805 /* ManagerCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A99D1A63CAB20046D805 /* ManagerCategoryVC.swift */; };
+		4F14A9A01A63CAC30046D805 /* ManagerCategoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A99F1A63CAC30046D805 /* ManagerCategoryVC.xib */; };
+		4F32723B1A61EEFF00DF5E3E /* OrderGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723A1A61EEFF00DF5E3E /* OrderGroupVC.swift */; };
+		4F32723D1A61EF0C00DF5E3E /* OrderGroupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F32723C1A61EF0C00DF5E3E /* OrderGroupVC.xib */; };
 		4F32723F1A61FC4500DF5E3E /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */; };
 		4F3272411A61FC5200DF5E3E /* SetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272401A61FC5200DF5E3E /* SetupVC.swift */; };
 		4F3272431A62C9D200DF5E3E /* OrderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272421A62C9D200DF5E3E /* OrderGroup.swift */; };
@@ -18,11 +32,8 @@
 		4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE391A6166AD009AC555 /* User.swift */; };
 		4F5ACE3F1A61757D009AC555 /* SetupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ACE3E1A61757D009AC555 /* SetupVC.xib */; };
 		4F5ACE411A618153009AC555 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE401A618153009AC555 /* Table.swift */; };
-		4F5ACE431A618267009AC555 /* TablesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE421A618267009AC555 /* TablesTVC.swift */; };
-		4F5ACE451A618277009AC555 /* TablesTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ACE441A618277009AC555 /* TablesTVC.xib */; };
-		4F5ACE5C1A618B4D009AC555 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE571A618B4D009AC555 /* SVIndefiniteAnimatedView.m */; };
-		4F5ACE5D1A618B4D009AC555 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ACE591A618B4D009AC555 /* SVProgressHUD.bundle */; };
-		4F5ACE5E1A618B4D009AC555 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE5B1A618B4D009AC555 /* SVProgressHUD.m */; };
+		4F5ACE431A618267009AC555 /* TablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE421A618267009AC555 /* TablesVC.swift */; };
+		4F5ACE451A618277009AC555 /* TablesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ACE441A618277009AC555 /* TablesVC.xib */; };
 		4FE6515F1A616447006AE6EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6515E1A616447006AE6EC /* AppDelegate.swift */; };
 		4FE651661A616447006AE6EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FE651651A616447006AE6EC /* Images.xcassets */; };
 		4FE651691A616447006AE6EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE651671A616447006AE6EC /* LaunchScreen.xib */; };
@@ -41,9 +52,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4F14A93C1A62D5A50046D805 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		4F32723A1A61EEFF00DF5E3E /* OrderGroupTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderGroupTVC.swift; path = Controllers/OrderGroupTVC.swift; sourceTree = "<group>"; };
-		4F32723C1A61EF0C00DF5E3E /* OrderGroupTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderGroupTVC.xib; path = Controllers/OrderGroupTVC.xib; sourceTree = "<group>"; };
+		4F14A9751A63AEA20046D805 /* ManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerVC.swift; path = Controllers/ManagerVC.swift; sourceTree = "<group>"; };
+		4F14A9771A63AF750046D805 /* ManagerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerVC.xib; path = Controllers/ManagerVC.xib; sourceTree = "<group>"; };
+		4F14A9791A63B3260046D805 /* ManagerCategoriesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerCategoriesVC.xib; path = Controllers/ManagerCategoriesVC.xib; sourceTree = "<group>"; };
+		4F14A97B1A63B3370046D805 /* ManagerCategoriesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerCategoriesVC.swift; path = Controllers/ManagerCategoriesVC.swift; sourceTree = "<group>"; };
+		4F14A97E1A63C1ED0046D805 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = Models/Category.swift; sourceTree = "<group>"; };
+		4F14A9801A63C2230046D805 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Models/Item.swift; sourceTree = "<group>"; };
+		4F14A9871A63C2520046D805 /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
+		4F14A9881A63C2520046D805 /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
+		4F14A9891A63C2520046D805 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		4F14A98A1A63C2520046D805 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		4F14A98C1A63C2520046D805 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		4F14A98D1A63C2520046D805 /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		4F14A98E1A63C2520046D805 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		4F14A9901A63C2520046D805 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		4F14A9911A63C2520046D805 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		4F14A9921A63C2520046D805 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		4F14A9931A63C2520046D805 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		4F14A9941A63C2520046D805 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		4F14A9951A63C2520046D805 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		4F14A99D1A63CAB20046D805 /* ManagerCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerCategoryVC.swift; path = Models/ManagerCategoryVC.swift; sourceTree = "<group>"; };
+		4F14A99F1A63CAC30046D805 /* ManagerCategoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerCategoryVC.xib; path = Models/ManagerCategoryVC.xib; sourceTree = "<group>"; };
+		4F32723A1A61EEFF00DF5E3E /* OrderGroupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderGroupVC.swift; path = Controllers/OrderGroupVC.swift; sourceTree = "<group>"; };
+		4F32723C1A61EF0C00DF5E3E /* OrderGroupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderGroupVC.xib; path = Controllers/OrderGroupVC.xib; sourceTree = "<group>"; };
 		4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedStorage.swift; path = Models/SharedStorage.swift; sourceTree = "<group>"; };
 		4F3272401A61FC5200DF5E3E /* SetupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetupVC.swift; path = Controllers/SetupVC.swift; sourceTree = "<group>"; };
 		4F3272421A62C9D200DF5E3E /* OrderGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderGroup.swift; path = Models/OrderGroup.swift; sourceTree = "<group>"; };
@@ -52,14 +83,8 @@
 		4F5ACE391A6166AD009AC555 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		4F5ACE3E1A61757D009AC555 /* SetupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupVC.xib; path = Controllers/SetupVC.xib; sourceTree = "<group>"; };
 		4F5ACE401A618153009AC555 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = Models/Table.swift; sourceTree = "<group>"; };
-		4F5ACE421A618267009AC555 /* TablesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TablesTVC.swift; path = Controllers/TablesTVC.swift; sourceTree = "<group>"; };
-		4F5ACE441A618277009AC555 /* TablesTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TablesTVC.xib; path = Controllers/TablesTVC.xib; sourceTree = "<group>"; };
-		4F5ACE561A618B4D009AC555 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		4F5ACE571A618B4D009AC555 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		4F5ACE581A618B4D009AC555 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		4F5ACE591A618B4D009AC555 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		4F5ACE5A1A618B4D009AC555 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		4F5ACE5B1A618B4D009AC555 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		4F5ACE421A618267009AC555 /* TablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TablesVC.swift; path = Controllers/TablesVC.swift; sourceTree = "<group>"; };
+		4F5ACE441A618277009AC555 /* TablesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TablesVC.xib; path = Controllers/TablesVC.xib; sourceTree = "<group>"; };
 		4F5ACE5F1A618B88009AC555 /* OrderChef-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OrderChef-Bridging-Header.h"; sourceTree = "<group>"; };
 		4FE651591A616447006AE6EC /* OrderChef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrderChef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE6515D1A616447006AE6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,15 +115,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F14A97D1A63B33C0046D805 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				4F14A9751A63AEA20046D805 /* ManagerVC.swift */,
+				4F14A9771A63AF750046D805 /* ManagerVC.xib */,
+				4F14A97B1A63B3370046D805 /* ManagerCategoriesVC.swift */,
+				4F14A9791A63B3260046D805 /* ManagerCategoriesVC.xib */,
+				4F14A99D1A63CAB20046D805 /* ManagerCategoryVC.swift */,
+				4F14A99F1A63CAC30046D805 /* ManagerCategoryVC.xib */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		4F14A9821A63C2520046D805 /* ios-fontawesome */ = {
+			isa = PBXGroup;
+			children = (
+				4F14A9871A63C2520046D805 /* FAImageView.h */,
+				4F14A9881A63C2520046D805 /* FAImageView.m */,
+				4F14A9891A63C2520046D805 /* NSString+FontAwesome.h */,
+				4F14A98A1A63C2520046D805 /* NSString+FontAwesome.m */,
+				4F14A98B1A63C2520046D805 /* Resources */,
+				4F14A98D1A63C2520046D805 /* UIFont+FontAwesome.h */,
+				4F14A98E1A63C2520046D805 /* UIFont+FontAwesome.m */,
+			);
+			name = "ios-fontawesome";
+			path = "Dependencies/ios-fontawesome";
+			sourceTree = "<group>";
+		};
+		4F14A98B1A63C2520046D805 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4F14A98C1A63C2520046D805 /* FontAwesome.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4F14A98F1A63C2520046D805 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4F14A9901A63C2520046D805 /* SVIndefiniteAnimatedView.h */,
+				4F14A9911A63C2520046D805 /* SVIndefiniteAnimatedView.m */,
+				4F14A9921A63C2520046D805 /* SVProgressHUD-Prefix.pch */,
+				4F14A9931A63C2520046D805 /* SVProgressHUD.bundle */,
+				4F14A9941A63C2520046D805 /* SVProgressHUD.h */,
+				4F14A9951A63C2520046D805 /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = Dependencies/SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		4F5ACE3B1A617527009AC555 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				4F3272401A61FC5200DF5E3E /* SetupVC.swift */,
 				4F5ACE3E1A61757D009AC555 /* SetupVC.xib */,
-				4F5ACE421A618267009AC555 /* TablesTVC.swift */,
-				4F5ACE441A618277009AC555 /* TablesTVC.xib */,
-				4F32723A1A61EEFF00DF5E3E /* OrderGroupTVC.swift */,
-				4F32723C1A61EF0C00DF5E3E /* OrderGroupTVC.xib */,
+				4F5ACE421A618267009AC555 /* TablesVC.swift */,
+				4F5ACE441A618277009AC555 /* TablesVC.xib */,
+				4F32723A1A61EEFF00DF5E3E /* OrderGroupVC.swift */,
+				4F32723C1A61EF0C00DF5E3E /* OrderGroupVC.xib */,
+				4F14A97D1A63B33C0046D805 /* Manager */,
 			);
 			name = Controllers;
 			path = OrderChef;
@@ -115,23 +191,11 @@
 		4F5ACE491A618980009AC555 /* Deps */ = {
 			isa = PBXGroup;
 			children = (
-				4F5ACE551A618B4D009AC555 /* SVProgressHUD */,
+				4F14A9821A63C2520046D805 /* ios-fontawesome */,
+				4F14A98F1A63C2520046D805 /* SVProgressHUD */,
 			);
 			name = Deps;
 			path = OrderChef;
-			sourceTree = "<group>";
-		};
-		4F5ACE551A618B4D009AC555 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				4F5ACE561A618B4D009AC555 /* SVIndefiniteAnimatedView.h */,
-				4F5ACE571A618B4D009AC555 /* SVIndefiniteAnimatedView.m */,
-				4F5ACE581A618B4D009AC555 /* SVProgressHUD-Prefix.pch */,
-				4F5ACE591A618B4D009AC555 /* SVProgressHUD.bundle */,
-				4F5ACE5A1A618B4D009AC555 /* SVProgressHUD.h */,
-				4F5ACE5B1A618B4D009AC555 /* SVProgressHUD.m */,
-			);
-			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		4FE651501A616447006AE6EC = {
@@ -203,7 +267,8 @@
 				4F3272421A62C9D200DF5E3E /* OrderGroup.swift */,
 				4F3272441A62C9DF00DF5E3E /* Order.swift */,
 				4F3272461A62C9E800DF5E3E /* OrderItem.swift */,
-				4F14A93C1A62D5A50046D805 /* Item.swift */,
+				4F14A9801A63C2230046D805 /* Item.swift */,
+				4F14A97E1A63C1ED0046D805 /* Category.swift */,
 			);
 			name = Models;
 			path = OrderChef;
@@ -289,11 +354,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F5ACE5D1A618B4D009AC555 /* SVProgressHUD.bundle in Resources */,
+				4F14A9A01A63CAC30046D805 /* ManagerCategoryVC.xib in Resources */,
 				4FE651691A616447006AE6EC /* LaunchScreen.xib in Resources */,
-				4F32723D1A61EF0C00DF5E3E /* OrderGroupTVC.xib in Resources */,
+				4F14A99B1A63C2520046D805 /* SVProgressHUD.bundle in Resources */,
+				4F14A97A1A63B3260046D805 /* ManagerCategoriesVC.xib in Resources */,
+				4F14A9781A63AF750046D805 /* ManagerVC.xib in Resources */,
+				4F14A9981A63C2520046D805 /* FontAwesome.ttf in Resources */,
+				4F32723D1A61EF0C00DF5E3E /* OrderGroupVC.xib in Resources */,
 				4FE651661A616447006AE6EC /* Images.xcassets in Resources */,
-				4F5ACE451A618277009AC555 /* TablesTVC.xib in Resources */,
+				4F5ACE451A618277009AC555 /* TablesVC.xib in Resources */,
 				4F5ACE3F1A61757D009AC555 /* SetupVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,20 +381,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F14A9811A63C2230046D805 /* Item.swift in Sources */,
 				4F5ACE411A618153009AC555 /* Table.swift in Sources */,
-				4F32723B1A61EEFF00DF5E3E /* OrderGroupTVC.swift in Sources */,
+				4F14A99A1A63C2520046D805 /* SVIndefiniteAnimatedView.m in Sources */,
+				4F14A97C1A63B3370046D805 /* ManagerCategoriesVC.swift in Sources */,
+				4F14A99E1A63CAB20046D805 /* ManagerCategoryVC.swift in Sources */,
+				4F32723B1A61EEFF00DF5E3E /* OrderGroupVC.swift in Sources */,
 				4FE6515F1A616447006AE6EC /* AppDelegate.swift in Sources */,
 				4F3272431A62C9D200DF5E3E /* OrderGroup.swift in Sources */,
-				4F14A93D1A62D5A50046D805 /* Item.swift in Sources */,
+				4F14A9761A63AEA20046D805 /* ManagerVC.swift in Sources */,
 				4F3272471A62C9E800DF5E3E /* OrderItem.swift in Sources */,
 				4F3272411A61FC5200DF5E3E /* SetupVC.swift in Sources */,
 				4F32723F1A61FC4500DF5E3E /* SharedStorage.swift in Sources */,
+				4F14A97F1A63C1ED0046D805 /* Category.swift in Sources */,
 				4F3272451A62C9DF00DF5E3E /* Order.swift in Sources */,
-				4F5ACE5C1A618B4D009AC555 /* SVIndefiniteAnimatedView.m in Sources */,
-				4F5ACE5E1A618B4D009AC555 /* SVProgressHUD.m in Sources */,
 				4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */,
+				4F14A9961A63C2520046D805 /* FAImageView.m in Sources */,
+				4F14A9971A63C2520046D805 /* NSString+FontAwesome.m in Sources */,
 				4FE6517F1A616484006AE6EC /* Network.swift in Sources */,
-				4F5ACE431A618267009AC555 /* TablesTVC.swift in Sources */,
+				4F14A99C1A63C2520046D805 /* SVProgressHUD.m in Sources */,
+				4F5ACE431A618267009AC555 /* TablesVC.swift in Sources */,
+				4F14A9991A63C2520046D805 /* UIFont+FontAwesome.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,7 +1,7 @@
 
 import UIKit
 
-class TablesTVC: UITableViewController {
+class TablesVC: UITableViewController {
 	var tableList: [SortedTable] = []
 	
 	override func viewDidLoad() {
@@ -11,6 +11,9 @@ class TablesTVC: UITableViewController {
 		self.refreshControl!.addTarget(self, action: "refreshData:", forControlEvents: UIControlEvents.ValueChanged)
 		
 		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "basic")
+		
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: " " + NSString.fontAwesomeIconStringForEnum(FAIcon.FATasks), style: UIBarButtonItemStyle.Plain, target: self, action: "openManager")
+		self.navigationItem.leftBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
 		
 		self.navigationItem.title = "Venue Name.."
 		self.refreshData(nil)
@@ -27,6 +30,13 @@ class TablesTVC: UITableViewController {
 			self.tableList = list
 			self.tableView.reloadData()
 		})
+	}
+	
+	func openManager() {
+		var vc: ManagerVC = ManagerVC(nibName: "ManagerVC", bundle: nil)
+		var nvc: UINavigationController = UINavigationController(rootViewController: vc)
+		
+		self.presentViewController(nvc, animated: true, completion: nil)
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -56,7 +66,7 @@ class TablesTVC: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		var vc: OrderGroupTVC = OrderGroupTVC(nibName: "OrderGroupTVC", bundle: nil)
+		var vc: OrderGroupVC = OrderGroupVC(nibName: "OrderGroupVC", bundle: nil)
 		vc.sortedTable = self.tableList[indexPath.section]
 		vc.table = vc.sortedTable.tables[indexPath.row]
 		

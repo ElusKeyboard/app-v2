@@ -29,6 +29,26 @@ class Category {
 		return json
 	}
 	
+	func save(callback: (err: NSError?) -> Void) {
+		var url = "/categories"
+		if self.id != nil {
+			url = "/categories/" + String(self.id!)
+		}
+		
+		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (err: NSError?, data: AnyObject?) -> Void in
+			if err != nil {
+				return callback(err: err)
+			}
+			
+			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
+			if json != nil {
+				self.parse(json!)
+			}
+			
+			callback(err: nil)
+		}, self.json())
+	}
+	
 	class func getCategories(callback: (err: NSError?, categories: [Category]) -> Void) {
 		doRequest(makeRequest("/categories", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
 			if err != nil {

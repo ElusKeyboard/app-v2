@@ -39,7 +39,7 @@ class User {
 		json["name"] = name
 		if self.id != nil { json["id"] = self.id }
 		json["manager"] = manager
-		json["passkey"] = passkey
+
 		if self.last_login != nil {
 			json["last_login"] = last_login!.timeIntervalSince1970 * 1000
 		}

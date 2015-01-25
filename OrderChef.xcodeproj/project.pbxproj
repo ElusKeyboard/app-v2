@@ -26,6 +26,7 @@
 		4F14A9A41A63E2770046D805 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9A31A63E2770046D805 /* TextFieldCell.swift */; };
 		4F14A9A61A63F6690046D805 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9A51A63F6690046D805 /* TextViewCell.swift */; };
 		4F14A9A81A63F6790046D805 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9A71A63F6790046D805 /* TextViewCell.xib */; };
+		4F2CB7F71A73C34A005987D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2CB7F61A73C34A005987D2 /* QuartzCore.framework */; };
 		4F32723B1A61EEFF00DF5E3E /* OrderGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723A1A61EEFF00DF5E3E /* OrderGroupVC.swift */; };
 		4F32723D1A61EF0C00DF5E3E /* OrderGroupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F32723C1A61EF0C00DF5E3E /* OrderGroupVC.xib */; };
 		4F32723F1A61FC4500DF5E3E /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */; };
@@ -81,6 +82,7 @@
 		4F14A9A31A63E2770046D805 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCell.swift; path = Cells/TextFieldCell.swift; sourceTree = "<group>"; };
 		4F14A9A51A63F6690046D805 /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewCell.swift; path = Cells/TextViewCell.swift; sourceTree = "<group>"; };
 		4F14A9A71A63F6790046D805 /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TextViewCell.xib; path = Cells/TextViewCell.xib; sourceTree = "<group>"; };
+		4F2CB7F61A73C34A005987D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4F32723A1A61EEFF00DF5E3E /* OrderGroupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderGroupVC.swift; path = Controllers/OrderGroupVC.swift; sourceTree = "<group>"; };
 		4F32723C1A61EF0C00DF5E3E /* OrderGroupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderGroupVC.xib; path = Controllers/OrderGroupVC.xib; sourceTree = "<group>"; };
 		4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedStorage.swift; path = Models/SharedStorage.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2CB7F71A73C34A005987D2 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +206,7 @@
 		4F5ACE491A618980009AC555 /* Deps */ = {
 			isa = PBXGroup;
 			children = (
+				4F2CB7F61A73C34A005987D2 /* QuartzCore.framework */,
 				4F14A9821A63C2520046D805 /* ios-fontawesome */,
 				4F14A98F1A63C2520046D805 /* SVProgressHUD */,
 			);

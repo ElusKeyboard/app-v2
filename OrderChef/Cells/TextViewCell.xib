@@ -12,13 +12,6 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Imn-zL-3oA" id="AjB-WW-OvA">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uaq-SS-ZnP">
-                        <rect key="frame" x="65" y="0.0" width="240" height="44"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTU-HX-Hd1">
                         <rect key="frame" x="15" y="8" width="42" height="28"/>
                         <constraints>
@@ -28,19 +21,26 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaq-SS-ZnP">
+                        <rect key="frame" x="65" y="8" width="240" height="28"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="uaq-SS-ZnP" secondAttribute="trailing" constant="15" id="LS7-YB-INE"/>
                     <constraint firstItem="KTU-HX-Hd1" firstAttribute="leading" secondItem="AjB-WW-OvA" secondAttribute="leading" constant="15" id="Wj0-Hl-dKt"/>
-                    <constraint firstItem="uaq-SS-ZnP" firstAttribute="top" secondItem="AjB-WW-OvA" secondAttribute="top" id="ejX-hJ-SGY"/>
-                    <constraint firstAttribute="bottom" secondItem="uaq-SS-ZnP" secondAttribute="bottom" id="hCN-9v-wza"/>
                     <constraint firstItem="uaq-SS-ZnP" firstAttribute="leading" secondItem="KTU-HX-Hd1" secondAttribute="trailing" constant="8" id="iQp-3O-AiZ"/>
+                    <constraint firstAttribute="bottom" secondItem="uaq-SS-ZnP" secondAttribute="bottom" constant="8" id="knf-uB-7xm"/>
                     <constraint firstItem="KTU-HX-Hd1" firstAttribute="top" secondItem="AjB-WW-OvA" secondAttribute="top" constant="8" id="lxd-YL-BA2"/>
+                    <constraint firstItem="uaq-SS-ZnP" firstAttribute="top" secondItem="AjB-WW-OvA" secondAttribute="top" constant="8" id="nGI-mv-QUB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="field" destination="uaq-SS-ZnP" id="l6R-En-Mxc"/>
-                <outlet property="label" destination="KTU-HX-Hd1" id="C6q-cK-YIG"/>
+                <outlet property="field" destination="uaq-SS-ZnP" id="kDd-wE-MIS"/>
+                <outlet property="label" destination="KTU-HX-Hd1" id="lhJ-JH-W9R"/>
             </connections>
             <point key="canvasLocation" x="431" y="576"/>
         </tableViewCell>

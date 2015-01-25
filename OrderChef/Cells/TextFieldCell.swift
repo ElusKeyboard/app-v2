@@ -2,7 +2,7 @@
 import Foundation
 
 protocol TextFieldCellDelegate {
-	func TextFieldCellDidChangeValue(cell: TextFieldCell, value: String)
+	func TextFieldCellDidChangeValue(cell: UITableViewCell, value: String)
 }
 
 class TextFieldCell: UITableViewCell {
@@ -22,6 +22,20 @@ class TextFieldCell: UITableViewCell {
 		}
 		
 		self.delegate!.TextFieldCellDidChangeValue(self, value: self.field.text)
+	}
+	
+	override func setSelected(selected: Bool, animated: Bool) {
+		if selected == true {
+			self.field.becomeFirstResponder()
+		}
+		
+		super.setSelected(false, animated: false)
+		
+		return
+	}
+	
+	override func setHighlighted(highlighted: Bool, animated: Bool) {
+		return
 	}
 	
 }

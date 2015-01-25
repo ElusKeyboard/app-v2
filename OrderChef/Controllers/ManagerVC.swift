@@ -32,6 +32,8 @@ class ManagerVC: UITableViewController {
 			cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "basic")
 		}
 		
+		cell!.accessoryType = .DisclosureIndicator
+		
 		switch (indexPath.section) {
 		case 0:
 			cell!.textLabel!.text = "Items"

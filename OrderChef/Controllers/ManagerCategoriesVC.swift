@@ -41,6 +41,14 @@ class ManagerCategoriesVC: UITableViewController {
 		return storage.categories.count
 	}
 	
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		var vc = ManagerCategoryVC(nibName: "ManagerCategoryVC", bundle: nil)
+		
+		vc.category = storage.categories[indexPath.row]
+		
+		self.navigationController!.pushViewController(vc, animated: true)
+	}
+	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let category: Category = storage.categories[indexPath.row]
 		var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
@@ -48,6 +56,7 @@ class ManagerCategoriesVC: UITableViewController {
 			cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "basic")
 		}
 		
+		cell!.accessoryType = .DisclosureIndicator
 		cell!.textLabel!.text = category.name
 		
 		return cell!

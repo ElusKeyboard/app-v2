@@ -1,5 +1,6 @@
 
 import UIKit
+import QuartzCore
 
 class TextViewCell: UITableViewCell, UITextViewDelegate {
 	
@@ -10,6 +11,10 @@ class TextViewCell: UITableViewCell, UITextViewDelegate {
 	
 	func setup() {
 		self.field.delegate = self
+		
+		self.field.layer.borderColor = UIColor.grayColor().CGColor
+		self.field.layer.borderWidth = 1
+		self.field.layer.cornerRadius = 4
 	}
 	
 	func fieldValueChanged(field: AnyObject?) {
@@ -26,6 +31,20 @@ class TextViewCell: UITableViewCell, UITextViewDelegate {
 		}
 		
 		self.delegate!.TextFieldCellDidChangeValue(self, value: self.field.text)
+	}
+	
+	override func setSelected(selected: Bool, animated: Bool) {
+		if selected == true {
+			self.field.becomeFirstResponder()
+		}
+		
+		super.setSelected(false, animated: false)
+		
+		return
+	}
+	
+	override func setHighlighted(highlighted: Bool, animated: Bool) {
+		return
 	}
 	
 }

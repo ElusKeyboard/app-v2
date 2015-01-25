@@ -14,6 +14,7 @@ class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
 		}
 		
 		self.tableView.registerNib(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "textField")
+		self.tableView.registerNib(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "textView")
 	}
 	
 	func didEdit() {
@@ -42,7 +43,7 @@ class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 2
+		return self.category.id == nil ? 2 : 3
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,28 +51,49 @@ class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		var cell: TextFieldCell? = tableView.dequeueReusableCellWithIdentifier("textField", forIndexPath: indexPath) as? TextFieldCell
-		if cell == nil {
-			cell = TextFieldCell(style: UITableViewCellStyle.Default, reuseIdentifier: "textField")
-		}
-		
 		if indexPath.section == 0 {
+			var cell: TextFieldCell? = tableView.dequeueReusableCellWithIdentifier("textField", forIndexPath: indexPath) as? TextFieldCell
+			if cell == nil {
+				cell = TextFieldCell(style: UITableViewCellStyle.Default, reuseIdentifier: "textField")
+			}
+			
 			cell!.label.text = "Name:"
 			cell!.field.text = self.category.name
-		} else {
+			
+			cell!.delegate = self
+			cell!.setup()
+			
+			return cell!
+		} else if indexPath.section == 1 {
+			var cell: TextViewCell? = tableView.dequeueReusableCellWithIdentifier("textView", forIndexPath: indexPath) as? TextViewCell
+			if cell == nil {
+				cell = TextViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "textView")
+			}
+			
 			cell!.label.text = "Description:"
 			cell!.field.text = self.category.description
+			
+			cell!.delegate = self
+			cell!.setup()
+			
+			return cell!
+		} else {
+			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? UITableViewCell
+			
+		}
+	}
+	
+	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		if indexPath.section == 1 {
+			return 44 * 3
 		}
 		
-		cell!.delegate = self
-		cell!.setup()
-		
-		return cell!
+		return 44
 	}
 	
 	//MARK: TextFieldCellDelegate
 	
-	func TextFieldCellDidChangeValue(cell: TextFieldCell, value: String) {
+	func TextFieldCellDidChangeValue(cell: UITableViewCell, value: String) {
 		self.didEdit()
 		
 		var indexPath = self.tableView.indexPathForCell(cell)

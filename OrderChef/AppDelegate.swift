@@ -2,6 +2,8 @@
 import UIKit
 
 let iOS8 = floor(NSFoundationVersionNumber) > floor(NSFoundationVersionNumber_iOS_7_1)
+let versionNumber = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as NSString
+let mainColour = UIColor(red: 0.203, green: 0.444, blue: 0.768, alpha: 1.0)
 
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
@@ -14,12 +16,7 @@ let iOS8 = floor(NSFoundationVersionNumber) > floor(NSFoundationVersionNumber_iO
 		readSettings()
 		checkLoggedIn()
 		
-//		var rootVC = SetupVC(nibName: "SetupVC", bundle: nil)
-		var rootVC = TablesVC(nibName: "TablesVC", bundle: nil)
-		var navVC = UINavigationController(rootViewController: rootVC)
-		
-		window!.rootViewController = navVC
-		window!.makeKeyAndVisible()
+		setRootVC()
 		
 		return true
 	}
@@ -32,6 +29,20 @@ let iOS8 = floor(NSFoundationVersionNumber) > floor(NSFoundationVersionNumber_iO
 		saveSettings()
 	}
 	
+	func setRootVC() {
+		var rootVC: UIViewController!
+		
+		if storage.server_ip == nil {
+			rootVC = ManagerConfigVC(nibName: "ManagerConfigVC", bundle: nil)
+		} else {
+			rootVC = TablesVC(nibName: "TablesVC", bundle: nil)
+			rootVC = UINavigationController(rootViewController: rootVC)
+		}
+		
+		window!.rootViewController = rootVC
+		window!.makeKeyAndVisible()
+	}
+	
 	func styleApplication() {
 		var sharedApplication = UIApplication.sharedApplication()
 		sharedApplication.statusBarStyle = .LightContent
@@ -40,7 +51,7 @@ let iOS8 = floor(NSFoundationVersionNumber) > floor(NSFoundationVersionNumber_iO
 			UINavigationBar.appearance().translucent = false
 		}
 		
-		UINavigationBar.appearance().barTintColor = UIColor(red: 207/255, green: 0, blue: 20/255, alpha: 0.0)
+		UINavigationBar.appearance().barTintColor = mainColour
 		UINavigationBar.appearance().tintColor = UIColor.whiteColor()
 		
 		//var shadow = NSShadow()

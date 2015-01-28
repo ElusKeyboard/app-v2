@@ -39,6 +39,17 @@
 		4F5ACE411A618153009AC555 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE401A618153009AC555 /* Table.swift */; };
 		4F5ACE431A618267009AC555 /* TablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE421A618267009AC555 /* TablesVC.swift */; };
 		4F5ACE451A618277009AC555 /* TablesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ACE441A618277009AC555 /* TablesVC.xib */; };
+		4FB313A41A77FC8800C90BF4 /* ManagerConfigVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB313A31A77FC8800C90BF4 /* ManagerConfigVC.xib */; };
+		4FB313A61A77FC9600C90BF4 /* ManagerConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313A51A77FC9600C90BF4 /* ManagerConfigVC.swift */; };
+		4FDF4E6A1A77DB9D00D981AC /* ManagerTablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E691A77DB9D00D981AC /* ManagerTablesVC.swift */; };
+		4FDF4E6C1A77DBB300D981AC /* ManagerTablesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDF4E6B1A77DBB300D981AC /* ManagerTablesVC.xib */; };
+		4FDF4E701A77E07200D981AC /* ManagerTableVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDF4E6F1A77E07200D981AC /* ManagerTableVC.xib */; };
+		4FDF4E721A77E07E00D981AC /* ManagerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E711A77E07E00D981AC /* ManagerTableVC.swift */; };
+		4FDF4E741A77E2CD00D981AC /* TableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E731A77E2CD00D981AC /* TableType.swift */; };
+		4FDF4E761A77E85100D981AC /* ManagerTableTypesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E751A77E85100D981AC /* ManagerTableTypesVC.swift */; };
+		4FDF4E781A77E85C00D981AC /* ManagerTableTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E771A77E85C00D981AC /* ManagerTableTypeVC.swift */; };
+		4FDF4E7A1A77E86E00D981AC /* ManagerTableTypesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDF4E791A77E86E00D981AC /* ManagerTableTypesVC.xib */; };
+		4FDF4E7C1A77E87F00D981AC /* ManagerTableTypeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDF4E7B1A77E87F00D981AC /* ManagerTableTypeVC.xib */; };
 		4FE6515F1A616447006AE6EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6515E1A616447006AE6EC /* AppDelegate.swift */; };
 		4FE651661A616447006AE6EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FE651651A616447006AE6EC /* Images.xcassets */; };
 		4FE651691A616447006AE6EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE651671A616447006AE6EC /* LaunchScreen.xib */; };
@@ -96,6 +107,17 @@
 		4F5ACE421A618267009AC555 /* TablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TablesVC.swift; path = Controllers/TablesVC.swift; sourceTree = "<group>"; };
 		4F5ACE441A618277009AC555 /* TablesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TablesVC.xib; path = Controllers/TablesVC.xib; sourceTree = "<group>"; };
 		4F5ACE5F1A618B88009AC555 /* OrderChef-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OrderChef-Bridging-Header.h"; sourceTree = "<group>"; };
+		4FB313A31A77FC8800C90BF4 /* ManagerConfigVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerConfigVC.xib; path = Controllers/ManagerConfigVC.xib; sourceTree = "<group>"; };
+		4FB313A51A77FC9600C90BF4 /* ManagerConfigVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerConfigVC.swift; path = Controllers/ManagerConfigVC.swift; sourceTree = "<group>"; };
+		4FDF4E691A77DB9D00D981AC /* ManagerTablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTablesVC.swift; path = Controllers/ManagerTablesVC.swift; sourceTree = "<group>"; };
+		4FDF4E6B1A77DBB300D981AC /* ManagerTablesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerTablesVC.xib; path = Controllers/ManagerTablesVC.xib; sourceTree = "<group>"; };
+		4FDF4E6F1A77E07200D981AC /* ManagerTableVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerTableVC.xib; path = Controllers/ManagerTableVC.xib; sourceTree = "<group>"; };
+		4FDF4E711A77E07E00D981AC /* ManagerTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTableVC.swift; path = Controllers/ManagerTableVC.swift; sourceTree = "<group>"; };
+		4FDF4E731A77E2CD00D981AC /* TableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableType.swift; path = Models/TableType.swift; sourceTree = "<group>"; };
+		4FDF4E751A77E85100D981AC /* ManagerTableTypesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTableTypesVC.swift; path = Controllers/ManagerTableTypesVC.swift; sourceTree = "<group>"; };
+		4FDF4E771A77E85C00D981AC /* ManagerTableTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTableTypeVC.swift; path = Controllers/ManagerTableTypeVC.swift; sourceTree = "<group>"; };
+		4FDF4E791A77E86E00D981AC /* ManagerTableTypesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerTableTypesVC.xib; path = Controllers/ManagerTableTypesVC.xib; sourceTree = "<group>"; };
+		4FDF4E7B1A77E87F00D981AC /* ManagerTableTypeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerTableTypeVC.xib; path = Controllers/ManagerTableTypeVC.xib; sourceTree = "<group>"; };
 		4FE651591A616447006AE6EC /* OrderChef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrderChef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE6515D1A616447006AE6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FE6515E1A616447006AE6EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,10 +153,10 @@
 			children = (
 				4F14A9751A63AEA20046D805 /* ManagerVC.swift */,
 				4F14A9771A63AF750046D805 /* ManagerVC.xib */,
-				4F14A97B1A63B3370046D805 /* ManagerCategoriesVC.swift */,
-				4F14A9791A63B3260046D805 /* ManagerCategoriesVC.xib */,
-				4F14A99D1A63CAB20046D805 /* ManagerCategoryVC.swift */,
-				4F14A99F1A63CAC30046D805 /* ManagerCategoryVC.xib */,
+				4FB313A51A77FC9600C90BF4 /* ManagerConfigVC.swift */,
+				4FB313A31A77FC8800C90BF4 /* ManagerConfigVC.xib */,
+				4FDF4E6E1A77E06000D981AC /* Tables */,
+				4FDF4E6D1A77E05600D981AC /* Categories */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -214,6 +236,32 @@
 			path = OrderChef;
 			sourceTree = "<group>";
 		};
+		4FDF4E6D1A77E05600D981AC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4F14A97B1A63B3370046D805 /* ManagerCategoriesVC.swift */,
+				4F14A9791A63B3260046D805 /* ManagerCategoriesVC.xib */,
+				4F14A99D1A63CAB20046D805 /* ManagerCategoryVC.swift */,
+				4F14A99F1A63CAC30046D805 /* ManagerCategoryVC.xib */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		4FDF4E6E1A77E06000D981AC /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				4FDF4E751A77E85100D981AC /* ManagerTableTypesVC.swift */,
+				4FDF4E791A77E86E00D981AC /* ManagerTableTypesVC.xib */,
+				4FDF4E771A77E85C00D981AC /* ManagerTableTypeVC.swift */,
+				4FDF4E7B1A77E87F00D981AC /* ManagerTableTypeVC.xib */,
+				4FDF4E691A77DB9D00D981AC /* ManagerTablesVC.swift */,
+				4FDF4E6B1A77DBB300D981AC /* ManagerTablesVC.xib */,
+				4FDF4E711A77E07E00D981AC /* ManagerTableVC.swift */,
+				4FDF4E6F1A77E07200D981AC /* ManagerTableVC.xib */,
+			);
+			name = Tables;
+			sourceTree = "<group>";
+		};
 		4FE651501A616447006AE6EC = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +328,7 @@
 				4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */,
 				4F5ACE391A6166AD009AC555 /* User.swift */,
 				4F5ACE401A618153009AC555 /* Table.swift */,
+				4FDF4E731A77E2CD00D981AC /* TableType.swift */,
 				4F3272421A62C9D200DF5E3E /* OrderGroup.swift */,
 				4F3272441A62C9DF00DF5E3E /* Order.swift */,
 				4F3272461A62C9E800DF5E3E /* OrderItem.swift */,
@@ -372,14 +421,19 @@
 			files = (
 				4F14A9A01A63CAC30046D805 /* ManagerCategoryVC.xib in Resources */,
 				4FE651691A616447006AE6EC /* LaunchScreen.xib in Resources */,
+				4FB313A41A77FC8800C90BF4 /* ManagerConfigVC.xib in Resources */,
+				4FDF4E7A1A77E86E00D981AC /* ManagerTableTypesVC.xib in Resources */,
 				4F14A99B1A63C2520046D805 /* SVProgressHUD.bundle in Resources */,
 				4F14A97A1A63B3260046D805 /* ManagerCategoriesVC.xib in Resources */,
+				4FDF4E7C1A77E87F00D981AC /* ManagerTableTypeVC.xib in Resources */,
 				4F14A9781A63AF750046D805 /* ManagerVC.xib in Resources */,
 				4F14A9A81A63F6790046D805 /* TextViewCell.xib in Resources */,
 				4F14A9981A63C2520046D805 /* FontAwesome.ttf in Resources */,
+				4FDF4E6C1A77DBB300D981AC /* ManagerTablesVC.xib in Resources */,
 				4F32723D1A61EF0C00DF5E3E /* OrderGroupVC.xib in Resources */,
 				4F14A9A21A63E2610046D805 /* TextFieldCell.xib in Resources */,
 				4FE651661A616447006AE6EC /* Images.xcassets in Resources */,
+				4FDF4E701A77E07200D981AC /* ManagerTableVC.xib in Resources */,
 				4F5ACE451A618277009AC555 /* TablesVC.xib in Resources */,
 				4F5ACE3F1A61757D009AC555 /* SetupVC.xib in Resources */,
 			);
@@ -405,21 +459,27 @@
 				4F14A97C1A63B3370046D805 /* ManagerCategoriesVC.swift in Sources */,
 				4F14A99E1A63CAB20046D805 /* ManagerCategoryVC.swift in Sources */,
 				4F32723B1A61EEFF00DF5E3E /* OrderGroupVC.swift in Sources */,
+				4FDF4E721A77E07E00D981AC /* ManagerTableVC.swift in Sources */,
 				4FE6515F1A616447006AE6EC /* AppDelegate.swift in Sources */,
 				4F3272431A62C9D200DF5E3E /* OrderGroup.swift in Sources */,
 				4F14A9761A63AEA20046D805 /* ManagerVC.swift in Sources */,
 				4F3272471A62C9E800DF5E3E /* OrderItem.swift in Sources */,
+				4FB313A61A77FC9600C90BF4 /* ManagerConfigVC.swift in Sources */,
 				4F3272411A61FC5200DF5E3E /* SetupVC.swift in Sources */,
 				4F32723F1A61FC4500DF5E3E /* SharedStorage.swift in Sources */,
+				4FDF4E781A77E85C00D981AC /* ManagerTableTypeVC.swift in Sources */,
 				4F14A97F1A63C1ED0046D805 /* Category.swift in Sources */,
+				4FDF4E741A77E2CD00D981AC /* TableType.swift in Sources */,
 				4F14A9A41A63E2770046D805 /* TextFieldCell.swift in Sources */,
 				4F3272451A62C9DF00DF5E3E /* Order.swift in Sources */,
+				4FDF4E6A1A77DB9D00D981AC /* ManagerTablesVC.swift in Sources */,
 				4F14A9A61A63F6690046D805 /* TextViewCell.swift in Sources */,
 				4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */,
 				4F14A9961A63C2520046D805 /* FAImageView.m in Sources */,
 				4F14A9971A63C2520046D805 /* NSString+FontAwesome.m in Sources */,
 				4FE6517F1A616484006AE6EC /* Network.swift in Sources */,
 				4F14A99C1A63C2520046D805 /* SVProgressHUD.m in Sources */,
+				4FDF4E761A77E85100D981AC /* ManagerTableTypesVC.swift in Sources */,
 				4F5ACE431A618267009AC555 /* TablesVC.swift in Sources */,
 				4F14A9991A63C2520046D805 /* UIFont+FontAwesome.m in Sources */,
 			);

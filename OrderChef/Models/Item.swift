@@ -4,12 +4,12 @@ import Foundation
 class Item {
 	var id: Int? = nil
 	
-	var name: String? = nil
+	var name: String = ""
 	var description: String? = nil
 	var price: Float = 0
 	
-	var category: Category? = nil
-	var category_id: Int? = nil
+	var category: Category! = nil
+	var category_id: Int = 0
 	
 	init(){}
 	
@@ -19,24 +19,24 @@ class Item {
 	
 	func parse(res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.name = res["name"] as? String
+		self.name = res["name"] as String
 		self.description = res["description"] as? String
 		let price: Float? = res["price"] as? Float
 		if price != nil {
 			self.price = price!
 		}
 		
-		self.category_id = res["category_id"] as? Int
+		self.category_id = res["category_id"] as Int
 	}
 	
 	func json() -> [NSString: AnyObject] {
 		var json: [NSString: AnyObject] = [:]
 		
 		if self.id != nil { json["id"] = self.id }
-		if self.name != nil { json["name"] = self.name }
+		json["name"] = self.name
 		if self.description != nil { json["description"] = self.description }
 		json["price"] = self.price
-		if self.category_id != nil { json["category_id"] = self.category_id }
+		json["category_id"] = self.category_id
 		
 		return json
 	}

@@ -19,10 +19,14 @@ class ManagerVC: UITableViewController {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 2
+		return 4
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if section == 2 {
+			return 2
+		}
+		
 		return 1
 	}
 	
@@ -36,8 +40,16 @@ class ManagerVC: UITableViewController {
 		
 		switch (indexPath.section) {
 		case 0:
-			cell!.textLabel!.text = "Items"
+			cell!.textLabel!.text = "Config"
 		case 1:
+			if indexPath.row == 0 {
+				cell!.textLabel!.text = "Table Types"
+			} else {
+				cell!.textLabel!.text = "Tables"
+			}
+		case 2:
+			cell!.textLabel!.text = "Items"
+		case 3:
 			cell!.textLabel!.text = "Categories"
 		default:
 			break
@@ -47,16 +59,37 @@ class ManagerVC: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if indexPath.section == 0 {
+		var vc: UIViewController!
+		
+		switch indexPath.section {
+		case 0:
+			vc = ManagerConfigVC(nibName: "ManagerConfigVC", bundle: nil)
+		case 1:
+			if indexPath.row == 0 {
+				vc = ManagerTableTypesVC(nibName: "ManagerTableTypesVC", bundle: nil)
+			} else {
+				vc = ManagerTablesVC(nibName: "ManagerTablesVC", bundle: nil)
+			}
+		case 3:
+			vc = ManagerCategoriesVC(nibName: "ManagerCategoriesVC", bundle: nil)
+		default:
 			return tableView.deselectRowAtIndexPath(indexPath, animated: true)
 		}
 		
-		var vc: UIViewController!
-		if indexPath.section == 1 {
-			vc = ManagerCategoriesVC(nibName: "ManagerCategoriesVC", bundle: nil)
+		self.navigationController!.pushViewController(vc, animated: true)
+	}
+	
+	override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		if section == 3 {
+			var name = "<Unnamed Venue>"
+			if storage.venue_name != nil {
+				name = storage.venue_name!
+			}
+			
+			return name + " — orderchef v" + versionNumber
 		}
 		
-		self.navigationController!.pushViewController(vc, animated: true)
+		return nil
 	}
 	
 }

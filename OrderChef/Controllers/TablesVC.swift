@@ -2,7 +2,6 @@
 import UIKit
 
 class TablesVC: UITableViewController {
-	var tableList: [SortedTable] = []
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -14,22 +13,17 @@ class TablesVC: UITableViewController {
 		
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: " " + NSString.fontAwesomeIconStringForEnum(FAIcon.FATasks), style: UIBarButtonItemStyle.Plain, target: self, action: "openManager")
 		self.navigationItem.leftBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
 		
-		self.navigationItem.title = "Venue Name.."
-		self.refreshData(nil)
+		self.navigationItem.title = storage.venue_name
 	}
 	
 	func refreshData(sender: AnyObject?) {
-		Table.getTableList({ (err: NSError?, list: [SortedTable]) -> Void in
-			self.refreshControl!.endRefreshing()
-			
-			if err != nil {
-				return SVProgressHUD.showErrorWithStatus(err!.description)
-			}
-			
-			self.tableList = list
-			self.tableView.reloadData()
-		})
+		self.refreshControl!.endRefreshing()
+		self.tableView.reloadData()
 	}
 	
 	func openManager() {
@@ -40,11 +34,11 @@ class TablesVC: UITableViewController {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return self.tableList.count
+		return storage.table_types.count
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.tableList[section].tables.count
+		return storage.table_types[section].tables.count
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -54,7 +48,7 @@ class TablesVC: UITableViewController {
 		}
 		
 		cell!.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-		let table = self.tableList[indexPath.section].tables[indexPath.row]
+		let table = storage.table_types[indexPath.section].tables[indexPath.row]
 		
 		cell!.textLabel!.text = table.name
 		
@@ -62,13 +56,12 @@ class TablesVC: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return self.tableList[section].type_name
+		return storage.table_types[section].name
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		var vc: OrderGroupVC = OrderGroupVC(nibName: "OrderGroupVC", bundle: nil)
-		vc.sortedTable = self.tableList[indexPath.section]
-		vc.table = vc.sortedTable.tables[indexPath.row]
+		vc.table = storage.table_types[indexPath.section].tables[indexPath.row]
 		
 		self.navigationController!.pushViewController(vc, animated: true)
 	}

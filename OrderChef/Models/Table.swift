@@ -1,30 +1,13 @@
 
 import Foundation
 
-class SortedTable {
-	var type_name: String? = nil
-	var type_id: Int? = nil
-	var tables: [Table] = []
-	
-	init(res: [NSString: AnyObject]) {
-		self.type_name = res["type_name"] as? String
-		self.type_id = res["type_id"] as? Int
-		
-		var tables: [[NSString: AnyObject]]? = res["tables"] as? [[NSString: AnyObject]]
-		
-		if tables != nil {
-			for table in tables! {
-				self.tables.append(Table(res: table))
-			}
-		}
-	}
-}
-
 class Table {
-	var id: Int? = nil
-	var name: String? = nil
-	var table_number: String? = nil
-	var location: String? = nil
+	var id: Int?
+	var name: String = ""
+	var table_number: String?
+	var location: String?
+	var table_type_id: Int = 0
+	var table_type: TableType?
 	
 	init(){}
 	
@@ -34,37 +17,65 @@ class Table {
 	
 	func parse (res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.name = res["name"] as? String
-		self.table_number = res["manager"] as? String
+		self.name = res["name"] as String
+		self.table_number = res["table_number"] as? String
 		self.location = res["location"] as? String
+		self.table_type_id = res["type_id"] as Int
 	}
 	
 	func json() -> [NSObject: AnyObject] {
 		var json: [NSObject: AnyObject] = [:]
 		
-		if self.id != nil { json["id"] = id }
-		if self.name != nil { json["name"] = name }
+		if self.id != nil { json["id"] = self.id }
+		json["name"] = self.name
 		if self.table_number != nil { json["table_number"] = self.table_number }
-		if self.location != nil { json["location"] = location }
+		if self.location != nil { json["location"] = self.location }
+		json["type_id"] = self.table_type_id
 		
 		return json
 	}
 	
-	class func getTableList(callback: (err: NSError?, list: [SortedTable]) -> Void) {
-		doRequest(makeRequest("/tables/sorted", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
+	func save(callback: (err: NSError?) -> Void) {
+		var url = "/tables"
+		if self.id != nil {
+			url = "/table/" + String(self.id!)
+		}
+		
+		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (err: NSError?, data: AnyObject?) -> Void in
+			if err != nil {
+				return callback(err: err)
+			}
+			
+			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
+			if json != nil {
+				self.parse(json!)
+			}
+			
+			callback(err: nil)
+		}, self.json())
+	}
+	
+	func remove(callback: (err: NSError?) -> Void) {
+		doRequest(makeRequest("/table/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
+			callback(err: err)
+		}, nil)
+	}
+	
+	class func getAll(callback: (err: NSError?, list: [Table]) -> Void) {
+		doRequest(makeRequest("/tables", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
 			if err != nil {
 				return callback(err: err, list: [])
 			}
 			
 			var json: [[NSString: AnyObject]]? = data as? [[NSString: AnyObject]]
-			var lists: [SortedTable] = []
+			var list: [Table] = []
 			if json != nil {
 				for j in json! {
-					lists.append(SortedTable(res: j))
+					list.append(Table(res: j))
 				}
 			}
 			
-			callback(err: nil, list: lists)
+			callback(err: nil, list: list)
 		}, nil)
 	}
 	

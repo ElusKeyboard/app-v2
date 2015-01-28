@@ -5,12 +5,6 @@ import MapKit
 let kISODateFormat = "YYYY-MM-dd\'T\'HH:mm:ss.SSS\'Z\'"
 let kNetworkDomainError = "Invalid Response"
 
-#if DEBUG
-	let kAPIEndpoint = "http://127.0.0.1:3000"
-#else
-	let kAPIEndpoint = "https://orderchef.ngapp.io"
-#endif
-
 var storage: SharedStorage = SharedStorage()
 var currentUser: User?
 var sessionCookie: String?
@@ -32,7 +26,17 @@ class Request: NSObject {
 }
 
 func makeRequest (endpoint: String, method: String?) -> NSMutableURLRequest {
-	var request = NSMutableURLRequest(URL: NSURL(string: kAPIEndpoint + endpoint)!)
+	var base = "/api"
+	if storage.server_ip != nil {
+		base = storage.server_ip! + base
+	} else {
+		// so that NSURL unwrap doesn't crash the app
+		base = "http://127.0.0.1" + base
+		
+		println("storage -> server_ip property nil!")
+	}
+	
+	var request = NSMutableURLRequest(URL: NSURL(string: base + endpoint)!)
 	request.setValue("application/json", forHTTPHeaderField: "Accept")
 	request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 	if sessionCookie != nil {
@@ -61,9 +65,12 @@ func readSettings () -> Bool {
 	}
 	
 	var settings: [String: AnyObject]? = NSJSONSerialization.JSONObjectWithData(contents!, options: NSJSONReadingOptions(0), error: &err) as? [String: AnyObject]
-	if err != nil {
+	if err != nil || settings == nil {
 		return false
 	}
+	
+	storage.venue_name = settings!["venue_name"] as? String
+	storage.server_ip = settings!["server_ip"] as? String
 	
 	return true
 }
@@ -71,6 +78,8 @@ func readSettings () -> Bool {
 func saveSettings () -> Bool {
 	var settings: [String: AnyObject] = [:]
 	settings["sessionCookie"] = sessionCookie
+	settings["venue_name"] = storage.venue_name
+	settings["server_ip"] = storage.server_ip
 	
 	var docDir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
 	

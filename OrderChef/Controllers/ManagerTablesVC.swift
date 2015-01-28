@@ -1,25 +1,25 @@
 
 import UIKit
 
-class ManagerCategoriesVC: UITableViewController {
+class ManagerTablesVC: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.navigationItem.title = "Categories"
+		self.navigationItem.title = "Tables"
 		
 		self.refreshControl = UIRefreshControl()
 		self.refreshControl!.addTarget(self, action: "refreshData", forControlEvents: .ValueChanged)
 		
 		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "basic")
 		
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FAPlus) + " ", style: UIBarButtonItemStyle.Plain, target: self, action: "addCategory")
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FAPlus) + " ", style: UIBarButtonItemStyle.Plain, target: self, action: "add")
 		self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
 		
 		self.refreshData()
 	}
 	
 	func refreshData() {
-		storage.updateCategories({ (err: NSError?) -> Void in
+		storage.updateTables({ (err: NSError?) -> Void in
 			self.refreshControl!.endRefreshing()
 			if err != nil {
 				return SVProgressHUD.showErrorWithStatus(err!.description)
@@ -29,8 +29,8 @@ class ManagerCategoriesVC: UITableViewController {
 		})
 	}
 	
-	func addCategory() {
-		var vc = ManagerCategoryVC(nibName: "ManagerCategoryVC", bundle: nil)
+	func add() {
+		var vc = ManagerTableVC(nibName: "ManagerTableVC", bundle: nil)
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
@@ -39,26 +39,26 @@ class ManagerCategoriesVC: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return storage.categories.count
+		return storage.tables.count
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		var vc = ManagerCategoryVC(nibName: "ManagerCategoryVC", bundle: nil)
+		var vc = ManagerTableVC(nibName: "ManagerTableVC", bundle: nil)
 		
-		vc.category = storage.categories[indexPath.row]
+		vc.table = storage.tables[indexPath.row]
 		
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let category: Category = storage.categories[indexPath.row]
+		let table: Table = storage.tables[indexPath.row]
 		var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 		if cell == nil {
 			cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
 		}
 		
 		cell!.accessoryType = .DisclosureIndicator
-		cell!.textLabel!.text = category.name
+		cell!.textLabel!.text = table.name
 		
 		return cell!
 	}

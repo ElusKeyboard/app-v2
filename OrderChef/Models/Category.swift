@@ -7,8 +7,9 @@ class Category {
 	var name: String? = nil
 	var description: String? = nil
 	
-	init(){}
+	var items: [Item] = []
 	
+	init(){}
 	init(res: [NSString: AnyObject]) {
 		self.parse(res)
 	}
@@ -47,6 +48,12 @@ class Category {
 			
 			callback(err: nil)
 		}, self.json())
+	}
+	
+	func remove(callback: (err: NSError?) -> Void) {
+		doRequest(makeRequest("/category/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
+			callback(err: err)
+		}, nil)
 	}
 	
 	class func getCategories(callback: (err: NSError?, categories: [Category]) -> Void) {

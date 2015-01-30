@@ -2,10 +2,13 @@
 import Foundation
 
 class OrderGroup {
-	var id: Int? = nil
-	var table_id: Int? = nil
+	var id: Int?
+	
+	var table: Table?
+	var table_id: Int!
+	
 	var cleared: Bool = false
-	var cleared_when: NSDate? = nil
+	var cleared_when: NSDate?
 	
 	init(){}
 	
@@ -15,12 +18,19 @@ class OrderGroup {
 	
 	func parse(res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.table_id = res["table_id"] as? Int
+		self.table_id = res["table_id"] as Int
 		self.cleared = res["cleared"] as Bool
 		
 		let date: Int? = res["cleared_when"] as? Int
 		if date != nil {
 			self.cleared_when = NSDate(timeIntervalSince1970: NSTimeInterval(date! / 1000))
+		}
+		
+		for t in storage.tables {
+			if t.id != nil && t.id! == self.table_id {
+				self.table = t
+				break
+			}
 		}
 	}
 	
@@ -28,7 +38,7 @@ class OrderGroup {
 		var json: [NSString: AnyObject] = [:]
 		
 		if self.id != nil { json["id"] = self.id }
-		if self.table_id != nil { json["table_id"] = self.table_id }
+		json["table_id"] = self.table_id
 		json["cleared"] = self.cleared
 		if self.cleared_when != nil {
 			json["cleared"] = self.cleared_when!.timeIntervalSince1970
@@ -47,7 +57,9 @@ class OrderGroup {
 			var orders: [Order] = []
 			if json != nil {
 				for j in json! {
-					orders.append(Order(res: j))
+					var o: Order = Order(res: j)
+					o.group = self
+					orders.append(o)
 				}
 			}
 			

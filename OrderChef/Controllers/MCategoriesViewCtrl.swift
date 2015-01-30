@@ -1,24 +1,22 @@
 
 import UIKit
 
-class ManagerCategoriesVC: UITableViewController {
+class MCategoriesViewCtrl: UITableViewController, RefreshDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		self.navigationItem.title = "Categories"
 		
-		self.refreshControl = UIRefreshControl()
-		self.refreshControl!.addTarget(self, action: "refreshData", forControlEvents: .ValueChanged)
-		
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "basic")
+		AppDelegate.setupRefreshControl(self)
+		AppDelegate.registerCommonCellsForTable(self.tableView)
 		
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FAPlus) + " ", style: UIBarButtonItemStyle.Plain, target: self, action: "addCategory")
 		self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
 		
-		self.refreshData()
+		self.reloadData(nil)
 	}
 	
-	func refreshData() {
+	func reloadData(sender: AnyObject?) {
 		storage.updateCategories({ (err: NSError?) -> Void in
 			self.refreshControl!.endRefreshing()
 			if err != nil {
@@ -30,7 +28,7 @@ class ManagerCategoriesVC: UITableViewController {
 	}
 	
 	func addCategory() {
-		var vc = ManagerCategoryVC(nibName: "ManagerCategoryVC", bundle: nil)
+		var vc = MCategoryViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
@@ -43,7 +41,7 @@ class ManagerCategoriesVC: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		var vc = ManagerCategoryVC(nibName: "ManagerCategoryVC", bundle: nil)
+		var vc = MCategoryViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		
 		vc.category = storage.categories[indexPath.row]
 		

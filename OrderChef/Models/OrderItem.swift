@@ -7,7 +7,7 @@ class OrderItem {
 	var item: Item!
 	var item_id: Int!
 	
-	var order_id: Int? = nil
+	var order_id: Int!
 	var quantity: Int = 1
 	var notes: String? = nil
 	
@@ -21,6 +21,7 @@ class OrderItem {
 		self.id = res["id"] as? Int
 		self.item_id = res["item_id"] as? Int
 		self.quantity = res["quantity"] as Int
+		self.order_id = res["order_id"] as Int
 		self.notes = res["notes"] as? String
 	}
 }

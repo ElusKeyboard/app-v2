@@ -5,6 +5,9 @@ let iOS8 = floor(NSFoundationVersionNumber) > floor(NSFoundationVersionNumber_iO
 let versionNumber = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as NSString
 let mainColour = UIColor(red: 0.203, green: 0.444, blue: 0.768, alpha: 1.0)
 
+let groupedTableNibName = "GroupedTableView"
+let plainTableNibName = "PlainTableView"
+
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	
@@ -33,9 +36,10 @@ let mainColour = UIColor(red: 0.203, green: 0.444, blue: 0.768, alpha: 1.0)
 		var rootVC: UIViewController!
 		
 		if storage.server_ip == nil {
-			rootVC = ManagerConfigVC(nibName: "ManagerConfigVC", bundle: nil)
+			rootVC = MConfigViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		} else {
-			rootVC = TablesVC(nibName: "TablesVC", bundle: nil)
+			storage.initSequence()
+			rootVC = TablesViewCtrl(nibName: plainTableNibName, bundle: nil)
 			rootVC = UINavigationController(rootViewController: rootVC)
 		}
 		
@@ -72,4 +76,19 @@ let mainColour = UIColor(red: 0.203, green: 0.444, blue: 0.768, alpha: 1.0)
 			NSFontAttributeName: UIFont(name: "FontAwesome", size: size)!
 		] as [NSObject: AnyObject]
 	}
+	
+	class func registerCommonCellsForTable(tableView: UITableView) {
+		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "basic")
+		tableView.registerNib(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "textField")
+		tableView.registerNib(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "textView")
+	}
+	
+	class func setupRefreshControl<T where T:UITableViewController, T: RefreshDelegate>(delegate: T) {
+		delegate.refreshControl = UIRefreshControl()
+		delegate.refreshControl!.addTarget(delegate, action: "reloadData:", forControlEvents: .ValueChanged)
+	}
+}
+
+protocol RefreshDelegate {
+	func reloadData(sender: AnyObject?)
 }

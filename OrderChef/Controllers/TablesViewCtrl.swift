@@ -1,15 +1,13 @@
 
 import UIKit
 
-class TablesVC: UITableViewController {
+class TablesViewCtrl: UITableViewController, RefreshDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.refreshControl = UIRefreshControl()
-		self.refreshControl!.addTarget(self, action: "refreshData:", forControlEvents: UIControlEvents.ValueChanged)
-		
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "basic")
+		AppDelegate.setupRefreshControl(self)
+		AppDelegate.registerCommonCellsForTable(self.tableView)
 		
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: " " + NSString.fontAwesomeIconStringForEnum(FAIcon.FATasks), style: UIBarButtonItemStyle.Plain, target: self, action: "openManager")
 		self.navigationItem.leftBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
@@ -19,15 +17,23 @@ class TablesVC: UITableViewController {
 		super.viewWillAppear(animated)
 		
 		self.navigationItem.title = storage.venue_name
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData:", name: "didInit", object: nil)
 	}
 	
-	func refreshData(sender: AnyObject?) {
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: "didInit", object: nil)
+	}
+	
+	func reloadData(sender: AnyObject?) {
+		self.navigationItem.title = storage.venue_name
 		self.refreshControl!.endRefreshing()
 		self.tableView.reloadData()
 	}
 	
 	func openManager() {
-		var vc: ManagerVC = ManagerVC(nibName: "ManagerVC", bundle: nil)
+		var vc = ManagerViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		var nvc: UINavigationController = UINavigationController(rootViewController: vc)
 		
 		self.presentViewController(nvc, animated: true, completion: nil)
@@ -60,7 +66,7 @@ class TablesVC: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		var vc: OrderGroupVC = OrderGroupVC(nibName: "OrderGroupVC", bundle: nil)
+		var vc = OrderGroupViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		vc.table = storage.table_types[indexPath.section].tables[indexPath.row]
 		
 		self.navigationController!.pushViewController(vc, animated: true)

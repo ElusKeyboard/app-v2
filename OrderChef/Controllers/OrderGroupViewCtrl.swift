@@ -1,7 +1,7 @@
 
 import UIKit
 
-class OrderGroupVC: UITableViewController {
+class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 	var table: Table! // actual table.
 	
 	var orderGroup: OrderGroup!
@@ -10,17 +10,15 @@ class OrderGroupVC: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "basic")
-		
-		self.refreshControl = UIRefreshControl()
-		self.refreshControl!.addTarget(self, action: "refreshData", forControlEvents: .ValueChanged)
+		AppDelegate.setupRefreshControl(self)
+		AppDelegate.registerCommonCellsForTable(self.tableView)
 		
 		self.navigationItem.title = self.table.name
 		
-		self.refreshData()
+		self.reloadData(nil)
 	}
 	
-	func refreshData() {
+	func reloadData(sender: AnyObject?) {
 		self.table.getGroup({ (err: NSError?, group: OrderGroup?) -> Void in
 			if err != nil {
 				SVProgressHUD.showErrorWithStatus(err!.description)
@@ -45,21 +43,61 @@ class OrderGroupVC: UITableViewController {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return self.orders.count
+		return self.orders.count + 1
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.orders[section].order_items.count
+		if section == 0 {
+			return 1
+		}
+		
+		return self.orders[section - 1].order_items.count + 1
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let orderItem = self.orders[indexPath.section].order_items[indexPath.row].item
 		var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 		
 		if cell == nil {
-			cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "basic")
+			cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
 		}
 		
+		cell!.accessoryType = .DisclosureIndicator
+		
+		if indexPath.section == 0 {
+			cell!.textLabel!.text = "Add Order"
+			return cell!
+		}
+		
+		if indexPath.row == 0 {
+			cell!.textLabel!.text = "Add Item"
+			return cell!
+		}
+		
+		let order = self.orders[indexPath.section - 1]
+		let orderItem = order.order_items[indexPath.row - 1].item
+		
+		cell!.textLabel!.text = orderItem.name
+		
 		return cell!
+	}
+	
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		if indexPath.section == 0 {
+			// Create order.
+			
+		}
+	}
+	
+	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		if section == 0 {
+			return nil
+		}
+		
+		let order = self.orders[section - 1]
+		if order.type == nil {
+			return nil
+		}
+		
+		return order.type.name
 	}
 }

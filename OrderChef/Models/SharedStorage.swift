@@ -8,8 +8,40 @@ class SharedStorage {
 	var tables: [Table] = []
 	var table_types: [TableType] = []
 	
+	var order_types: [OrderType] = []
+	
 	var categories: [Category] = []
 	var items: [Item] = []
+	
+	func initSequence() {
+		var seqRemaining = 6;
+		var seqTotal = seqRemaining;
+		
+		SVProgressHUD.showProgress(0, status: "Initialising")
+		
+		var cb = { (err: NSError?) -> Void in
+			SVProgressHUD.showProgress(Float((seqRemaining / seqTotal - 1) * -1))
+			
+			if (--seqRemaining <= 0) {
+				SVProgressHUD.dismiss()
+				println("Finished Init")
+				NSNotificationCenter.defaultCenter().postNotificationName("didInit", object: nil)
+			}
+		}
+		
+		self.updateSettings(cb)
+		self.updateOrderTypes(cb)
+		
+		self.updateTableTypes({ (err: NSError?) -> Void in
+			cb(nil)
+			self.updateTables(cb)
+		})
+		
+		self.updateCategories({ (err: NSError?) -> Void in
+			cb(nil)
+			self.updateItems(cb)
+		})
+	}
 	
 	func updateSettings(callback: (err: NSError?) -> Void) {
 		doRequest(makeRequest("/config/settings", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
@@ -46,6 +78,18 @@ class SharedStorage {
 			self.table_types = list
 			
 			self.updateTableTypeMappings()
+			callback(err: nil)
+		})
+	}
+	
+	func updateOrderTypes(callback: (err: NSError?) -> Void) {
+		OrderType.getAll({ (err: NSError?, list: [OrderType]) -> Void in
+			if err != nil {
+				return callback(err: err)
+			}
+			
+			self.order_types = list
+			
 			callback(err: nil)
 		})
 	}

@@ -80,7 +80,7 @@ class Table {
 	}
 	
 	func getGroup(callback: (err: NSError?, group: OrderGroup?) -> Void) {
-		doRequest(makeRequest("/tables/" + String(self.id!) + "/group", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
+		doRequest(makeRequest("/table/" + String(self.id!) + "/group", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
 			if err != nil {
 				return callback(err: err, group: nil)
 			}

@@ -1,21 +1,19 @@
 
 import UIKit
 
-class ManagerTableTypeVC: UITableViewController, TextFieldCellDelegate {
+class MTableViewCtrl: UITableViewController, TextFieldCellDelegate {
 	
-	var table_type: TableType = TableType()
+	var table: Table = Table()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.navigationItem.title = "Add Table Type"
-		if self.table_type.id != nil {
-			self.navigationItem.title = "Update Table Type"
+		self.navigationItem.title = "Add Table"
+		if self.table.id != nil {
+			self.navigationItem.title = "Update Table"
 		}
 		
-		self.tableView.registerNib(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "textField")
-		self.tableView.registerNib(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "textView")
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+		AppDelegate.registerCommonCellsForTable(self.tableView)
 	}
 	
 	func didEdit() {
@@ -34,7 +32,7 @@ class ManagerTableTypeVC: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	func save() {
-		self.table_type.save({ (err: NSError?) -> Void in
+		self.table.save({ (err: NSError?) -> Void in
 			if err != nil {
 				return SVProgressHUD.showErrorWithStatus(err!.description)
 			}
@@ -44,10 +42,14 @@ class ManagerTableTypeVC: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return self.table_type.id == nil ? 1 : 2
+		return self.table.id == nil ? 2 : 3
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if section == 0 {
+			return 3
+		}
+		
 		return 1
 	}
 	
@@ -58,21 +60,45 @@ class ManagerTableTypeVC: UITableViewController, TextFieldCellDelegate {
 				cell = TextFieldCell(style: UITableViewCellStyle.Default, reuseIdentifier: "textField")
 			}
 			
-			cell!.label.text = "Name:"
-			cell!.field.text = self.table_type.name
+			switch indexPath.row {
+			case 0:
+				cell!.label.text = "Name:"
+				cell!.field.text = self.table.name
+			case 1:
+				cell!.label.text = "Table Number:"
+				cell!.field.text = self.table.table_number
+			case 2:
+				cell!.label.text = "Location:"
+				cell!.field.text = self.table.location
+			default:
+				break
+			}
 			
 			cell!.delegate = self
 			cell!.setup()
 			
 			return cell!
-		} else {
-			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? UITableViewCell
+		} else if indexPath.section == 1 {
+			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 			if cell == nil {
-				cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
+				cell = UITableViewCell(style: .Value1, reuseIdentifier: "basic")
 			}
 			
-			cell!.textLabel!.text = "Delete"
+			cell!.textLabel!.text = "Table Type"
+			
+			cell!.textLabel!.textAlignment = .Left
+			cell!.accessoryType = .DisclosureIndicator
+			
+			return cell!
+		} else {
+			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
+			if cell == nil {
+				cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
+			}
+			
+			cell!.textLabel!.text = "basic"
 			cell!.textLabel!.textAlignment = .Center
+			cell!.accessoryType = .None
 			
 			return cell!
 		}
@@ -80,8 +106,14 @@ class ManagerTableTypeVC: UITableViewController, TextFieldCellDelegate {
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if indexPath.section == 1 {
+			// Pick table type
+			var vc = MTableTypesViewCtrl(nibName: plainTableNibName, bundle: nil)
+			vc.pickingForTable = table
+			
+			self.navigationController!.pushViewController(vc, animated: true)
+		} else if indexPath.section == 2 {
 			// Delete
-			table_type.remove({ (err: NSError?) -> Void in
+			table.remove({ (err: NSError?) -> Void in
 				tableView.deselectRowAtIndexPath(indexPath, animated: true)
 				
 				if err != nil {
@@ -100,8 +132,12 @@ class ManagerTableTypeVC: UITableViewController, TextFieldCellDelegate {
 		
 		var indexPath = self.tableView.indexPathForCell(cell)
 		
-		if indexPath!.section == 0 {
-			self.table_type.name = value
+		if indexPath!.row == 0 {
+			self.table.name = value
+		} else if indexPath!.row == 1 {
+			self.table.table_number = value
+		} else if indexPath!.row == 2 {
+			self.table.location = value
 		}
 	}
 	

@@ -1,22 +1,19 @@
 
 import UIKit
 
-class ManagerTableVC: UITableViewController, TextFieldCellDelegate {
+class MCategoryViewCtrl: UITableViewController, TextFieldCellDelegate {
 	
-	var table: Table = Table()
+	var category: Category = Category()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.navigationItem.title = "Add Table"
-		if self.table.id != nil {
-			self.navigationItem.title = "Update Table"
+		self.navigationItem.title = "Add Category"
+		if category.id != nil {
+			self.navigationItem.title = "Update Category"
 		}
 		
-		self.tableView.registerNib(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "textField")
-		self.tableView.registerNib(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "textView")
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "tableType")
+		AppDelegate.registerCommonCellsForTable(self.tableView)
 	}
 	
 	func didEdit() {
@@ -35,7 +32,7 @@ class ManagerTableVC: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	func save() {
-		self.table.save({ (err: NSError?) -> Void in
+		self.category.save({ (err: NSError?) -> Void in
 			if err != nil {
 				return SVProgressHUD.showErrorWithStatus(err!.description)
 			}
@@ -45,14 +42,10 @@ class ManagerTableVC: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return self.table.id == nil ? 2 : 3
+		return self.category.id == nil ? 2 : 3
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if section == 0 {
-			return 3
-		}
-		
 		return 1
 	}
 	
@@ -63,40 +56,30 @@ class ManagerTableVC: UITableViewController, TextFieldCellDelegate {
 				cell = TextFieldCell(style: UITableViewCellStyle.Default, reuseIdentifier: "textField")
 			}
 			
-			switch indexPath.row {
-			case 0:
-				cell!.label.text = "Name:"
-				cell!.field.text = self.table.name
-			case 1:
-				cell!.label.text = "Table Number:"
-				cell!.field.text = self.table.table_number
-			case 2:
-				cell!.label.text = "Location:"
-				cell!.field.text = self.table.location
-			default:
-				break
-			}
+			cell!.label.text = "Name:"
+			cell!.field.text = self.category.name
 			
 			cell!.delegate = self
 			cell!.setup()
 			
 			return cell!
 		} else if indexPath.section == 1 {
-			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("tableType", forIndexPath: indexPath) as? UITableViewCell
+			var cell: TextViewCell? = tableView.dequeueReusableCellWithIdentifier("textView", forIndexPath: indexPath) as? TextViewCell
 			if cell == nil {
-				cell = UITableViewCell(style: .Value1, reuseIdentifier: "tableType")
+				cell = TextViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "textView")
 			}
 			
-			cell!.textLabel!.text = "Table Type"
+			cell!.label.text = "Description:"
+			cell!.field.text = self.category.description
 			
-			cell!.textLabel!.textAlignment = .Left
-			cell!.accessoryType = .DisclosureIndicator
+			cell!.delegate = self
+			cell!.setup()
 			
 			return cell!
 		} else {
-			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? UITableViewCell
+			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 			if cell == nil {
-				cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
+				cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
 			}
 			
 			cell!.textLabel!.text = "Delete"
@@ -107,15 +90,9 @@ class ManagerTableVC: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if indexPath.section == 1 {
-			// Pick table type
-			var vc: ManagerTableTypesVC = ManagerTableTypesVC(nibName: "ManagerTableTypesVC", bundle: nil)
-			vc.pickingForTable = table
-			
-			self.navigationController!.pushViewController(vc, animated: true)
-		} else if indexPath.section == 2 {
+		if indexPath.section == 2 {
 			// Delete
-			table.remove({ (err: NSError?) -> Void in
+			category.remove({ (err: NSError?) -> Void in
 				tableView.deselectRowAtIndexPath(indexPath, animated: true)
 				
 				if err != nil {
@@ -127,6 +104,14 @@ class ManagerTableVC: UITableViewController, TextFieldCellDelegate {
 		}
 	}
 	
+	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		if indexPath.section == 1 {
+			return 44 * 3
+		}
+		
+		return 44
+	}
+	
 	//MARK: TextFieldCellDelegate
 	
 	func TextFieldCellDidChangeValue(cell: UITableViewCell, value: String) {
@@ -134,12 +119,10 @@ class ManagerTableVC: UITableViewController, TextFieldCellDelegate {
 		
 		var indexPath = self.tableView.indexPathForCell(cell)
 		
-		if indexPath!.row == 0 {
-			self.table.name = value
-		} else if indexPath!.row == 1 {
-			self.table.table_number = value
-		} else if indexPath!.row == 2 {
-			self.table.location = value
+		if indexPath!.section == 0 {
+			self.category.name = value
+		} else if indexPath!.section == 1 {
+			self.category.description = value
 		}
 	}
 	

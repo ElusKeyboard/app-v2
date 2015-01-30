@@ -3,8 +3,12 @@ import Foundation
 
 class Order {
 	var id: Int? = nil
-	var type_id: Int? = nil
-	var group_id: Int? = nil
+	
+	var type_id: Int!
+	var type: OrderType!
+	
+	var group_id: Int!
+	var group: OrderGroup? = nil
 	
 	var order_items: [OrderItem] = []
 	
@@ -16,8 +20,16 @@ class Order {
 	
 	func parse(res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.type_id = res["type_id"] as? Int
-		self.group_id = res["group_id"] as? Int
+		self.type_id = res["type_id"] as Int
+		self.group_id = res["group_id"] as Int
+		
+		for ot in storage.order_types {
+			if ot.id != nil && ot.id! == self.type_id {
+				self.type = ot
+				break
+			}
+		}
+		
 		// self.order_items
 	}
 }

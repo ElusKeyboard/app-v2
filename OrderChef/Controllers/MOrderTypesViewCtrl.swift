@@ -1,28 +1,24 @@
 
 import UIKit
 
-class ManagerTableTypesVC: UITableViewController {
-	
-	var pickingForTable: Table? = nil
+class MOrderTypesViewCtrl: UITableViewController, RefreshDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.navigationItem.title = "Table Types"
+		self.navigationItem.title = "Order Types"
 		
-		self.refreshControl = UIRefreshControl()
-		self.refreshControl!.addTarget(self, action: "refreshData", forControlEvents: .ValueChanged)
-		
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "basic")
+		AppDelegate.setupRefreshControl(self)
+		AppDelegate.registerCommonCellsForTable(self.tableView)
 		
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FAPlus) + " ", style: UIBarButtonItemStyle.Plain, target: self, action: "add")
 		self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
 		
-		self.refreshData()
+		self.reloadData(nil)
 	}
 	
-	func refreshData() {
-		storage.updateTableTypes({ (err: NSError?) -> Void in
+	func reloadData(sender: AnyObject?) {
+		storage.updateOrderTypes({ (err: NSError?) -> Void in
 			self.refreshControl!.endRefreshing()
 			if err != nil {
 				return SVProgressHUD.showErrorWithStatus(err!.description)
@@ -33,7 +29,7 @@ class ManagerTableTypesVC: UITableViewController {
 	}
 	
 	func add() {
-		var vc = ManagerTableTypeVC(nibName: "ManagerTableTypeVC", bundle: nil)
+		var vc = MOrderTypeViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
@@ -42,41 +38,25 @@ class ManagerTableTypesVC: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return storage.table_types.count
+		return storage.order_types.count
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if self.pickingForTable != nil {
-			self.pickingForTable!.table_type = storage.table_types[indexPath.row]
-			self.pickingForTable!.table_type_id = self.pickingForTable!.table_type!.id!
-			self.navigationController!.popViewControllerAnimated(true)
-			
-			return
-		}
-		
-		var vc = ManagerTableTypeVC(nibName: "ManagerTableTypeVC", bundle: nil)
-		vc.table_type = storage.table_types[indexPath.row]
+		var vc = MOrderTypeViewCtrl(nibName: groupedTableNibName, bundle: nil)
+		vc.order_type = storage.order_types[indexPath.row]
 		
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let table_type: TableType = storage.table_types[indexPath.row]
+		let order_type: OrderType = storage.order_types[indexPath.row]
 		var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 		if cell == nil {
 			cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
 		}
 		
 		cell!.accessoryType = .DisclosureIndicator
-		if self.pickingForTable != nil {
-			if self.pickingForTable!.table_type != nil && self.pickingForTable!.table_type!.id == table_type.id {
-				cell!.accessoryType = .Checkmark
-			} else {
-				cell!.accessoryType = .None
-			}
-		}
-		
-		cell!.textLabel!.text = table_type.name
+		cell!.textLabel!.text = order_type.name
 		
 		return cell!
 	}

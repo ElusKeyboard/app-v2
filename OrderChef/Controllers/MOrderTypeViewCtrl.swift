@@ -1,21 +1,19 @@
 
 import UIKit
 
-class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
+class MOrderTypeViewCtrl: UITableViewController, TextFieldCellDelegate {
 	
-	var category: Category = Category()
+	var order_type: OrderType = OrderType()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.navigationItem.title = "Add Category"
-		if category.id != nil {
-			self.navigationItem.title = "Update Category"
+		self.navigationItem.title = "Add Order Type"
+		if self.order_type.id != nil {
+			self.navigationItem.title = "Update Order Type"
 		}
 		
-		self.tableView.registerNib(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "textField")
-		self.tableView.registerNib(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "textView")
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+		AppDelegate.registerCommonCellsForTable(self.tableView)
 	}
 	
 	func didEdit() {
@@ -34,7 +32,7 @@ class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	func save() {
-		self.category.save({ (err: NSError?) -> Void in
+		self.order_type.save({ (err: NSError?) -> Void in
 			if err != nil {
 				return SVProgressHUD.showErrorWithStatus(err!.description)
 			}
@@ -44,7 +42,7 @@ class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return self.category.id == nil ? 2 : 3
+		return self.order_type.id == nil ? 2 : 3
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,7 +57,7 @@ class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
 			}
 			
 			cell!.label.text = "Name:"
-			cell!.field.text = self.category.name
+			cell!.field.text = self.order_type.name
 			
 			cell!.delegate = self
 			cell!.setup()
@@ -72,16 +70,16 @@ class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
 			}
 			
 			cell!.label.text = "Description:"
-			cell!.field.text = self.category.description
+			cell!.field.text = self.order_type.description
 			
 			cell!.delegate = self
 			cell!.setup()
 			
 			return cell!
 		} else {
-			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? UITableViewCell
+			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 			if cell == nil {
-				cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
+				cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
 			}
 			
 			cell!.textLabel!.text = "Delete"
@@ -94,7 +92,7 @@ class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if indexPath.section == 2 {
 			// Delete
-			category.remove({ (err: NSError?) -> Void in
+			order_type.remove({ (err: NSError?) -> Void in
 				tableView.deselectRowAtIndexPath(indexPath, animated: true)
 				
 				if err != nil {
@@ -108,7 +106,7 @@ class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
 	
 	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		if indexPath.section == 1 {
-			return 44 * 3
+			return 44 * 2
 		}
 		
 		return 44
@@ -122,9 +120,9 @@ class ManagerCategoryVC: UITableViewController, TextFieldCellDelegate {
 		var indexPath = self.tableView.indexPathForCell(cell)
 		
 		if indexPath!.section == 0 {
-			self.category.name = value
+			self.order_type.name = value
 		} else if indexPath!.section == 1 {
-			self.category.description = value
+			self.order_type.description = value
 		}
 	}
 	

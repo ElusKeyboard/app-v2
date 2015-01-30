@@ -1,14 +1,14 @@
 
 import UIKit
 
-class ManagerVC: UITableViewController {
+class ManagerViewCtrl: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		self.navigationItem.title = "Manager"
 		
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "basic")
+		AppDelegate.registerCommonCellsForTable(self.tableView)
 		
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: " " + NSString.fontAwesomeIconStringForEnum(FAIcon.FATimes), style: UIBarButtonItemStyle.Plain, target: self, action: "closeView")
 		self.navigationItem.leftBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
@@ -23,11 +23,12 @@ class ManagerVC: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if section == 2 {
+		switch section {
+		case 1, 3:
 			return 2
+		default:
+			return 1
 		}
-		
-		return 1
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -48,9 +49,13 @@ class ManagerVC: UITableViewController {
 				cell!.textLabel!.text = "Tables"
 			}
 		case 2:
-			cell!.textLabel!.text = "Items"
+			cell!.textLabel!.text = "Order Types"
 		case 3:
-			cell!.textLabel!.text = "Categories"
+			if indexPath.row == 0 {
+				cell!.textLabel!.text = "Items"
+			} else {
+				cell!.textLabel!.text = "Categories"
+			}
 		default:
 			break
 		}
@@ -63,15 +68,21 @@ class ManagerVC: UITableViewController {
 		
 		switch indexPath.section {
 		case 0:
-			vc = ManagerConfigVC(nibName: "ManagerConfigVC", bundle: nil)
+			vc = MConfigViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		case 1:
 			if indexPath.row == 0 {
-				vc = ManagerTableTypesVC(nibName: "ManagerTableTypesVC", bundle: nil)
+				vc = MTableTypesViewCtrl(nibName: plainTableNibName, bundle: nil)
 			} else {
-				vc = ManagerTablesVC(nibName: "ManagerTablesVC", bundle: nil)
+				vc = MTablesViewCtrl(nibName: plainTableNibName, bundle: nil)
 			}
+		case 2:
+			vc = MOrderTypesViewCtrl(nibName: plainTableNibName, bundle: nil)
 		case 3:
-			vc = ManagerCategoriesVC(nibName: "ManagerCategoriesVC", bundle: nil)
+			if indexPath.row == 0 {
+				
+			} else {
+				vc = MCategoriesViewCtrl(nibName: plainTableNibName, bundle: nil)
+			}
 		default:
 			return tableView.deselectRowAtIndexPath(indexPath, animated: true)
 		}

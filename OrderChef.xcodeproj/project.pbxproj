@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F14A9761A63AEA20046D805 /* ManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9751A63AEA20046D805 /* ManagerVC.swift */; };
-		4F14A9781A63AF750046D805 /* ManagerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9771A63AF750046D805 /* ManagerVC.xib */; };
-		4F14A97A1A63B3260046D805 /* ManagerCategoriesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9791A63B3260046D805 /* ManagerCategoriesVC.xib */; };
-		4F14A97C1A63B3370046D805 /* ManagerCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A97B1A63B3370046D805 /* ManagerCategoriesVC.swift */; };
+		4F14A9761A63AEA20046D805 /* ManagerViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9751A63AEA20046D805 /* ManagerViewCtrl.swift */; };
+		4F14A9781A63AF750046D805 /* GroupedTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9771A63AF750046D805 /* GroupedTableView.xib */; };
+		4F14A97C1A63B3370046D805 /* MCategoriesViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A97B1A63B3370046D805 /* MCategoriesViewCtrl.swift */; };
 		4F14A97F1A63C1ED0046D805 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A97E1A63C1ED0046D805 /* Category.swift */; };
 		4F14A9811A63C2230046D805 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9801A63C2230046D805 /* Item.swift */; };
 		4F14A9961A63C2520046D805 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9881A63C2520046D805 /* FAImageView.m */; };
@@ -20,36 +19,30 @@
 		4F14A99A1A63C2520046D805 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9911A63C2520046D805 /* SVIndefiniteAnimatedView.m */; };
 		4F14A99B1A63C2520046D805 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9931A63C2520046D805 /* SVProgressHUD.bundle */; };
 		4F14A99C1A63C2520046D805 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9951A63C2520046D805 /* SVProgressHUD.m */; };
-		4F14A99E1A63CAB20046D805 /* ManagerCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A99D1A63CAB20046D805 /* ManagerCategoryVC.swift */; };
-		4F14A9A01A63CAC30046D805 /* ManagerCategoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A99F1A63CAC30046D805 /* ManagerCategoryVC.xib */; };
 		4F14A9A21A63E2610046D805 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9A11A63E2610046D805 /* TextFieldCell.xib */; };
 		4F14A9A41A63E2770046D805 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9A31A63E2770046D805 /* TextFieldCell.swift */; };
 		4F14A9A61A63F6690046D805 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9A51A63F6690046D805 /* TextViewCell.swift */; };
 		4F14A9A81A63F6790046D805 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9A71A63F6790046D805 /* TextViewCell.xib */; };
 		4F2CB7F71A73C34A005987D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2CB7F61A73C34A005987D2 /* QuartzCore.framework */; };
-		4F32723B1A61EEFF00DF5E3E /* OrderGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723A1A61EEFF00DF5E3E /* OrderGroupVC.swift */; };
-		4F32723D1A61EF0C00DF5E3E /* OrderGroupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F32723C1A61EF0C00DF5E3E /* OrderGroupVC.xib */; };
+		4F32723B1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723A1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift */; };
 		4F32723F1A61FC4500DF5E3E /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */; };
-		4F3272411A61FC5200DF5E3E /* SetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272401A61FC5200DF5E3E /* SetupVC.swift */; };
 		4F3272431A62C9D200DF5E3E /* OrderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272421A62C9D200DF5E3E /* OrderGroup.swift */; };
 		4F3272451A62C9DF00DF5E3E /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272441A62C9DF00DF5E3E /* Order.swift */; };
 		4F3272471A62C9E800DF5E3E /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3272461A62C9E800DF5E3E /* OrderItem.swift */; };
 		4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE391A6166AD009AC555 /* User.swift */; };
-		4F5ACE3F1A61757D009AC555 /* SetupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ACE3E1A61757D009AC555 /* SetupVC.xib */; };
 		4F5ACE411A618153009AC555 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE401A618153009AC555 /* Table.swift */; };
-		4F5ACE431A618267009AC555 /* TablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE421A618267009AC555 /* TablesVC.swift */; };
-		4F5ACE451A618277009AC555 /* TablesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5ACE441A618277009AC555 /* TablesVC.xib */; };
-		4FB313A41A77FC8800C90BF4 /* ManagerConfigVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB313A31A77FC8800C90BF4 /* ManagerConfigVC.xib */; };
-		4FB313A61A77FC9600C90BF4 /* ManagerConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313A51A77FC9600C90BF4 /* ManagerConfigVC.swift */; };
-		4FDF4E6A1A77DB9D00D981AC /* ManagerTablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E691A77DB9D00D981AC /* ManagerTablesVC.swift */; };
-		4FDF4E6C1A77DBB300D981AC /* ManagerTablesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDF4E6B1A77DBB300D981AC /* ManagerTablesVC.xib */; };
-		4FDF4E701A77E07200D981AC /* ManagerTableVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDF4E6F1A77E07200D981AC /* ManagerTableVC.xib */; };
-		4FDF4E721A77E07E00D981AC /* ManagerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E711A77E07E00D981AC /* ManagerTableVC.swift */; };
+		4F5ACE431A618267009AC555 /* TablesViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE421A618267009AC555 /* TablesViewCtrl.swift */; };
+		4FB313A61A77FC9600C90BF4 /* MConfigViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313A51A77FC9600C90BF4 /* MConfigViewCtrl.swift */; };
+		4FB313AE1A7A8B9000C90BF4 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313AD1A7A8B9000C90BF4 /* OrderType.swift */; };
+		4FB313B11A7A8BB200C90BF4 /* MCategoryViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313AF1A7A8BB200C90BF4 /* MCategoryViewCtrl.swift */; };
+		4FB313B51A7A8F1800C90BF4 /* MOrderTypesViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313B41A7A8F1800C90BF4 /* MOrderTypesViewCtrl.swift */; };
+		4FB313B71A7A8F2200C90BF4 /* MOrderTypeViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313B61A7A8F2200C90BF4 /* MOrderTypeViewCtrl.swift */; };
+		4FB313C31A7AC1CD00C90BF4 /* PlainTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB313C21A7AC1CD00C90BF4 /* PlainTableView.xib */; };
+		4FDF4E6A1A77DB9D00D981AC /* MTablesViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E691A77DB9D00D981AC /* MTablesViewCtrl.swift */; };
+		4FDF4E721A77E07E00D981AC /* MTableViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E711A77E07E00D981AC /* MTableViewCtrl.swift */; };
 		4FDF4E741A77E2CD00D981AC /* TableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E731A77E2CD00D981AC /* TableType.swift */; };
-		4FDF4E761A77E85100D981AC /* ManagerTableTypesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E751A77E85100D981AC /* ManagerTableTypesVC.swift */; };
-		4FDF4E781A77E85C00D981AC /* ManagerTableTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E771A77E85C00D981AC /* ManagerTableTypeVC.swift */; };
-		4FDF4E7A1A77E86E00D981AC /* ManagerTableTypesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDF4E791A77E86E00D981AC /* ManagerTableTypesVC.xib */; };
-		4FDF4E7C1A77E87F00D981AC /* ManagerTableTypeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDF4E7B1A77E87F00D981AC /* ManagerTableTypeVC.xib */; };
+		4FDF4E761A77E85100D981AC /* MTableTypesViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E751A77E85100D981AC /* MTableTypesViewCtrl.swift */; };
+		4FDF4E781A77E85C00D981AC /* MTableTypeViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF4E771A77E85C00D981AC /* MTableTypeViewCtrl.swift */; };
 		4FE6515F1A616447006AE6EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6515E1A616447006AE6EC /* AppDelegate.swift */; };
 		4FE651661A616447006AE6EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FE651651A616447006AE6EC /* Images.xcassets */; };
 		4FE651691A616447006AE6EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE651671A616447006AE6EC /* LaunchScreen.xib */; };
@@ -68,10 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4F14A9751A63AEA20046D805 /* ManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerVC.swift; path = Controllers/ManagerVC.swift; sourceTree = "<group>"; };
-		4F14A9771A63AF750046D805 /* ManagerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerVC.xib; path = Controllers/ManagerVC.xib; sourceTree = "<group>"; };
-		4F14A9791A63B3260046D805 /* ManagerCategoriesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerCategoriesVC.xib; path = Controllers/ManagerCategoriesVC.xib; sourceTree = "<group>"; };
-		4F14A97B1A63B3370046D805 /* ManagerCategoriesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerCategoriesVC.swift; path = Controllers/ManagerCategoriesVC.swift; sourceTree = "<group>"; };
+		4F14A9751A63AEA20046D805 /* ManagerViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerViewCtrl.swift; path = Controllers/ManagerViewCtrl.swift; sourceTree = "<group>"; };
+		4F14A9771A63AF750046D805 /* GroupedTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupedTableView.xib; path = Controllers/GroupedTableView.xib; sourceTree = "<group>"; };
+		4F14A97B1A63B3370046D805 /* MCategoriesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MCategoriesViewCtrl.swift; path = Controllers/MCategoriesViewCtrl.swift; sourceTree = "<group>"; };
 		4F14A97E1A63C1ED0046D805 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = Models/Category.swift; sourceTree = "<group>"; };
 		4F14A9801A63C2230046D805 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Models/Item.swift; sourceTree = "<group>"; };
 		4F14A9871A63C2520046D805 /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
@@ -87,37 +79,31 @@
 		4F14A9931A63C2520046D805 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		4F14A9941A63C2520046D805 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		4F14A9951A63C2520046D805 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		4F14A99D1A63CAB20046D805 /* ManagerCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerCategoryVC.swift; path = Models/ManagerCategoryVC.swift; sourceTree = "<group>"; };
-		4F14A99F1A63CAC30046D805 /* ManagerCategoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerCategoryVC.xib; path = Models/ManagerCategoryVC.xib; sourceTree = "<group>"; };
 		4F14A9A11A63E2610046D805 /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TextFieldCell.xib; path = Cells/TextFieldCell.xib; sourceTree = "<group>"; };
 		4F14A9A31A63E2770046D805 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCell.swift; path = Cells/TextFieldCell.swift; sourceTree = "<group>"; };
 		4F14A9A51A63F6690046D805 /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewCell.swift; path = Cells/TextViewCell.swift; sourceTree = "<group>"; };
 		4F14A9A71A63F6790046D805 /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TextViewCell.xib; path = Cells/TextViewCell.xib; sourceTree = "<group>"; };
 		4F2CB7F61A73C34A005987D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4F32723A1A61EEFF00DF5E3E /* OrderGroupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderGroupVC.swift; path = Controllers/OrderGroupVC.swift; sourceTree = "<group>"; };
-		4F32723C1A61EF0C00DF5E3E /* OrderGroupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderGroupVC.xib; path = Controllers/OrderGroupVC.xib; sourceTree = "<group>"; };
+		4F32723A1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderGroupViewCtrl.swift; path = Controllers/OrderGroupViewCtrl.swift; sourceTree = "<group>"; };
 		4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedStorage.swift; path = Models/SharedStorage.swift; sourceTree = "<group>"; };
-		4F3272401A61FC5200DF5E3E /* SetupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetupVC.swift; path = Controllers/SetupVC.swift; sourceTree = "<group>"; };
 		4F3272421A62C9D200DF5E3E /* OrderGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderGroup.swift; path = Models/OrderGroup.swift; sourceTree = "<group>"; };
 		4F3272441A62C9DF00DF5E3E /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = Models/Order.swift; sourceTree = "<group>"; };
 		4F3272461A62C9E800DF5E3E /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderItem.swift; path = Models/OrderItem.swift; sourceTree = "<group>"; };
 		4F5ACE391A6166AD009AC555 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
-		4F5ACE3E1A61757D009AC555 /* SetupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupVC.xib; path = Controllers/SetupVC.xib; sourceTree = "<group>"; };
 		4F5ACE401A618153009AC555 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = Models/Table.swift; sourceTree = "<group>"; };
-		4F5ACE421A618267009AC555 /* TablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TablesVC.swift; path = Controllers/TablesVC.swift; sourceTree = "<group>"; };
-		4F5ACE441A618277009AC555 /* TablesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TablesVC.xib; path = Controllers/TablesVC.xib; sourceTree = "<group>"; };
+		4F5ACE421A618267009AC555 /* TablesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TablesViewCtrl.swift; path = Controllers/TablesViewCtrl.swift; sourceTree = "<group>"; };
 		4F5ACE5F1A618B88009AC555 /* OrderChef-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OrderChef-Bridging-Header.h"; sourceTree = "<group>"; };
-		4FB313A31A77FC8800C90BF4 /* ManagerConfigVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerConfigVC.xib; path = Controllers/ManagerConfigVC.xib; sourceTree = "<group>"; };
-		4FB313A51A77FC9600C90BF4 /* ManagerConfigVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerConfigVC.swift; path = Controllers/ManagerConfigVC.swift; sourceTree = "<group>"; };
-		4FDF4E691A77DB9D00D981AC /* ManagerTablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTablesVC.swift; path = Controllers/ManagerTablesVC.swift; sourceTree = "<group>"; };
-		4FDF4E6B1A77DBB300D981AC /* ManagerTablesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerTablesVC.xib; path = Controllers/ManagerTablesVC.xib; sourceTree = "<group>"; };
-		4FDF4E6F1A77E07200D981AC /* ManagerTableVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerTableVC.xib; path = Controllers/ManagerTableVC.xib; sourceTree = "<group>"; };
-		4FDF4E711A77E07E00D981AC /* ManagerTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTableVC.swift; path = Controllers/ManagerTableVC.swift; sourceTree = "<group>"; };
+		4FB313A51A77FC9600C90BF4 /* MConfigViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MConfigViewCtrl.swift; path = Controllers/MConfigViewCtrl.swift; sourceTree = "<group>"; };
+		4FB313AD1A7A8B9000C90BF4 /* OrderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderType.swift; path = Models/OrderType.swift; sourceTree = "<group>"; };
+		4FB313AF1A7A8BB200C90BF4 /* MCategoryViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MCategoryViewCtrl.swift; path = Controllers/MCategoryViewCtrl.swift; sourceTree = "<group>"; };
+		4FB313B41A7A8F1800C90BF4 /* MOrderTypesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MOrderTypesViewCtrl.swift; path = Controllers/MOrderTypesViewCtrl.swift; sourceTree = "<group>"; };
+		4FB313B61A7A8F2200C90BF4 /* MOrderTypeViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MOrderTypeViewCtrl.swift; path = Controllers/MOrderTypeViewCtrl.swift; sourceTree = "<group>"; };
+		4FB313C21A7AC1CD00C90BF4 /* PlainTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlainTableView.xib; path = Controllers/PlainTableView.xib; sourceTree = "<group>"; };
+		4FDF4E691A77DB9D00D981AC /* MTablesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MTablesViewCtrl.swift; path = Controllers/MTablesViewCtrl.swift; sourceTree = "<group>"; };
+		4FDF4E711A77E07E00D981AC /* MTableViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MTableViewCtrl.swift; path = Controllers/MTableViewCtrl.swift; sourceTree = "<group>"; };
 		4FDF4E731A77E2CD00D981AC /* TableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableType.swift; path = Models/TableType.swift; sourceTree = "<group>"; };
-		4FDF4E751A77E85100D981AC /* ManagerTableTypesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTableTypesVC.swift; path = Controllers/ManagerTableTypesVC.swift; sourceTree = "<group>"; };
-		4FDF4E771A77E85C00D981AC /* ManagerTableTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTableTypeVC.swift; path = Controllers/ManagerTableTypeVC.swift; sourceTree = "<group>"; };
-		4FDF4E791A77E86E00D981AC /* ManagerTableTypesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerTableTypesVC.xib; path = Controllers/ManagerTableTypesVC.xib; sourceTree = "<group>"; };
-		4FDF4E7B1A77E87F00D981AC /* ManagerTableTypeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagerTableTypeVC.xib; path = Controllers/ManagerTableTypeVC.xib; sourceTree = "<group>"; };
+		4FDF4E751A77E85100D981AC /* MTableTypesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MTableTypesViewCtrl.swift; path = Controllers/MTableTypesViewCtrl.swift; sourceTree = "<group>"; };
+		4FDF4E771A77E85C00D981AC /* MTableTypeViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MTableTypeViewCtrl.swift; path = Controllers/MTableTypeViewCtrl.swift; sourceTree = "<group>"; };
 		4FE651591A616447006AE6EC /* OrderChef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrderChef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE6515D1A616447006AE6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FE6515E1A616447006AE6EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,11 +137,10 @@
 		4F14A97D1A63B33C0046D805 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				4F14A9751A63AEA20046D805 /* ManagerVC.swift */,
-				4F14A9771A63AF750046D805 /* ManagerVC.xib */,
-				4FB313A51A77FC9600C90BF4 /* ManagerConfigVC.swift */,
-				4FB313A31A77FC8800C90BF4 /* ManagerConfigVC.xib */,
+				4F14A9751A63AEA20046D805 /* ManagerViewCtrl.swift */,
+				4FB313A51A77FC9600C90BF4 /* MConfigViewCtrl.swift */,
 				4FDF4E6E1A77E06000D981AC /* Tables */,
+				4FB313B31A7A8EFD00C90BF4 /* Orders */,
 				4FDF4E6D1A77E05600D981AC /* Categories */,
 			);
 			name = Manager;
@@ -201,13 +186,11 @@
 		4F5ACE3B1A617527009AC555 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F3272401A61FC5200DF5E3E /* SetupVC.swift */,
-				4F5ACE3E1A61757D009AC555 /* SetupVC.xib */,
-				4F5ACE421A618267009AC555 /* TablesVC.swift */,
-				4F5ACE441A618277009AC555 /* TablesVC.xib */,
-				4F32723A1A61EEFF00DF5E3E /* OrderGroupVC.swift */,
-				4F32723C1A61EF0C00DF5E3E /* OrderGroupVC.xib */,
+				4F5ACE421A618267009AC555 /* TablesViewCtrl.swift */,
+				4F32723A1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift */,
 				4F14A97D1A63B33C0046D805 /* Manager */,
+				4F14A9771A63AF750046D805 /* GroupedTableView.xib */,
+				4FB313C21A7AC1CD00C90BF4 /* PlainTableView.xib */,
 			);
 			name = Controllers;
 			path = OrderChef;
@@ -236,13 +219,20 @@
 			path = OrderChef;
 			sourceTree = "<group>";
 		};
+		4FB313B31A7A8EFD00C90BF4 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				4FB313B41A7A8F1800C90BF4 /* MOrderTypesViewCtrl.swift */,
+				4FB313B61A7A8F2200C90BF4 /* MOrderTypeViewCtrl.swift */,
+			);
+			name = Orders;
+			sourceTree = "<group>";
+		};
 		4FDF4E6D1A77E05600D981AC /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				4F14A97B1A63B3370046D805 /* ManagerCategoriesVC.swift */,
-				4F14A9791A63B3260046D805 /* ManagerCategoriesVC.xib */,
-				4F14A99D1A63CAB20046D805 /* ManagerCategoryVC.swift */,
-				4F14A99F1A63CAC30046D805 /* ManagerCategoryVC.xib */,
+				4F14A97B1A63B3370046D805 /* MCategoriesViewCtrl.swift */,
+				4FB313AF1A7A8BB200C90BF4 /* MCategoryViewCtrl.swift */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -250,14 +240,10 @@
 		4FDF4E6E1A77E06000D981AC /* Tables */ = {
 			isa = PBXGroup;
 			children = (
-				4FDF4E751A77E85100D981AC /* ManagerTableTypesVC.swift */,
-				4FDF4E791A77E86E00D981AC /* ManagerTableTypesVC.xib */,
-				4FDF4E771A77E85C00D981AC /* ManagerTableTypeVC.swift */,
-				4FDF4E7B1A77E87F00D981AC /* ManagerTableTypeVC.xib */,
-				4FDF4E691A77DB9D00D981AC /* ManagerTablesVC.swift */,
-				4FDF4E6B1A77DBB300D981AC /* ManagerTablesVC.xib */,
-				4FDF4E711A77E07E00D981AC /* ManagerTableVC.swift */,
-				4FDF4E6F1A77E07200D981AC /* ManagerTableVC.xib */,
+				4FDF4E751A77E85100D981AC /* MTableTypesViewCtrl.swift */,
+				4FDF4E771A77E85C00D981AC /* MTableTypeViewCtrl.swift */,
+				4FDF4E691A77DB9D00D981AC /* MTablesViewCtrl.swift */,
+				4FDF4E711A77E07E00D981AC /* MTableViewCtrl.swift */,
 			);
 			name = Tables;
 			sourceTree = "<group>";
@@ -331,6 +317,7 @@
 				4FDF4E731A77E2CD00D981AC /* TableType.swift */,
 				4F3272421A62C9D200DF5E3E /* OrderGroup.swift */,
 				4F3272441A62C9DF00DF5E3E /* Order.swift */,
+				4FB313AD1A7A8B9000C90BF4 /* OrderType.swift */,
 				4F3272461A62C9E800DF5E3E /* OrderItem.swift */,
 				4F14A9801A63C2230046D805 /* Item.swift */,
 				4F14A97E1A63C1ED0046D805 /* Category.swift */,
@@ -419,23 +406,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F14A9A01A63CAC30046D805 /* ManagerCategoryVC.xib in Resources */,
 				4FE651691A616447006AE6EC /* LaunchScreen.xib in Resources */,
-				4FB313A41A77FC8800C90BF4 /* ManagerConfigVC.xib in Resources */,
-				4FDF4E7A1A77E86E00D981AC /* ManagerTableTypesVC.xib in Resources */,
 				4F14A99B1A63C2520046D805 /* SVProgressHUD.bundle in Resources */,
-				4F14A97A1A63B3260046D805 /* ManagerCategoriesVC.xib in Resources */,
-				4FDF4E7C1A77E87F00D981AC /* ManagerTableTypeVC.xib in Resources */,
-				4F14A9781A63AF750046D805 /* ManagerVC.xib in Resources */,
+				4FB313C31A7AC1CD00C90BF4 /* PlainTableView.xib in Resources */,
+				4F14A9781A63AF750046D805 /* GroupedTableView.xib in Resources */,
 				4F14A9A81A63F6790046D805 /* TextViewCell.xib in Resources */,
 				4F14A9981A63C2520046D805 /* FontAwesome.ttf in Resources */,
-				4FDF4E6C1A77DBB300D981AC /* ManagerTablesVC.xib in Resources */,
-				4F32723D1A61EF0C00DF5E3E /* OrderGroupVC.xib in Resources */,
 				4F14A9A21A63E2610046D805 /* TextFieldCell.xib in Resources */,
 				4FE651661A616447006AE6EC /* Images.xcassets in Resources */,
-				4FDF4E701A77E07200D981AC /* ManagerTableVC.xib in Resources */,
-				4F5ACE451A618277009AC555 /* TablesVC.xib in Resources */,
-				4F5ACE3F1A61757D009AC555 /* SetupVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,34 +431,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FB313AE1A7A8B9000C90BF4 /* OrderType.swift in Sources */,
 				4F14A9811A63C2230046D805 /* Item.swift in Sources */,
 				4F5ACE411A618153009AC555 /* Table.swift in Sources */,
 				4F14A99A1A63C2520046D805 /* SVIndefiniteAnimatedView.m in Sources */,
-				4F14A97C1A63B3370046D805 /* ManagerCategoriesVC.swift in Sources */,
-				4F14A99E1A63CAB20046D805 /* ManagerCategoryVC.swift in Sources */,
-				4F32723B1A61EEFF00DF5E3E /* OrderGroupVC.swift in Sources */,
-				4FDF4E721A77E07E00D981AC /* ManagerTableVC.swift in Sources */,
+				4F14A97C1A63B3370046D805 /* MCategoriesViewCtrl.swift in Sources */,
+				4FB313B71A7A8F2200C90BF4 /* MOrderTypeViewCtrl.swift in Sources */,
+				4F32723B1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift in Sources */,
+				4FDF4E721A77E07E00D981AC /* MTableViewCtrl.swift in Sources */,
 				4FE6515F1A616447006AE6EC /* AppDelegate.swift in Sources */,
 				4F3272431A62C9D200DF5E3E /* OrderGroup.swift in Sources */,
-				4F14A9761A63AEA20046D805 /* ManagerVC.swift in Sources */,
+				4F14A9761A63AEA20046D805 /* ManagerViewCtrl.swift in Sources */,
 				4F3272471A62C9E800DF5E3E /* OrderItem.swift in Sources */,
-				4FB313A61A77FC9600C90BF4 /* ManagerConfigVC.swift in Sources */,
-				4F3272411A61FC5200DF5E3E /* SetupVC.swift in Sources */,
+				4FB313A61A77FC9600C90BF4 /* MConfigViewCtrl.swift in Sources */,
+				4FB313B51A7A8F1800C90BF4 /* MOrderTypesViewCtrl.swift in Sources */,
 				4F32723F1A61FC4500DF5E3E /* SharedStorage.swift in Sources */,
-				4FDF4E781A77E85C00D981AC /* ManagerTableTypeVC.swift in Sources */,
+				4FDF4E781A77E85C00D981AC /* MTableTypeViewCtrl.swift in Sources */,
 				4F14A97F1A63C1ED0046D805 /* Category.swift in Sources */,
 				4FDF4E741A77E2CD00D981AC /* TableType.swift in Sources */,
 				4F14A9A41A63E2770046D805 /* TextFieldCell.swift in Sources */,
 				4F3272451A62C9DF00DF5E3E /* Order.swift in Sources */,
-				4FDF4E6A1A77DB9D00D981AC /* ManagerTablesVC.swift in Sources */,
+				4FDF4E6A1A77DB9D00D981AC /* MTablesViewCtrl.swift in Sources */,
 				4F14A9A61A63F6690046D805 /* TextViewCell.swift in Sources */,
 				4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */,
 				4F14A9961A63C2520046D805 /* FAImageView.m in Sources */,
 				4F14A9971A63C2520046D805 /* NSString+FontAwesome.m in Sources */,
 				4FE6517F1A616484006AE6EC /* Network.swift in Sources */,
 				4F14A99C1A63C2520046D805 /* SVProgressHUD.m in Sources */,
-				4FDF4E761A77E85100D981AC /* ManagerTableTypesVC.swift in Sources */,
-				4F5ACE431A618267009AC555 /* TablesVC.swift in Sources */,
+				4FDF4E761A77E85100D981AC /* MTableTypesViewCtrl.swift in Sources */,
+				4F5ACE431A618267009AC555 /* TablesViewCtrl.swift in Sources */,
+				4FB313B11A7A8BB200C90BF4 /* MCategoryViewCtrl.swift in Sources */,
 				4F14A9991A63C2520046D805 /* UIFont+FontAwesome.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

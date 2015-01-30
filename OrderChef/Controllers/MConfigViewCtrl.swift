@@ -1,15 +1,14 @@
 
 import UIKit
 
-class ManagerConfigVC: UITableViewController, TextFieldCellDelegate {
+class MConfigViewCtrl: UITableViewController, TextFieldCellDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		self.navigationItem.title = "Configuration"
 		
-		self.tableView.registerNib(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "textField")
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+		AppDelegate.registerCommonCellsForTable(self.tableView)
 		
 		if self.navigationController == nil {
 			self.tableView.backgroundColor = mainColour
@@ -59,9 +58,9 @@ class ManagerConfigVC: UITableViewController, TextFieldCellDelegate {
 			
 			return cell!
 		} else {
-			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? UITableViewCell
+			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 			if cell == nil {
-				cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
+				cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
 			}
 			
 			cell!.textLabel!.text = "Set Up"

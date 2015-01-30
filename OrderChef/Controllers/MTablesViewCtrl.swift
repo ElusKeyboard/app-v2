@@ -1,24 +1,22 @@
 
 import UIKit
 
-class ManagerTablesVC: UITableViewController {
+class MTablesViewCtrl: UITableViewController, RefreshDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		self.navigationItem.title = "Tables"
 		
-		self.refreshControl = UIRefreshControl()
-		self.refreshControl!.addTarget(self, action: "refreshData", forControlEvents: .ValueChanged)
-		
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "basic")
+		AppDelegate.setupRefreshControl(self)
+		AppDelegate.registerCommonCellsForTable(self.tableView)
 		
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FAPlus) + " ", style: UIBarButtonItemStyle.Plain, target: self, action: "add")
 		self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
 		
-		self.refreshData()
+		self.reloadData(nil)
 	}
 	
-	func refreshData() {
+	func reloadData(sender: AnyObject?) {
 		storage.updateTables({ (err: NSError?) -> Void in
 			self.refreshControl!.endRefreshing()
 			if err != nil {
@@ -30,7 +28,7 @@ class ManagerTablesVC: UITableViewController {
 	}
 	
 	func add() {
-		var vc = ManagerTableVC(nibName: "ManagerTableVC", bundle: nil)
+		var vc = MTableViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
@@ -43,7 +41,7 @@ class ManagerTablesVC: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		var vc = ManagerTableVC(nibName: "ManagerTableVC", bundle: nil)
+		var vc = MTableViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		
 		vc.table = storage.tables[indexPath.row]
 		

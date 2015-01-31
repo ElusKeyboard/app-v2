@@ -7,6 +7,8 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 	var orderGroup: OrderGroup!
 	var orders: [Order] = []
 	
+	var newOrder: Order?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -36,10 +38,38 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 					return
 				}
 				
+				self.orders = orders
+				
+				SVProgressHUD.dismiss()
 				self.tableView.reloadData()
 				self.refreshControl!.endRefreshing()
 			})
 		})
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		if self.newOrder != nil {
+			// add order to group
+			if self.newOrder!.type_id == 0 {
+				// cancelled or not picked
+				self.newOrder = nil
+				return
+			}
+			
+			self.orderGroup.addOrder(self.newOrder!, callback: { (err: NSError?) -> Void in
+				if err != nil {
+					SVProgressHUD.showErrorWithStatus(err!.description)
+					return
+				}
+				
+				SVProgressHUD.showSuccessWithStatus("Adding Order..")
+				self.reloadData(nil)
+			})
+			
+			self.newOrder = nil
+		}
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -84,7 +114,15 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if indexPath.section == 0 {
 			// Create order.
+			var vc = MOrderTypesViewCtrl(nibName: plainTableNibName, bundle: nil)
 			
+			self.newOrder = Order()
+			self.newOrder!.group = self.orderGroup
+			self.newOrder!.group_id = self.orderGroup.id!
+			vc.pickForOrder = self.newOrder
+			
+			var nvc = UINavigationController(rootViewController: vc)
+			self.presentViewController(nvc, animated: true, completion: nil)
 		}
 	}
 	
@@ -99,5 +137,18 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 		}
 		
 		return order.type.name
+	}
+	
+	override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		if section == 0 {
+			return nil
+		}
+		
+		let order = self.orders[section - 1]
+		if order.type == nil {
+			return nil
+		}
+		
+		return order.type.description
 	}
 }

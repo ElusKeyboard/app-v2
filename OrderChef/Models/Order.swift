@@ -32,4 +32,14 @@ class Order {
 		
 		// self.order_items
 	}
+	
+	func json() -> [NSString: AnyObject] {
+		var json: [NSString: AnyObject] = [:]
+		
+		if self.id != nil { json["id"] = self.id }
+		json["type_id"] = self.type_id
+		json["group_id"] = self.group_id
+		
+		return json
+	}
 }

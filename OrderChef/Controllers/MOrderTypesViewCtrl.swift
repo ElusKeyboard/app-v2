@@ -3,16 +3,22 @@ import UIKit
 
 class MOrderTypesViewCtrl: UITableViewController, RefreshDelegate {
 	
+	var pickForOrder: Order?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		self.navigationItem.title = "Order Types"
 		
 		AppDelegate.setupRefreshControl(self)
 		AppDelegate.registerCommonCellsForTable(self.tableView)
 		
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FAPlus) + " ", style: UIBarButtonItemStyle.Plain, target: self, action: "add")
-		self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
+		self.navigationItem.title = "Order Types"
+		if self.pickForOrder != nil {
+			self.navigationItem.title = "Select Order Type"
+			self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "dismiss")
+		} else {
+			self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FAPlus) + " ", style: UIBarButtonItemStyle.Plain, target: self, action: "add")
+			self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
+		}
 		
 		self.reloadData(nil)
 	}
@@ -33,6 +39,10 @@ class MOrderTypesViewCtrl: UITableViewController, RefreshDelegate {
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
+	func dismiss() {
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
+	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
 	}
@@ -42,8 +52,16 @@ class MOrderTypesViewCtrl: UITableViewController, RefreshDelegate {
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		var order_type = storage.order_types[indexPath.row]
+		if self.pickForOrder != nil {
+			self.pickForOrder!.type = order_type
+			self.pickForOrder!.type_id = order_type.id!
+			
+			return self.dismissViewControllerAnimated(true, completion: nil)
+		}
+		
 		var vc = MOrderTypeViewCtrl(nibName: groupedTableNibName, bundle: nil)
-		vc.order_type = storage.order_types[indexPath.row]
+		vc.order_type = order_type
 		
 		self.navigationController!.pushViewController(vc, animated: true)
 	}

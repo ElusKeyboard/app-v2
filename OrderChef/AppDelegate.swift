@@ -1,5 +1,7 @@
 
 import UIKit
+import Fabric
+import Crashlytics
 
 let iOS8 = floor(NSFoundationVersionNumber) > floor(NSFoundationVersionNumber_iOS_7_1)
 let versionNumber = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as NSString
@@ -13,6 +15,7 @@ let plainTableNibName = "PlainTableView"
 	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		window = UIWindow(frame: UIScreen.mainScreen().bounds)
+		Fabric.with([Crashlytics()])
 		
 		styleApplication()
 		

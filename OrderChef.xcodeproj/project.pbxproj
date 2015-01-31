@@ -32,6 +32,8 @@
 		4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE391A6166AD009AC555 /* User.swift */; };
 		4F5ACE411A618153009AC555 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE401A618153009AC555 /* Table.swift */; };
 		4F5ACE431A618267009AC555 /* TablesViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE421A618267009AC555 /* TablesViewCtrl.swift */; };
+		4F88CCAF1A7CFCFB001747FF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88CCAD1A7CFCFB001747FF /* Crashlytics.framework */; };
+		4F88CCB01A7CFCFB001747FF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88CCAE1A7CFCFB001747FF /* Fabric.framework */; };
 		4FB313A61A77FC9600C90BF4 /* MConfigViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313A51A77FC9600C90BF4 /* MConfigViewCtrl.swift */; };
 		4FB313AE1A7A8B9000C90BF4 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313AD1A7A8B9000C90BF4 /* OrderType.swift */; };
 		4FB313B11A7A8BB200C90BF4 /* MCategoryViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313AF1A7A8BB200C90BF4 /* MCategoryViewCtrl.swift */; };
@@ -93,6 +95,8 @@
 		4F5ACE401A618153009AC555 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = Models/Table.swift; sourceTree = "<group>"; };
 		4F5ACE421A618267009AC555 /* TablesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TablesViewCtrl.swift; path = Controllers/TablesViewCtrl.swift; sourceTree = "<group>"; };
 		4F5ACE5F1A618B88009AC555 /* OrderChef-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OrderChef-Bridging-Header.h"; sourceTree = "<group>"; };
+		4F88CCAD1A7CFCFB001747FF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		4F88CCAE1A7CFCFB001747FF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		4FB313A51A77FC9600C90BF4 /* MConfigViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MConfigViewCtrl.swift; path = Controllers/MConfigViewCtrl.swift; sourceTree = "<group>"; };
 		4FB313AD1A7A8B9000C90BF4 /* OrderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderType.swift; path = Models/OrderType.swift; sourceTree = "<group>"; };
 		4FB313AF1A7A8BB200C90BF4 /* MCategoryViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MCategoryViewCtrl.swift; path = Controllers/MCategoryViewCtrl.swift; sourceTree = "<group>"; };
@@ -120,7 +124,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F88CCAF1A7CFCFB001747FF /* Crashlytics.framework in Frameworks */,
 				4F2CB7F71A73C34A005987D2 /* QuartzCore.framework in Frameworks */,
+				4F88CCB01A7CFCFB001747FF /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +217,8 @@
 		4F5ACE491A618980009AC555 /* Deps */ = {
 			isa = PBXGroup;
 			children = (
+				4F88CCAD1A7CFCFB001747FF /* Crashlytics.framework */,
+				4F88CCAE1A7CFCFB001747FF /* Fabric.framework */,
 				4F2CB7F61A73C34A005987D2 /* QuartzCore.framework */,
 				4F14A9821A63C2520046D805 /* ios-fontawesome */,
 				4F14A98F1A63C2520046D805 /* SVProgressHUD */,
@@ -336,6 +344,7 @@
 				4FE651551A616447006AE6EC /* Sources */,
 				4FE651561A616447006AE6EC /* Frameworks */,
 				4FE651571A616447006AE6EC /* Resources */,
+				4F88CCAC1A7CFCE4001747FF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -425,6 +434,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4F88CCAC1A7CFCE4001747FF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 74bc063f85cffe425688877adacd4e6ca2f2a115 0641043976e2496dca4bd8e257e0ee1ba29a3730c8d292d3ce55ef909b271b59";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4FE651551A616447006AE6EC /* Sources */ = {
@@ -578,6 +603,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = OrderChef/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -590,6 +619,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = OrderChef/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";

@@ -48,7 +48,7 @@ class OrderGroup {
 	}
 	
 	func getOrders(callback: (err: NSError?, orders: [Order]) -> Void) {
-		doRequest(makeRequest("/order-groups/" + String(self.id!) + "/orders", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
+		doRequest(makeRequest("/order-group/" + String(self.id!) + "/orders", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
 			if err != nil {
 				return callback(err: err, orders: [])
 			}
@@ -65,5 +65,11 @@ class OrderGroup {
 			
 			callback(err: nil, orders: orders)
 		}, nil)
+	}
+	
+	func addOrder(order: Order, callback: (err: NSError?) -> Void) {
+		doPostRequest(makeRequest("/order-group/" + String(self.id!) + "/orders", "POST"), { (err: NSError?, data: AnyObject?) -> Void in
+			callback(err: err)
+		}, order.json())
 	}
 }

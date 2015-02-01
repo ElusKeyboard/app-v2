@@ -34,6 +34,9 @@
 		4F5ACE431A618267009AC555 /* TablesViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE421A618267009AC555 /* TablesViewCtrl.swift */; };
 		4F88CCAF1A7CFCFB001747FF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88CCAD1A7CFCFB001747FF /* Crashlytics.framework */; };
 		4F88CCB01A7CFCFB001747FF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88CCAE1A7CFCFB001747FF /* Fabric.framework */; };
+		4FA145A31A7D6EC000154D27 /* AddItemToOrderViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA145A21A7D6EC000154D27 /* AddItemToOrderViewCtrl.swift */; };
+		4FA145A61A7D6FB600154D27 /* MItemsViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA145A51A7D6FB600154D27 /* MItemsViewCtrl.swift */; };
+		4FA145A81A7D6FCA00154D27 /* MItemViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA145A71A7D6FCA00154D27 /* MItemViewCtrl.swift */; };
 		4FB313A61A77FC9600C90BF4 /* MConfigViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313A51A77FC9600C90BF4 /* MConfigViewCtrl.swift */; };
 		4FB313AE1A7A8B9000C90BF4 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313AD1A7A8B9000C90BF4 /* OrderType.swift */; };
 		4FB313B11A7A8BB200C90BF4 /* MCategoryViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB313AF1A7A8BB200C90BF4 /* MCategoryViewCtrl.swift */; };
@@ -97,6 +100,9 @@
 		4F5ACE5F1A618B88009AC555 /* OrderChef-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OrderChef-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F88CCAD1A7CFCFB001747FF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		4F88CCAE1A7CFCFB001747FF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		4FA145A21A7D6EC000154D27 /* AddItemToOrderViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddItemToOrderViewCtrl.swift; path = Controllers/AddItemToOrderViewCtrl.swift; sourceTree = "<group>"; };
+		4FA145A51A7D6FB600154D27 /* MItemsViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MItemsViewCtrl.swift; path = Controllers/MItemsViewCtrl.swift; sourceTree = "<group>"; };
+		4FA145A71A7D6FCA00154D27 /* MItemViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MItemViewCtrl.swift; path = Controllers/MItemViewCtrl.swift; sourceTree = "<group>"; };
 		4FB313A51A77FC9600C90BF4 /* MConfigViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MConfigViewCtrl.swift; path = Controllers/MConfigViewCtrl.swift; sourceTree = "<group>"; };
 		4FB313AD1A7A8B9000C90BF4 /* OrderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderType.swift; path = Models/OrderType.swift; sourceTree = "<group>"; };
 		4FB313AF1A7A8BB200C90BF4 /* MCategoryViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MCategoryViewCtrl.swift; path = Controllers/MCategoryViewCtrl.swift; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 				4FDF4E6E1A77E06000D981AC /* Tables */,
 				4FB313B31A7A8EFD00C90BF4 /* Orders */,
 				4FDF4E6D1A77E05600D981AC /* Categories */,
+				4FA145A41A7D6F9A00154D27 /* Items */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -194,6 +201,7 @@
 			children = (
 				4F5ACE421A618267009AC555 /* TablesViewCtrl.swift */,
 				4F32723A1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift */,
+				4FA145A21A7D6EC000154D27 /* AddItemToOrderViewCtrl.swift */,
 				4F14A97D1A63B33C0046D805 /* Manager */,
 				4F14A9771A63AF750046D805 /* GroupedTableView.xib */,
 				4FB313C21A7AC1CD00C90BF4 /* PlainTableView.xib */,
@@ -225,6 +233,15 @@
 			);
 			name = Deps;
 			path = OrderChef;
+			sourceTree = "<group>";
+		};
+		4FA145A41A7D6F9A00154D27 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				4FA145A51A7D6FB600154D27 /* MItemsViewCtrl.swift */,
+				4FA145A71A7D6FCA00154D27 /* MItemViewCtrl.swift */,
+			);
+			name = Items;
 			sourceTree = "<group>";
 		};
 		4FB313B31A7A8EFD00C90BF4 /* Orders */ = {
@@ -462,6 +479,8 @@
 				4F14A99A1A63C2520046D805 /* SVIndefiniteAnimatedView.m in Sources */,
 				4F14A97C1A63B3370046D805 /* MCategoriesViewCtrl.swift in Sources */,
 				4FB313B71A7A8F2200C90BF4 /* MOrderTypeViewCtrl.swift in Sources */,
+				4FA145A81A7D6FCA00154D27 /* MItemViewCtrl.swift in Sources */,
+				4FA145A31A7D6EC000154D27 /* AddItemToOrderViewCtrl.swift in Sources */,
 				4F32723B1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift in Sources */,
 				4FDF4E721A77E07E00D981AC /* MTableViewCtrl.swift in Sources */,
 				4FE6515F1A616447006AE6EC /* AppDelegate.swift in Sources */,
@@ -484,6 +503,7 @@
 				4FE6517F1A616484006AE6EC /* Network.swift in Sources */,
 				4F14A99C1A63C2520046D805 /* SVProgressHUD.m in Sources */,
 				4FDF4E761A77E85100D981AC /* MTableTypesViewCtrl.swift in Sources */,
+				4FA145A61A7D6FB600154D27 /* MItemsViewCtrl.swift in Sources */,
 				4F5ACE431A618267009AC555 /* TablesViewCtrl.swift in Sources */,
 				4FB313B11A7A8BB200C90BF4 /* MCategoryViewCtrl.swift in Sources */,
 				4F14A9991A63C2520046D805 /* UIFont+FontAwesome.m in Sources */,

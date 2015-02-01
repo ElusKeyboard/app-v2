@@ -79,7 +79,7 @@ class ManagerViewCtrl: UITableViewController {
 			vc = MOrderTypesViewCtrl(nibName: plainTableNibName, bundle: nil)
 		case 3:
 			if indexPath.row == 0 {
-				
+				vc = MItemsViewCtrl(nibName: plainTableNibName, bundle: nil)
 			} else {
 				vc = MCategoriesViewCtrl(nibName: plainTableNibName, bundle: nil)
 			}

@@ -52,7 +52,7 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 		
 		if self.newOrder != nil {
 			// add order to group
-			if self.newOrder!.type_id == 0 {
+			if self.newOrder!.type_id == nil || self.newOrder!.type_id == 0 {
 				// cancelled or not picked
 				self.newOrder = nil
 				return
@@ -123,6 +123,13 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 			
 			var nvc = UINavigationController(rootViewController: vc)
 			self.presentViewController(nvc, animated: true, completion: nil)
+		}
+		
+		let order = self.orders[indexPath.section - 1]
+		if indexPath.row == 0 {
+			// Add Item to order
+			let vc = AddItemToOrderViewCtrl(nibName: groupedTableNibName, bundle: nil)
+			self.navigationController!.pushViewController(vc, animated: true)
 		}
 	}
 	

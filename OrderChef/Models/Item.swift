@@ -41,6 +41,32 @@ class Item {
 		return json
 	}
 	
+	func save(callback: (err: NSError?) -> Void) {
+		var url = "/items"
+		if self.id != nil {
+			url = "/item/" + String(self.id!)
+		}
+		
+		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (err: NSError?, data: AnyObject?) -> Void in
+			if err != nil {
+				return callback(err: err)
+			}
+			
+			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
+			if json != nil {
+				self.parse(json!)
+			}
+			
+			callback(err: nil)
+		}, self.json())
+	}
+	
+	func remove(callback: (err: NSError?) -> Void) {
+		doRequest(makeRequest("/item/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
+			callback(err: err)
+		}, nil)
+	}
+	
 	class func getItems(callback: (err: NSError?, items: [Item]) -> Void) {
 		doRequest(makeRequest("/items", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
 			if err != nil {

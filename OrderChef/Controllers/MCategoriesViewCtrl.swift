@@ -2,6 +2,9 @@
 import UIKit
 
 class MCategoriesViewCtrl: UITableViewController, RefreshDelegate {
+	
+	var pickingForItem: Item?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -41,9 +44,19 @@ class MCategoriesViewCtrl: UITableViewController, RefreshDelegate {
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		var vc = MCategoryViewCtrl(nibName: groupedTableNibName, bundle: nil)
+		let category = storage.categories[indexPath.row]
 		
-		vc.category = storage.categories[indexPath.row]
+		if self.pickingForItem != nil {
+			self.pickingForItem!.category = category
+			self.pickingForItem!.category_id = category.id!
+			
+			tableView.reloadData()
+			self.navigationController!.popViewControllerAnimated(true)
+			return
+		}
+		
+		var vc = MCategoryViewCtrl(nibName: groupedTableNibName, bundle: nil)
+		vc.category = category
 		
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
@@ -56,8 +69,17 @@ class MCategoriesViewCtrl: UITableViewController, RefreshDelegate {
 		}
 		
 		cell!.accessoryType = .DisclosureIndicator
+		if self.pickingForItem != nil {
+			cell!.accessoryType = .None
+			
+			if category.id != nil && self.pickingForItem!.category_id == category.id! {
+				cell!.accessoryType = .Checkmark
+			}
+		}
+		
 		cell!.textLabel!.text = category.name
 		
 		return cell!
 	}
+	
 }

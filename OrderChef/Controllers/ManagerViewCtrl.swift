@@ -24,8 +24,10 @@ class ManagerViewCtrl: UITableViewController {
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
-		case 1, 3:
+		case 1:
 			return 2
+		case 3:
+			return 3
 		default:
 			return 1
 		}
@@ -51,10 +53,15 @@ class ManagerViewCtrl: UITableViewController {
 		case 2:
 			cell!.textLabel!.text = "Order Types"
 		case 3:
-			if indexPath.row == 0 {
+			switch indexPath.row {
+			case 0:
 				cell!.textLabel!.text = "Items"
-			} else {
+			case 1:
 				cell!.textLabel!.text = "Categories"
+			case 2:
+				cell!.textLabel!.text = "Modifiers"
+			default:
+				break
 			}
 		default:
 			break
@@ -91,7 +98,7 @@ class ManagerViewCtrl: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-		if section == 3 {
+		if section == self.numberOfSectionsInTableView(tableView) - 1 {
 			var name = "<Unnamed Venue>"
 			if storage.venue_name != nil {
 				name = storage.venue_name!

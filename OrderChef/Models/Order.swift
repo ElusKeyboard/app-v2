@@ -31,6 +31,11 @@ class Order {
 		}
 		
 		// self.order_items
+		self.getItems({ (err: NSError?) -> Void in
+			if err != nil {
+				SVProgressHUD.showErrorWithStatus("Err getting items: " + err!.description)
+			}
+		})
 	}
 	
 	func json() -> [NSString: AnyObject] {
@@ -41,5 +46,29 @@ class Order {
 		json["group_id"] = self.group_id
 		
 		return json
+	}
+	
+	func addItem(item: Item, callback: (err: NSError?) -> Void) {
+		doPostRequest(makeRequest("/order/" + String(self.id!) + "/items", "POST"), { (err: NSError?, data: AnyObject?) -> Void in
+			callback(err: err)
+		}, ["order_id": self.id!, "item_id": item.id!])
+	}
+	
+	func getItems(callback: (err: NSError?) -> Void) {
+		doRequest(makeRequest("/order/" + String(self.id!) + "/items", nil), { (err: NSError?, data: AnyObject?) -> Void in
+			if err != nil {
+				return callback(err: err)
+			}
+			
+			var json: [[NSString: AnyObject]]? = data as? [[NSString: AnyObject]]
+			self.order_items = []
+			if json != nil {
+				for j in json! {
+					self.order_items.append(OrderItem(res: j))
+				}
+			}
+			
+			callback(err: nil)
+		}, nil)
 	}
 }

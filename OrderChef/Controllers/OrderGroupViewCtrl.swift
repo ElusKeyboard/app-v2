@@ -40,6 +40,12 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 				
 				self.orders = orders
 				
+				for (i, order) in enumerate(self.orders) {
+					order.getItems({ (err: NSError?) -> Void in
+						self.tableView.reloadSections(NSIndexSet(index: i+1), withRowAnimation: .Automatic)
+					})
+				}
+				
 				SVProgressHUD.dismiss()
 				self.tableView.reloadData()
 				self.refreshControl!.endRefreshing()
@@ -104,9 +110,9 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 		}
 		
 		let order = self.orders[indexPath.section - 1]
-		let orderItem = order.order_items[indexPath.row - 1].item
+		let orderItem = order.order_items[indexPath.row - 1]
 		
-		cell!.textLabel!.text = orderItem.name
+		cell!.textLabel!.text = orderItem.item.name + " (" + String(orderItem.quantity) + "x)"
 		
 		return cell!
 	}
@@ -123,14 +129,24 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 			
 			var nvc = UINavigationController(rootViewController: vc)
 			self.presentViewController(nvc, animated: true, completion: nil)
+			
+			return
 		}
 		
 		let order = self.orders[indexPath.section - 1]
 		if indexPath.row == 0 {
 			// Add Item to order
 			let vc = AddItemToOrderViewCtrl(nibName: groupedTableNibName, bundle: nil)
+			vc.order = order
 			self.navigationController!.pushViewController(vc, animated: true)
+			
+			return
 		}
+		
+		let vc = EditOrderItemViewCtrl(nibName: groupedTableNibName, bundle: nil)
+		vc.order = order
+		vc.item = order.order_items[indexPath.row - 1]
+		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
 	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

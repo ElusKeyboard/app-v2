@@ -19,8 +19,6 @@ class MOrderTypesViewCtrl: UITableViewController, RefreshDelegate {
 			self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FAPlus) + " ", style: UIBarButtonItemStyle.Plain, target: self, action: "add")
 			self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
 		}
-		
-		self.reloadData(nil)
 	}
 	
 	func reloadData(sender: AnyObject?) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C010EFE1A90F31900A2B879 /* EditOrderItemViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C010EFD1A90F31900A2B879 /* EditOrderItemViewCtrl.swift */; };
 		4F14A9761A63AEA20046D805 /* ManagerViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9751A63AEA20046D805 /* ManagerViewCtrl.swift */; };
 		4F14A9781A63AF750046D805 /* GroupedTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9771A63AF750046D805 /* GroupedTableView.xib */; };
 		4F14A97C1A63B3370046D805 /* MCategoriesViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A97B1A63B3370046D805 /* MCategoriesViewCtrl.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C010EFD1A90F31900A2B879 /* EditOrderItemViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditOrderItemViewCtrl.swift; path = Controllers/EditOrderItemViewCtrl.swift; sourceTree = "<group>"; };
 		4F14A9751A63AEA20046D805 /* ManagerViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerViewCtrl.swift; path = Controllers/ManagerViewCtrl.swift; sourceTree = "<group>"; };
 		4F14A9771A63AF750046D805 /* GroupedTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupedTableView.xib; path = Controllers/GroupedTableView.xib; sourceTree = "<group>"; };
 		4F14A97B1A63B3370046D805 /* MCategoriesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MCategoriesViewCtrl.swift; path = Controllers/MCategoriesViewCtrl.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				4F5ACE421A618267009AC555 /* TablesViewCtrl.swift */,
 				4F32723A1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift */,
 				4FA145A21A7D6EC000154D27 /* AddItemToOrderViewCtrl.swift */,
+				0C010EFD1A90F31900A2B879 /* EditOrderItemViewCtrl.swift */,
 				4F14A97D1A63B33C0046D805 /* Manager */,
 				4F14A9771A63AF750046D805 /* GroupedTableView.xib */,
 				4FB313C21A7AC1CD00C90BF4 /* PlainTableView.xib */,
@@ -473,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C010EFE1A90F31900A2B879 /* EditOrderItemViewCtrl.swift in Sources */,
 				4FB313AE1A7A8B9000C90BF4 /* OrderType.swift in Sources */,
 				4F14A9811A63C2230046D805 /* Item.swift in Sources */,
 				4F5ACE411A618153009AC555 /* Table.swift in Sources */,

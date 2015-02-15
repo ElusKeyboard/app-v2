@@ -3,6 +3,8 @@ import UIKit
 
 class AddItemToOrderViewCtrl: UITableViewController, RefreshDelegate {
 	
+	var order: Order!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -40,6 +42,15 @@ class AddItemToOrderViewCtrl: UITableViewController, RefreshDelegate {
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		// add Item to Order
+		let item = storage.categories[indexPath.section].items[indexPath.row]
+		self.order.addItem(item, callback: { (err: NSError?) -> Void in
+			if err != nil {
+				SVProgressHUD.showErrorWithStatus(err!.description)
+				return
+			}
+			
+			SVProgressHUD.showSuccessWithStatus("Added")
+		})
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -1,15 +1,15 @@
 //
-//  OrderChefTests.swift
-//  OrderChefTests
+//  OrderChef_Tests.swift
+//  OrderChef Tests
 //
-//  Created by Matej Kramny on 10/01/2015.
+//  Created by Matej Kramny on 28/02/2015.
 //  Copyright (c) 2015 Matej Kramny. All rights reserved.
 //
 
 import UIKit
 import XCTest
 
-class OrderChefTests: XCTestCase {
+class OrderChef_Tests: XCTestCase {
     
     override func setUp() {
         super.setUp()

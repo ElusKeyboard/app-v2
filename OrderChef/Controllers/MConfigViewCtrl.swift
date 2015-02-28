@@ -104,7 +104,7 @@ class MConfigViewCtrl: UITableViewController, TextFieldCellDelegate {
 		}
 	}
 	
-	//MARK: TextFieldCellDelegate
+	// MARK: TextFieldCellDelegate
 	
 	func TextFieldCellDidChangeValue(cell: UITableViewCell, value: String) {
 		var indexPath = self.tableView.indexPathForCell(cell)

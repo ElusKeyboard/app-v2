@@ -1,16 +1,17 @@
 
 import UIKit
 
-class MOrderTypeViewCtrl: UITableViewController, TextFieldCellDelegate {
+class MModifierSingleViewCtrl: UITableViewController, TextFieldCellDelegate {
 	
-	var order_type: OrderType = OrderType()
+	// DO NOT forget to set the group_id property!
+	var modifier: ConfigModifier = ConfigModifier()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.navigationItem.title = "Add Order Type"
-		if self.order_type.id != nil {
-			self.navigationItem.title = "Update Order Type"
+		self.navigationItem.title = "Add Modifier"
+		if modifier.id != nil {
+			self.navigationItem.title = "Update Modifier"
 		}
 		
 		AppDelegate.registerCommonCellsForTable(self.tableView)
@@ -20,11 +21,11 @@ class MOrderTypeViewCtrl: UITableViewController, TextFieldCellDelegate {
 		self.navigationItem.setHidesBackButton(true, animated: true)
 		
 		var attributes = AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20)
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: " " + NSString.fontAwesomeIconStringForEnum(FAIcon.FATimes), style: UIBarButtonItemStyle.Plain, target: self, action: "cancel")
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FACheck) + " ", style: UIBarButtonItemStyle.Plain, target: self, action: "save")
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: " " + NSString.fontAwesomeIconStringForEnum(FAIcon.FATimes), style: .Plain, target: self, action: "cancel")
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FACheck) + " ", style: .Plain, target: self, action: "save")
 		
-		self.navigationItem.leftBarButtonItem!.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
-		self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
+		self.navigationItem.leftBarButtonItem!.setTitleTextAttributes(attributes, forState: .Normal)
+		self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(attributes, forState: .Normal)
 	}
 	
 	func cancel() {
@@ -32,7 +33,7 @@ class MOrderTypeViewCtrl: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	func save() {
-		self.order_type.save({ (err: NSError?) -> Void in
+		self.modifier.save({ (err: NSError?) -> Void in
 			if err != nil {
 				return SVProgressHUD.showErrorWithStatus(err!.description)
 			}
@@ -42,7 +43,7 @@ class MOrderTypeViewCtrl: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return self.order_type.id == nil ? 2 : 3
+		return self.modifier.id == nil ? 2 : 3
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,20 +58,22 @@ class MOrderTypeViewCtrl: UITableViewController, TextFieldCellDelegate {
 			}
 			
 			cell!.label.text = "Name:"
-			cell!.field.text = self.order_type.name
+			cell!.field.text = self.modifier.name
+			cell!.field.keyboardType = .Default
 			
 			cell!.delegate = self
 			cell!.setup()
 			
 			return cell!
 		} else if indexPath.section == 1 {
-			var cell: TextViewCell? = tableView.dequeueReusableCellWithIdentifier("textView", forIndexPath: indexPath) as? TextViewCell
+			var cell: TextFieldCell? = tableView.dequeueReusableCellWithIdentifier("textField", forIndexPath: indexPath) as? TextFieldCell
 			if cell == nil {
-				cell = TextViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "textView")
+				cell = TextFieldCell(style: UITableViewCellStyle.Default, reuseIdentifier: "textField")
 			}
 			
-			cell!.label.text = "Description:"
-			cell!.field.text = self.order_type.description
+			cell!.label.text = "Price:"
+			cell!.field.text = String(format: "%.2f", self.modifier.price)
+			cell!.field.keyboardType = UIKeyboardType.DecimalPad
 			
 			cell!.delegate = self
 			cell!.setup()
@@ -89,10 +92,18 @@ class MOrderTypeViewCtrl: UITableViewController, TextFieldCellDelegate {
 		}
 	}
 	
+	override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		if section == 1 {
+			return "Price will affect item price. Can be positive or negative. Negative price reduces item price"
+		}
+		
+		return nil
+	}
+	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if indexPath.section == 2 {
 			// Delete
-			order_type.remove({ (err: NSError?) -> Void in
+			self.modifier.remove({ (err: NSError?) -> Void in
 				tableView.deselectRowAtIndexPath(indexPath, animated: true)
 				
 				if err != nil {
@@ -104,14 +115,6 @@ class MOrderTypeViewCtrl: UITableViewController, TextFieldCellDelegate {
 		}
 	}
 	
-	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		if indexPath.section == 1 {
-			return 44 * 2
-		}
-		
-		return 44
-	}
-	
 	// MARK: TextFieldCellDelegate
 	
 	func TextFieldCellDidChangeValue(cell: UITableViewCell, value: String) {
@@ -120,9 +123,17 @@ class MOrderTypeViewCtrl: UITableViewController, TextFieldCellDelegate {
 		var indexPath = self.tableView.indexPathForCell(cell)
 		
 		if indexPath!.section == 0 {
-			self.order_type.name = value
+			self.modifier.name = value
 		} else if indexPath!.section == 1 {
-			self.order_type.description = value
+			var formatter = NSNumberFormatter()
+			formatter.numberStyle = .DecimalStyle
+			
+			var number = formatter.numberFromString(value)
+			if number != nil {
+				self.modifier.price = number!.floatValue
+			} else {
+				SVProgressHUD.showErrorWithStatus("Price Invalid")
+			}
 		}
 	}
 	

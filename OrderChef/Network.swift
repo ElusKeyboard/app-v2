@@ -31,7 +31,7 @@ func makeRequest (endpoint: String, method: String?) -> NSMutableURLRequest {
 		base = storage.server_ip! + base
 	} else {
 		// so that NSURL unwrap doesn't crash the app
-		base = "http://127.0.0.1" + base
+		base = "http://127.0.0.1:3000" + base
 		
 		println("storage -> server_ip property nil!")
 	}

@@ -13,8 +13,10 @@ class SharedStorage {
 	var categories: [Category] = []
 	var items: [Item] = []
 	
+	var modifiers: [ConfigModifierGroup] = []
+	
 	func initSequence() {
-		var seqRemaining = 6;
+		var seqRemaining = 7;
 		var seqTotal = seqRemaining;
 		
 		SVProgressHUD.showProgress(0, status: "Initialising")
@@ -41,7 +43,11 @@ class SharedStorage {
 			cb(nil)
 			self.updateItems(cb)
 		})
+		
+		self.updateModifiers(cb)
 	}
+	
+	// MARK: - Update methods
 	
 	func updateSettings(callback: (err: NSError?) -> Void) {
 		doRequest(makeRequest("/config/settings", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
@@ -132,6 +138,27 @@ class SharedStorage {
 			callback(err: nil)
 		})
 	}
+	
+	func updateModifiers(callback: (err: NSError?) -> Void) {
+		ConfigModifierGroup.getModifiers({ (err: NSError?, modifiers: [ConfigModifierGroup]) -> Void in
+			if err != nil {
+				return callback(err: err)
+			}
+			
+			self.modifiers = modifiers
+			
+			var numGot = 0
+			for modifier in self.modifiers {
+				modifier.getModifiers({ (err: NSError?) -> Void in
+					if ++numGot >= self.modifiers.count {
+						callback(err: nil)
+					}
+				})
+			}
+		})
+	}
+	
+	// MARK: Mappings
 	
 	func updateItemCategoryMappings() {
 		for cat in self.categories {

@@ -161,7 +161,7 @@ class MItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 		return 44
 	}
 	
-	//MARK: TextFieldCellDelegate
+	// MARK: TextFieldCellDelegate
 	
 	func TextFieldCellDidChangeValue(cell: UITableViewCell, value: String) {
 		self.didEdit()

@@ -1,24 +1,24 @@
 
 import UIKit
 
-class AddItemToOrderViewCtrl: UITableViewController, RefreshDelegate {
-	
-	var order: Order!
+class MModifiersViewCtrl: UITableViewController, RefreshDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.navigationItem.title = "Items"
+		self.navigationItem.title = "Modifier Groups"
 		
 		AppDelegate.setupRefreshControl(self)
 		AppDelegate.registerCommonCellsForTable(self.tableView)
 		
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "done")
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSString.fontAwesomeIconStringForEnum(FAIcon.FAPlus) + " ", style: UIBarButtonItemStyle.Plain, target: self, action: "add")
+		self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(AppDelegate.makeFontAwesomeTextAttributesOfFontSize(20), forState: UIControlState.Normal)
+		
 		self.reloadData(nil)
 	}
 	
 	func reloadData(sender: AnyObject?) {
-		storage.updateCategories({ (err: NSError?) -> Void in
+		storage.updateModifiers({ (err: NSError?) -> Void in
 			self.refreshControl!.endRefreshing()
 			if err != nil {
 				return SVProgressHUD.showErrorWithStatus(err!.description)
@@ -28,41 +28,36 @@ class AddItemToOrderViewCtrl: UITableViewController, RefreshDelegate {
 		})
 	}
 	
-	func done() {
-		self.navigationController!.popViewControllerAnimated(true)
+	func add() {
+		var vc = MModifierViewCtrl(nibName: groupedTableNibName, bundle: nil)
+		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return storage.items.count
+		return 1
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return storage.categories[section].items.count
+		return storage.modifiers.count
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		// add Item to Order
-		let item = storage.categories[indexPath.section].items[indexPath.row]
-		self.order.addItem(item, callback: { (err: NSError?) -> Void in
-			tableView.deselectRowAtIndexPath(indexPath, animated: true)
-			if err != nil {
-				SVProgressHUD.showErrorWithStatus(err!.description)
-				return
-			}
-			
-			SVProgressHUD.showSuccessWithStatus("Added")
-		})
+		var vc = MModifierViewCtrl(nibName: groupedTableNibName, bundle: nil)
+		
+		vc.modifier = storage.modifiers[indexPath.row]
+		
+		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let item = storage.categories[indexPath.section].items[indexPath.row]
+		let modifier = storage.modifiers[indexPath.row]
 		var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 		if cell == nil {
 			cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
 		}
 		
 		cell!.accessoryType = .DisclosureIndicator
-		cell!.textLabel!.text = item.name
+		cell!.textLabel!.text = modifier.name
 		
 		return cell!
 	}

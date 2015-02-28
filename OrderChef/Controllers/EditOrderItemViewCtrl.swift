@@ -118,23 +118,20 @@ class EditOrderItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 		return 44
 	}
 	
-	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		if section != 0 {
-			return nil
-		}
-		
-		return self.item.item.name
-	}
-	
 	override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if section != 0 {
 			return nil
 		}
 		
-		return self.item.item.description
+		var str = "Name: " + self.item.item.name + "\n"
+		if self.item.item.description != nil {
+			str += self.item.item.description!
+		}
+		
+		return str
 	}
 	
-	//MARK: TextFieldCellDelegate
+	// MARK: TextFieldCellDelegate
 	
 	func TextFieldCellDidChangeValue(cell: UITableViewCell, value: String) {
 		self.didEdit()

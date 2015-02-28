@@ -87,8 +87,10 @@ class ManagerViewCtrl: UITableViewController {
 		case 3:
 			if indexPath.row == 0 {
 				vc = MItemsViewCtrl(nibName: plainTableNibName, bundle: nil)
-			} else {
+			} else if indexPath.row == 1 {
 				vc = MCategoriesViewCtrl(nibName: plainTableNibName, bundle: nil)
+			} else if indexPath.row == 2 {
+				vc = MModifiersViewCtrl(nibName: plainTableNibName, bundle: nil)
 			}
 		default:
 			return tableView.deselectRowAtIndexPath(indexPath, animated: true)

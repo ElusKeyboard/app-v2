@@ -28,6 +28,7 @@
 		0CFC16461AA17CFC0096DE5C /* SwitchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC16451AA17CFC0096DE5C /* SwitchViewCell.swift */; };
 		0CFC16481AA17D2C0096DE5C /* SwitchViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CFC16471AA17D2C0096DE5C /* SwitchViewCell.xib */; };
 		0CFC164A1AA188C90096DE5C /* MModifierSingleViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC16491AA188C90096DE5C /* MModifierSingleViewCtrl.swift */; };
+		0CFC164C1AA239720096DE5C /* ItemTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC164B1AA239720096DE5C /* ItemTest.swift */; };
 		4F14A9761A63AEA20046D805 /* ManagerViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9751A63AEA20046D805 /* ManagerViewCtrl.swift */; };
 		4F14A9781A63AF750046D805 /* GroupedTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9771A63AF750046D805 /* GroupedTableView.xib */; };
 		4F14A97C1A63B3370046D805 /* MCategoriesViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A97B1A63B3370046D805 /* MCategoriesViewCtrl.swift */; };
@@ -96,6 +97,7 @@
 		0CFC16451AA17CFC0096DE5C /* SwitchViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchViewCell.swift; path = Cells/SwitchViewCell.swift; sourceTree = "<group>"; };
 		0CFC16471AA17D2C0096DE5C /* SwitchViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SwitchViewCell.xib; path = Cells/SwitchViewCell.xib; sourceTree = "<group>"; };
 		0CFC16491AA188C90096DE5C /* MModifierSingleViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MModifierSingleViewCtrl.swift; path = Controllers/MModifierSingleViewCtrl.swift; sourceTree = "<group>"; };
+		0CFC164B1AA239720096DE5C /* ItemTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTest.swift; sourceTree = "<group>"; };
 		4F14A9751A63AEA20046D805 /* ManagerViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerViewCtrl.swift; path = Controllers/ManagerViewCtrl.swift; sourceTree = "<group>"; };
 		4F14A9771A63AF750046D805 /* GroupedTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupedTableView.xib; path = Controllers/GroupedTableView.xib; sourceTree = "<group>"; };
 		4F14A97B1A63B3370046D805 /* MCategoriesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MCategoriesViewCtrl.swift; path = Controllers/MCategoriesViewCtrl.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				0CB93EA71AA16721005F66B1 /* ConfigModifierTest.swift */,
+				0CFC164B1AA239720096DE5C /* ItemTest.swift */,
 				0CB93E921AA16693005F66B1 /* Supporting Files */,
 			);
 			path = "orderchef-tests";
@@ -527,6 +530,7 @@
 				0CB93E9B1AA166AB005F66B1 /* SharedStorage.swift in Sources */,
 				0CB93E9D1AA166AB005F66B1 /* Table.swift in Sources */,
 				0CB93E9E1AA166AB005F66B1 /* TableType.swift in Sources */,
+				0CFC164C1AA239720096DE5C /* ItemTest.swift in Sources */,
 				0CB93E9C1AA166AB005F66B1 /* User.swift in Sources */,
 				0CB93EA01AA166AB005F66B1 /* Order.swift in Sources */,
 				0CB93EA41AA166AB005F66B1 /* Category.swift in Sources */,

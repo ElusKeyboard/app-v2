@@ -11,6 +11,8 @@ class Item {
 	var category: Category! = nil
 	var category_id: Int = 0
 	
+	var modifiers: [Int] = []
+	
 	init(){}
 	
 	init(res: [NSString: AnyObject]) {
@@ -64,6 +66,43 @@ class Item {
 	func remove(callback: (err: NSError?) -> Void) {
 		doRequest(makeRequest("/item/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
 			callback(err: err)
+		}, nil)
+	}
+	
+	func getModifiers(callback: (err: NSError?) -> Void) {
+		doRequest(makeRequest("/item/" + String(self.id!) + "/modifiers", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
+			if err != nil {
+				return callback(err: err)
+			}
+			
+			var json: [Int]? = data as? [Int]
+			if json != nil {
+				self.modifiers = json!
+			}
+			
+			callback(err: nil)
+		}, nil)
+	}
+	
+	func setModifiers(callback: (err: NSError?) -> Void) {
+		doRequest(makeRequest("/item/" + String(self.id!) + "/modifiers", "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
+			if err != nil {
+				return callback(err: err)
+			}
+			
+			var numCalled = 0
+			var didErr: NSError? = nil
+			for modifier in self.modifiers {
+				doPostRequest(makeRequest("/item/" + String(self.id!) + "/modifiers", "POST"), { (err: NSError?, data: AnyObject?) -> Void in
+					if err != nil {
+						didErr = err
+					}
+					
+					if ++numCalled >= self.modifiers.count {
+						callback(err: didErr)
+					}
+				}, ["modifier_group_id": modifier])
+			}
 		}, nil)
 	}
 	

@@ -48,9 +48,22 @@ class Order {
 		return json
 	}
 	
-	func addItem(item: Item, callback: (err: NSError?) -> Void) {
+	func addItem(item: Item, callback: (err: NSError?, orderItem: OrderItem?) -> Void) {
 		doPostRequest(makeRequest("/order/" + String(self.id!) + "/items", "POST"), { (err: NSError?, data: AnyObject?) -> Void in
-			callback(err: err)
+			if err != nil {
+				return callback(err: err, orderItem: nil)
+			}
+			
+			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
+			var orderItem: OrderItem
+			if json == nil {
+				return callback(err: NSError(domain: "Unknown Error", code: 440, userInfo: nil), orderItem: nil)
+			}
+			
+			orderItem = OrderItem(res: json!)
+			self.order_items.append(orderItem)
+			
+			callback(err: nil, orderItem: orderItem)
 		}, ["order_id": self.id!, "item_id": item.id!])
 	}
 	

@@ -1,10 +1,11 @@
 
 import UIKit
 
-class MItemViewCtrl: UITableViewController, TextFieldCellDelegate {
+class MItemViewCtrl: UITableViewController, TextFieldCellDelegate, MGSwipeTableCellDelegate {
 	
 	var item: Item = Item()
 	var isPickingCategory = false
+	var isPickingModifiers = false
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -15,6 +16,7 @@ class MItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 		}
 		
 		AppDelegate.registerCommonCellsForTable(self.tableView)
+		tableView.registerClass(MGSwipeTableCell.self, forCellReuseIdentifier: "swipeCell")
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -28,6 +30,22 @@ class MItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 			cell.textLabel!.text = "Item: "
 			if self.item.category != nil && self.item.category.name != nil {
 				cell.textLabel!.text! += self.item.category.name!
+			}
+		}
+		
+		if self.isPickingModifiers == true {
+			self.isPickingModifiers = false
+			
+			if self.item.modifiers.count > 0 {
+				SVProgressHUD.showProgress(0.0, status: "Saving Modifiers")
+				self.item.setModifiers({ (err: NSError?) -> Void in
+					if err != nil {
+						SVProgressHUD.showErrorWithStatus("Error setting modifiers")
+						return
+					}
+					
+					SVProgressHUD.dismiss()
+				})
 			}
 		}
 	}
@@ -58,7 +76,7 @@ class MItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return self.item.id == nil ? 4 : 5
+		return self.item.id == nil ? 5 : 6
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -119,6 +137,17 @@ class MItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 			}
 			
 			return cell!
+		} else if indexPath.section == 4 {
+			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
+			if cell == nil {
+				cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
+			}
+			
+			cell!.textLabel!.text = "Modifiers"
+			cell!.textLabel!.textAlignment = .Center
+			cell!.accessoryType = .DisclosureIndicator
+			
+			return cell!
 		} else {
 			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 			if cell == nil {
@@ -140,6 +169,12 @@ class MItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 			vc.pickingForItem = self.item
 			self.navigationController!.pushViewController(vc, animated: true)
 		} else if indexPath.section == 4 {
+			self.isPickingModifiers = true
+			
+			let vc = MModifiersViewCtrl(nibName: groupedTableNibName, bundle: nil)
+			vc.item = self.item
+			self.navigationController!.pushViewController(vc, animated: true)
+		} else if indexPath.section == 5 {
 			// Delete
 			self.item.remove({ (err: NSError?) -> Void in
 				tableView.deselectRowAtIndexPath(indexPath, animated: true)

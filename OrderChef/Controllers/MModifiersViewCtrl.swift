@@ -3,6 +3,8 @@ import UIKit
 
 class MModifiersViewCtrl: UITableViewController, RefreshDelegate {
 	
+	var item: Item?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -42,10 +44,31 @@ class MModifiersViewCtrl: UITableViewController, RefreshDelegate {
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let modifier = storage.modifiers[indexPath.row]
+		
+		if self.item != nil {
+			var found = -1
+			for (i, modifier_id) in enumerate(self.item!.modifiers) {
+				if modifier_id == modifier.id! {
+					found = i
+				}
+			}
+			
+			if (found == -1) {
+				// add
+				self.item!.modifiers.append(modifier.id!)
+			} else {
+				self.item!.modifiers.removeAtIndex(found)
+			}
+			
+			tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+			
+			return
+		}
+		
 		var vc = MModifierViewCtrl(nibName: groupedTableNibName, bundle: nil)
-		
-		vc.modifier = storage.modifiers[indexPath.row]
-		
+		vc.modifier = modifier
+
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
@@ -57,6 +80,18 @@ class MModifiersViewCtrl: UITableViewController, RefreshDelegate {
 		}
 		
 		cell!.accessoryType = .DisclosureIndicator
+		
+		if self.item != nil {
+			var found = false
+			for modifier_id in self.item!.modifiers {
+				if modifier_id == modifier.id! {
+					found = true
+				}
+			}
+			
+			cell!.accessoryType = found ? .Checkmark : .None
+		}
+		
 		cell!.textLabel!.text = modifier.name
 		
 		return cell!

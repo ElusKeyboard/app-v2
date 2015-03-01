@@ -24,11 +24,15 @@
 		0CB93EA61AA166B0005F66B1 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6517E1A616484006AE6EC /* Network.swift */; };
 		0CB93EA81AA16721005F66B1 /* ConfigModifierTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB93EA71AA16721005F66B1 /* ConfigModifierTest.swift */; };
 		0CB93EA91AA16A37005F66B1 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9951A63C2520046D805 /* SVProgressHUD.m */; };
+		0CC285031AA2DBBF0005579A /* SetOrderItemModifiersViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC285021AA2DBBF0005579A /* SetOrderItemModifiersViewCtrl.swift */; };
 		0CFC16421AA177560096DE5C /* MModifierViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC16411AA177560096DE5C /* MModifierViewCtrl.swift */; };
 		0CFC16461AA17CFC0096DE5C /* SwitchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC16451AA17CFC0096DE5C /* SwitchViewCell.swift */; };
 		0CFC16481AA17D2C0096DE5C /* SwitchViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CFC16471AA17D2C0096DE5C /* SwitchViewCell.xib */; };
 		0CFC164A1AA188C90096DE5C /* MModifierSingleViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC16491AA188C90096DE5C /* MModifierSingleViewCtrl.swift */; };
 		0CFC164C1AA239720096DE5C /* ItemTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC164B1AA239720096DE5C /* ItemTest.swift */; };
+		0CFC16521AA284C50096DE5C /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC164F1AA284C50096DE5C /* MGSwipeButton.m */; };
+		0CFC16531AA284C50096DE5C /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC16511AA284C50096DE5C /* MGSwipeTableCell.m */; };
+		0CFC16551AA2B5AE0096DE5C /* OrderItemTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC16541AA2B5AE0096DE5C /* OrderItemTest.swift */; };
 		4F14A9761A63AEA20046D805 /* ManagerViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A9751A63AEA20046D805 /* ManagerViewCtrl.swift */; };
 		4F14A9781A63AF750046D805 /* GroupedTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F14A9771A63AF750046D805 /* GroupedTableView.xib */; };
 		4F14A97C1A63B3370046D805 /* MCategoriesViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A97B1A63B3370046D805 /* MCategoriesViewCtrl.swift */; };
@@ -93,11 +97,17 @@
 		0CB93E901AA16693005F66B1 /* orderchef-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "orderchef-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB93E931AA16693005F66B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CB93EA71AA16721005F66B1 /* ConfigModifierTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigModifierTest.swift; sourceTree = "<group>"; };
+		0CC285021AA2DBBF0005579A /* SetOrderItemModifiersViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetOrderItemModifiersViewCtrl.swift; path = Controllers/SetOrderItemModifiersViewCtrl.swift; sourceTree = "<group>"; };
 		0CFC16411AA177560096DE5C /* MModifierViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MModifierViewCtrl.swift; path = Models/MModifierViewCtrl.swift; sourceTree = "<group>"; };
 		0CFC16451AA17CFC0096DE5C /* SwitchViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchViewCell.swift; path = Cells/SwitchViewCell.swift; sourceTree = "<group>"; };
 		0CFC16471AA17D2C0096DE5C /* SwitchViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SwitchViewCell.xib; path = Cells/SwitchViewCell.xib; sourceTree = "<group>"; };
 		0CFC16491AA188C90096DE5C /* MModifierSingleViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MModifierSingleViewCtrl.swift; path = Controllers/MModifierSingleViewCtrl.swift; sourceTree = "<group>"; };
 		0CFC164B1AA239720096DE5C /* ItemTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTest.swift; sourceTree = "<group>"; };
+		0CFC164E1AA284C50096DE5C /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
+		0CFC164F1AA284C50096DE5C /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
+		0CFC16501AA284C50096DE5C /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
+		0CFC16511AA284C50096DE5C /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
+		0CFC16541AA2B5AE0096DE5C /* OrderItemTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemTest.swift; sourceTree = "<group>"; };
 		4F14A9751A63AEA20046D805 /* ManagerViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerViewCtrl.swift; path = Controllers/ManagerViewCtrl.swift; sourceTree = "<group>"; };
 		4F14A9771A63AF750046D805 /* GroupedTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GroupedTableView.xib; path = Controllers/GroupedTableView.xib; sourceTree = "<group>"; };
 		4F14A97B1A63B3370046D805 /* MCategoriesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MCategoriesViewCtrl.swift; path = Controllers/MCategoriesViewCtrl.swift; sourceTree = "<group>"; };
@@ -190,6 +200,7 @@
 			children = (
 				0CB93EA71AA16721005F66B1 /* ConfigModifierTest.swift */,
 				0CFC164B1AA239720096DE5C /* ItemTest.swift */,
+				0CFC16541AA2B5AE0096DE5C /* OrderItemTest.swift */,
 				0CB93E921AA16693005F66B1 /* Supporting Files */,
 			);
 			path = "orderchef-tests";
@@ -201,6 +212,17 @@
 				0CB93E931AA16693005F66B1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0CFC164D1AA284C50096DE5C /* MGSwipeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CFC164E1AA284C50096DE5C /* MGSwipeButton.h */,
+				0CFC164F1AA284C50096DE5C /* MGSwipeButton.m */,
+				0CFC16501AA284C50096DE5C /* MGSwipeTableCell.h */,
+				0CFC16511AA284C50096DE5C /* MGSwipeTableCell.m */,
+			);
+			path = MGSwipeTableViewCell;
 			sourceTree = "<group>";
 		};
 		4F14A97D1A63B33C0046D805 /* Manager */ = {
@@ -261,6 +283,7 @@
 				4F32723A1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift */,
 				4FA145A21A7D6EC000154D27 /* AddItemToOrderViewCtrl.swift */,
 				0C010EFD1A90F31900A2B879 /* EditOrderItemViewCtrl.swift */,
+				0CC285021AA2DBBF0005579A /* SetOrderItemModifiersViewCtrl.swift */,
 				4F14A97D1A63B33C0046D805 /* Manager */,
 				4F14A9771A63AF750046D805 /* GroupedTableView.xib */,
 				4FB313C21A7AC1CD00C90BF4 /* PlainTableView.xib */,
@@ -286,6 +309,7 @@
 		4F5ACE491A618980009AC555 /* Deps */ = {
 			isa = PBXGroup;
 			children = (
+				0CFC164D1AA284C50096DE5C /* MGSwipeTableViewCell */,
 				4F88CCAD1A7CFCFB001747FF /* Crashlytics.framework */,
 				4F88CCAE1A7CFCFB001747FF /* Fabric.framework */,
 				4F2CB7F61A73C34A005987D2 /* QuartzCore.framework */,
@@ -529,6 +553,7 @@
 				0CB93EA51AA166AB005F66B1 /* ConfigModifier.swift in Sources */,
 				0CB93E9B1AA166AB005F66B1 /* SharedStorage.swift in Sources */,
 				0CB93E9D1AA166AB005F66B1 /* Table.swift in Sources */,
+				0CFC16551AA2B5AE0096DE5C /* OrderItemTest.swift in Sources */,
 				0CB93E9E1AA166AB005F66B1 /* TableType.swift in Sources */,
 				0CFC164C1AA239720096DE5C /* ItemTest.swift in Sources */,
 				0CB93E9C1AA166AB005F66B1 /* User.swift in Sources */,
@@ -547,6 +572,8 @@
 				0C4E6C271AA157B900B91492 /* ConfigModifier.swift in Sources */,
 				0CFC16461AA17CFC0096DE5C /* SwitchViewCell.swift in Sources */,
 				4F14A9811A63C2230046D805 /* Item.swift in Sources */,
+				0CC285031AA2DBBF0005579A /* SetOrderItemModifiersViewCtrl.swift in Sources */,
+				0CFC16521AA284C50096DE5C /* MGSwipeButton.m in Sources */,
 				4F5ACE411A618153009AC555 /* Table.swift in Sources */,
 				0CFC164A1AA188C90096DE5C /* MModifierSingleViewCtrl.swift in Sources */,
 				4F14A99A1A63C2520046D805 /* SVIndefiniteAnimatedView.m in Sources */,
@@ -572,6 +599,7 @@
 				4F3272451A62C9DF00DF5E3E /* Order.swift in Sources */,
 				4FDF4E6A1A77DB9D00D981AC /* MTablesViewCtrl.swift in Sources */,
 				4F14A9A61A63F6690046D805 /* TextViewCell.swift in Sources */,
+				0CFC16531AA284C50096DE5C /* MGSwipeTableCell.m in Sources */,
 				4F5ACE3A1A6166AD009AC555 /* User.swift in Sources */,
 				4F14A9961A63C2520046D805 /* FAImageView.m in Sources */,
 				4F14A9971A63C2520046D805 /* NSString+FontAwesome.m in Sources */,

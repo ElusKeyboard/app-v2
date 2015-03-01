@@ -69,6 +69,11 @@ class OrderGroup {
 	
 	func addOrder(order: Order, callback: (err: NSError?) -> Void) {
 		doPostRequest(makeRequest("/order-group/" + String(self.id!) + "/orders", "POST"), { (err: NSError?, data: AnyObject?) -> Void in
+			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
+			if json != nil {
+				order.parse(json!)
+			}
+			
 			callback(err: err)
 		}, order.json())
 	}

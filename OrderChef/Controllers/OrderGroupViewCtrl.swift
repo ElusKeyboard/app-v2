@@ -112,7 +112,7 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 		let order = self.orders[indexPath.section - 1]
 		let orderItem = order.order_items[indexPath.row - 1]
 		
-		cell!.textLabel!.text = orderItem.item.name + " (" + String(orderItem.quantity) + "x)"
+		cell!.textLabel!.text = orderItem.item.name
 		
 		return cell!
 	}

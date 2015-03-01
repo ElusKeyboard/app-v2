@@ -103,6 +103,10 @@ class Item {
 					}
 				}, ["modifier_group_id": modifier])
 			}
+			
+			if self.modifiers.count == 0 {
+				callback(err: nil)
+			}
 		}, nil)
 	}
 	
@@ -116,7 +120,10 @@ class Item {
 			var items: [Item] = []
 			if json != nil {
 				for j in json! {
-					items.append(Item(res: j))
+					var item = Item(res: j)
+					item.getModifiers({ (err: NSError?) -> Void in
+					})
+					items.append(item)
 				}
 			}
 			

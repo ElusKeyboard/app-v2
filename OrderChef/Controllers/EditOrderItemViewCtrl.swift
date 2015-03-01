@@ -46,30 +46,12 @@ class EditOrderItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 		if section == 0 {
 			return 0
 		}
-		if section == 1 {
-			return 2
-		}
 		
 		return 1
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		if indexPath.section == 1 {
-			if indexPath.row == 0 {
-				var cell: TextFieldCell? = tableView.dequeueReusableCellWithIdentifier("textField", forIndexPath: indexPath) as? TextFieldCell
-				if cell == nil {
-					cell = TextFieldCell(style: .Default, reuseIdentifier: "textField")
-				}
-				
-				cell!.label.text = "Quantity:"
-				cell!.field.text = String(self.item.quantity)
-				
-				cell!.delegate = self
-				cell!.setup()
-				
-				return cell!
-			}
-			
 			var cell: TextViewCell? = tableView.dequeueReusableCellWithIdentifier("textView", forIndexPath: indexPath) as? TextViewCell
 			if cell == nil {
 				cell = TextViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "textView")
@@ -111,7 +93,7 @@ class EditOrderItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		if indexPath.section == 1 && indexPath.row == 1 {
+		if indexPath.section == 1 && indexPath.row == 0 {
 			return 44 * 2
 		}
 		
@@ -138,15 +120,7 @@ class EditOrderItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 		
 		var indexPath = self.tableView.indexPathForCell(cell)
 		
-		if indexPath!.section == 1 && indexPath!.row == 0 {
-			var num = value.toInt()
-			if num == nil {
-				SVProgressHUD.showErrorWithStatus("Invalid Quantity entered!")
-				return
-			}
-			
-			self.item.quantity = num!
-		} else if indexPath!.section == 1 && indexPath!.row == 1 {
+		if indexPath!.section == 1 {
 			self.item.notes = value
 		}
 	}

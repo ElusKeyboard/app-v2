@@ -9,4 +9,8 @@
 #import "UIFont+FontAwesome.h"
 #import "FAImageView.h"
 
+// MGSwipeTableCell
+#import "MGSwipeTableCell.h"
+#import "MGSwipeButton.h"
+
 #endif

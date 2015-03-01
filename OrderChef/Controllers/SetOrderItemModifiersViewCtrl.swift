@@ -1,19 +1,19 @@
 
 import UIKit
 
-class AddItemToOrderViewCtrl: UITableViewController, RefreshDelegate {
+class SetOrderItemModifiersViewCtrl: UITableViewController, RefreshDelegate {
 	
-	var order: Order!
+	var orderItem: OrderItem!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.navigationItem.title = "Items"
+		self.navigationItem.title = "Modifiers"
 		
 		AppDelegate.setupRefreshControl(self)
 		AppDelegate.registerCommonCellsForTable(self.tableView)
 		
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "done")
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "done")
 		self.reloadData(nil)
 	}
 	
@@ -32,50 +32,44 @@ class AddItemToOrderViewCtrl: UITableViewController, RefreshDelegate {
 		self.navigationController!.popViewControllerAnimated(true)
 	}
 	
+	func getModifier(id: Int) -> ConfigModifierGroup? {
+		for modifier in storage.modifiers {
+			if modifier.id! == id {
+				return modifier
+			}
+		}
+		
+		return nil
+	}
+	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return storage.categories.count
+		return self.orderItem.item.modifiers.count
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return storage.categories[section].items.count
+		let modifierGroup = self.getModifier(self.orderItem.item.modifiers[section])
+		if modifierGroup == nil {
+			return 0
+		}
+		
+		return modifierGroup!.modifiers.count
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		// add Item to Order
-		let item = storage.categories[indexPath.section].items[indexPath.row]
-		self.order.addItem(item, callback: { (err: NSError?, orderItem: OrderItem?) -> Void in
-			tableView.deselectRowAtIndexPath(indexPath, animated: true)
-			if err != nil {
-				SVProgressHUD.showErrorWithStatus(err!.description)
-				return
-			}
-			
-			if item.modifiers.count > 0 {
-				// pick modifiers
-				let vc = SetOrderItemModifiersViewCtrl(nibName: groupedTableNibName, bundle: nil)
-				
-				self.navigationController!.pushViewController(vc, animated: true)
-			}
-			
-			SVProgressHUD.showSuccessWithStatus("Added")
-		})
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let item = storage.categories[indexPath.section].items[indexPath.row]
+		let modifierGroup = self.getModifier(self.orderItem.item.modifiers[indexPath.section])
+		let modifier = modifierGroup!.modifiers[indexPath.row]
+		
 		var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 		if cell == nil {
 			cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
 		}
 		
 		cell!.accessoryType = .DisclosureIndicator
-		cell!.textLabel!.text = item.name
 		
 		return cell!
-	}
-	
-	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return storage.categories[section].name
 	}
 	
 }

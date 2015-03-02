@@ -29,6 +29,7 @@ class AddItemToOrderViewCtrl: UITableViewController, RefreshDelegate {
 	}
 	
 	func done() {
+		self.navigationController!.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 2] as UIViewController, animated: true)
 		self.navigationController!.popViewControllerAnimated(true)
 	}
 	
@@ -52,9 +53,12 @@ class AddItemToOrderViewCtrl: UITableViewController, RefreshDelegate {
 			
 			if item.modifiers.count > 0 {
 				// pick modifiers
-				let vc = SetOrderItemModifiersViewCtrl(nibName: groupedTableNibName, bundle: nil)
+				let modifiersVC = SetOrderItemModifiersViewCtrl(nibName: groupedTableNibName, bundle: nil)
+				modifiersVC.orderItem = orderItem!
 				
-				self.navigationController!.pushViewController(vc, animated: true)
+				let vc = UINavigationController(rootViewController: modifiersVC)
+				self.presentViewController(vc, animated: true, completion: nil)
+				return
 			}
 			
 			SVProgressHUD.showSuccessWithStatus("Added")

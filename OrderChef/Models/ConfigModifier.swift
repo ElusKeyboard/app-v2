@@ -5,7 +5,7 @@ class ConfigModifierGroup {
 	var id: Int? = nil
 
 	var name: String!
-	var choiceRequired: Bool!
+	var choiceRequired: Bool = false
 
 	var modifiers: [ConfigModifier] = []
 
@@ -62,6 +62,10 @@ class ConfigModifierGroup {
 	}
 
 	func getModifiers(callback: (err: NSError?) -> Void) {
+		if self.id == nil {
+			return callback(err: nil)
+		}
+		
 		var request = makeRequest("/config/modifier/" + String(self.id!) + "/items", "GET")
 		doRequest(request, { (err: NSError?, data: AnyObject?) -> Void in
 			self.modifiers = []

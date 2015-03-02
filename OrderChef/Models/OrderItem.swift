@@ -67,7 +67,7 @@ class OrderItem {
 	}
 	
 	func getModifiers(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/item/" + String(self.id!) + "/modifiers", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
+		doRequest(makeRequest("/order/" + String(self.order_id) + "/item/" + String(self.id!) + "/modifiers", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
 			if err != nil {
 				return callback(err: err)
 			}

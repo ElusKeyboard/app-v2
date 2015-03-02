@@ -10,6 +10,7 @@
 		0C010EFE1A90F31900A2B879 /* EditOrderItemViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C010EFD1A90F31900A2B879 /* EditOrderItemViewCtrl.swift */; };
 		0C4E6C231AA1177300B91492 /* MModifiersViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E6C221AA1177300B91492 /* MModifiersViewCtrl.swift */; };
 		0C4E6C271AA157B900B91492 /* ConfigModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E6C261AA157B900B91492 /* ConfigModifier.swift */; };
+		0CB376F31AA3DE980091BBF2 /* OrderDetailsViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB376F21AA3DE980091BBF2 /* OrderDetailsViewCtrl.swift */; };
 		0CB93E9B1AA166AB005F66B1 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32723E1A61FC4500DF5E3E /* SharedStorage.swift */; };
 		0CB93E9C1AA166AB005F66B1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE391A6166AD009AC555 /* User.swift */; };
 		0CB93E9D1AA166AB005F66B1 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5ACE401A618153009AC555 /* Table.swift */; };
@@ -94,6 +95,7 @@
 		0C010EFD1A90F31900A2B879 /* EditOrderItemViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditOrderItemViewCtrl.swift; path = Controllers/EditOrderItemViewCtrl.swift; sourceTree = "<group>"; };
 		0C4E6C221AA1177300B91492 /* MModifiersViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MModifiersViewCtrl.swift; path = Controllers/MModifiersViewCtrl.swift; sourceTree = "<group>"; };
 		0C4E6C261AA157B900B91492 /* ConfigModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigModifier.swift; path = Models/ConfigModifier.swift; sourceTree = "<group>"; };
+		0CB376F21AA3DE980091BBF2 /* OrderDetailsViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDetailsViewCtrl.swift; path = Controllers/OrderDetailsViewCtrl.swift; sourceTree = "<group>"; };
 		0CB93E901AA16693005F66B1 /* orderchef-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "orderchef-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB93E931AA16693005F66B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CB93EA71AA16721005F66B1 /* ConfigModifierTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigModifierTest.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			children = (
 				4F5ACE421A618267009AC555 /* TablesViewCtrl.swift */,
 				4F32723A1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift */,
+				0CB376F21AA3DE980091BBF2 /* OrderDetailsViewCtrl.swift */,
 				4FA145A21A7D6EC000154D27 /* AddItemToOrderViewCtrl.swift */,
 				0C010EFD1A90F31900A2B879 /* EditOrderItemViewCtrl.swift */,
 				0CC285021AA2DBBF0005579A /* SetOrderItemModifiersViewCtrl.swift */,
@@ -582,6 +585,7 @@
 				4FB313B71A7A8F2200C90BF4 /* MOrderTypeViewCtrl.swift in Sources */,
 				4FA145A81A7D6FCA00154D27 /* MItemViewCtrl.swift in Sources */,
 				4FA145A31A7D6EC000154D27 /* AddItemToOrderViewCtrl.swift in Sources */,
+				0CB376F31AA3DE980091BBF2 /* OrderDetailsViewCtrl.swift in Sources */,
 				4F32723B1A61EEFF00DF5E3E /* OrderGroupViewCtrl.swift in Sources */,
 				4FDF4E721A77E07E00D981AC /* MTableViewCtrl.swift in Sources */,
 				4FE6515F1A616447006AE6EC /* AppDelegate.swift in Sources */,

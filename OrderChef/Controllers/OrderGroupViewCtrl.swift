@@ -6,7 +6,6 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 	
 	var orderGroup: OrderGroup!
 	var orders: [Order] = []
-	
 	var newOrder: Order?
 	
 	override func viewDidLoad() {
@@ -41,8 +40,9 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 				self.orders = orders
 				
 				for (i, order) in enumerate(self.orders) {
+					var numOrders = order.order_items.count
 					order.getItems({ (err: NSError?) -> Void in
-						self.tableView.reloadSections(NSIndexSet(index: i+1), withRowAnimation: .Automatic)
+						self.tableView.reloadData()
 					})
 				}
 				
@@ -87,7 +87,7 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 			return 1
 		}
 		
-		return self.orders[section - 1].order_items.count + 1
+		return self.orders[section - 1].order_items.count
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -104,13 +104,8 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 			return cell!
 		}
 		
-		if indexPath.row == 0 {
-			cell!.textLabel!.text = "Add Item"
-			return cell!
-		}
-		
 		let order = self.orders[indexPath.section - 1]
-		let orderItem = order.order_items[indexPath.row - 1]
+		let orderItem = order.order_items[indexPath.row]
 		
 		cell!.textLabel!.text = orderItem.item.name
 		
@@ -134,18 +129,10 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 		}
 		
 		let order = self.orders[indexPath.section - 1]
-		if indexPath.row == 0 {
-			// Add Item to order
-			let vc = AddItemToOrderViewCtrl(nibName: groupedTableNibName, bundle: nil)
-			vc.order = order
-			self.navigationController!.pushViewController(vc, animated: true)
-			
-			return
-		}
 		
 		let vc = EditOrderItemViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		vc.order = order
-		vc.item = order.order_items[indexPath.row - 1]
+		vc.item = order.order_items[indexPath.row]
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
@@ -162,9 +149,33 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 		return order.type.name
 	}
 	
+	override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let text = self.tableView(tableView, titleForHeaderInSection: section)
+		if text == nil {
+			return nil
+		}
+		
+		var view = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, tableView.sectionHeaderHeight))
+		
+		var label = UILabel(frame: CGRectMake(15, 15, view.frame.size.width - 15 * 2, 16))
+		label.backgroundColor = UIColor.clearColor()
+		label.textColor = UIColor.grayColor()
+		label.font = UIFont.systemFontOfSize(13)
+		label.text = text!.uppercaseString
+		label.userInteractionEnabled = true
+		label.tag = section
+		
+		var tap = UITapGestureRecognizer(target: self, action: "didTouchHeader:")
+		label.addGestureRecognizer(tap)
+		
+		view.addSubview(label)
+		
+		return view
+	}
+	
 	override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if section == 0 {
-			return nil
+			return self.orders.count == 0 ? "Empty order." : nil
 		}
 		
 		let order = self.orders[section - 1]
@@ -173,5 +184,13 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 		}
 		
 		return order.type.description
+	}
+	
+	func didTouchHeader(tap: UITapGestureRecognizer) {
+		let section = tap.view!.tag
+		var vc = OrderDetailsViewCtrl(nibName: groupedTableNibName, bundle: nil)
+		vc.order = self.orders[section - 1]
+		vc.orderGroup = self.orderGroup
+		self.navigationController!.pushViewController(vc, animated: true)
 	}
 }

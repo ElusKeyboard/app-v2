@@ -39,7 +39,7 @@ class EditOrderItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 	}
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 3
+		return 4
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,6 +64,16 @@ class EditOrderItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 			cell!.setup()
 			
 			return cell!
+		} else if indexPath.section == 2 {
+			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
+			if cell == nil {
+				cell = UITableViewCell(style: .Default, reuseIdentifier: "basic")
+			}
+			
+			cell!.textLabel!.text = "Modifiers"
+			cell!.textLabel!.textAlignment = .Center
+			
+			return cell!
 		} else {
 			var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("basic", forIndexPath: indexPath) as? UITableViewCell
 			if cell == nil {
@@ -79,6 +89,16 @@ class EditOrderItemViewCtrl: UITableViewController, TextFieldCellDelegate {
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if indexPath.section == 2 {
+			// pick modifiers
+			let modifiersVC = SetOrderItemModifiersViewCtrl(nibName: groupedTableNibName, bundle: nil)
+			modifiersVC.orderItem = self.item
+			
+			let vc = UINavigationController(rootViewController: modifiersVC)
+			self.presentViewController(vc, animated: true, completion: nil)
+			return
+		}
+		
+		if indexPath.section == 3 {
 			// Delete
 			item.remove({ (err: NSError?) -> Void in
 				tableView.deselectRowAtIndexPath(indexPath, animated: true)

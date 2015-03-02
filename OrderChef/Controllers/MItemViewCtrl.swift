@@ -171,9 +171,17 @@ class MItemViewCtrl: UITableViewController, TextFieldCellDelegate, MGSwipeTableC
 		} else if indexPath.section == 4 {
 			self.isPickingModifiers = true
 			
-			let vc = MModifiersViewCtrl(nibName: groupedTableNibName, bundle: nil)
-			vc.item = self.item
-			self.navigationController!.pushViewController(vc, animated: true)
+			SVProgressHUD.showProgress(1.0, status: "Saving Item")
+			self.item.save({ (err: NSError?) -> Void in
+				if err != nil {
+					return SVProgressHUD.showErrorWithStatus(err!.description)
+				}
+				
+				SVProgressHUD.dismiss()
+				let vc = MModifiersViewCtrl(nibName: groupedTableNibName, bundle: nil)
+				vc.item = self.item
+				self.navigationController!.pushViewController(vc, animated: true)
+			})
 		} else if indexPath.section == 5 {
 			// Delete
 			self.item.remove({ (err: NSError?) -> Void in

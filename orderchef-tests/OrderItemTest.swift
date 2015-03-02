@@ -10,7 +10,7 @@ class OrderItemTest: XCTestCase {
 		var tableType = TableType()
 		tableType.name = "Test table type"
 		tableType.save({ (err: NSError?) -> Void in
-			XCTAssert(err == nil, "Table type not created" + err!.description)
+			XCTAssert(err == nil, "Table type not created")
 			callback(tableType: tableType)
 		})
 	}
@@ -19,7 +19,7 @@ class OrderItemTest: XCTestCase {
 		var orderType = OrderType()
 		orderType.name = "Test table type"
 		orderType.save({ (err: NSError?) -> Void in
-			XCTAssert(err == nil, "order type not created. " + err!.description)
+			XCTAssert(err == nil, "order type not created.")
 			callback(orderType: orderType)
 		})
 	}
@@ -31,7 +31,7 @@ class OrderItemTest: XCTestCase {
 			table.table_type = tableType
 			table.table_type_id = tableType.id!
 			table.save({ (err: NSError?) -> Void in
-				XCTAssert(err == nil, "cannot save table. " + err!.description)
+				XCTAssert(err == nil, "cannot save table.")
 				
 				table.getGroup({ (err: NSError?, group: OrderGroup?) -> Void in
 					XCTAssert(err == nil, "Err not nil")
@@ -46,7 +46,7 @@ class OrderItemTest: XCTestCase {
 		var category = Category()
 		category.name = "Test Category"
 		category.save({ (err: NSError?) -> Void in
-			XCTAssert(err == nil, "category not created. " + err!.description)
+			XCTAssert(err == nil, "category not created.")
 			callback(category: category)
 		})
 	}
@@ -58,7 +58,7 @@ class OrderItemTest: XCTestCase {
 			item.category_id = category.id!
 			
 			item.save({ (err: NSError?) -> Void in
-				XCTAssert(err == nil, "item not created. " + err!.description)
+				XCTAssert(err == nil, "item not created.")
 				
 				callback(item: item)
 			})
@@ -69,17 +69,17 @@ class OrderItemTest: XCTestCase {
 		self.getItem({ (item: Item) -> Void in
 			var group = ConfigModifierGroup(name: "Test", choiceRequired: false)
 			group.save({ (err: NSError?) -> Void in
-				XCTAssert(err == nil, "group modifier not created. " + err!.description)
+				XCTAssert(err == nil, "group modifier not created.")
 				
 				var modifier = ConfigModifier()
 				modifier.name = "Test modifier"
 				modifier.group_id = group.id!
 				modifier.save({ (err: NSError?) -> Void in
-					XCTAssert(err == nil, "modifier not created. " + err!.description)
+					XCTAssert(err == nil, "modifier not created.")
 					
 					item.modifiers = [modifier.id!]
 					item.setModifiers({ (err: NSError?) -> Void in
-						XCTAssert(err == nil, "item cannot set modifiers. " + err!.description)
+						XCTAssert(err == nil, "item cannot set modifiers.")
 						
 						callback(item: item, modifierGroup: group, modifier: modifier)
 					})
@@ -98,12 +98,12 @@ class OrderItemTest: XCTestCase {
 				order.type_id = orderType.id!
 				
 				group.addOrder(order, callback: { (err: NSError?) -> Void in
-					XCTAssert(err == nil, "cannot add order to group. " + err!.description)
+					XCTAssert(err == nil, "cannot add order to group.")
 					
 					group.getOrders({ (err: NSError?, orders: [Order]) -> Void in
 						self.prepareItem({ (item: Item, modifierGroup: ConfigModifierGroup, modifier: ConfigModifier) -> Void in
 							order.addItem(item, callback: { (err: NSError?, orderItem: OrderItem?) -> Void in
-								XCTAssert(err == nil, "cannot add item to order. " + err!.description)
+								XCTAssert(err == nil, "cannot add item to order.")
 								
 								var orderModifier = OrderItemModifier()
 								orderModifier.order_id = order.id!
@@ -111,7 +111,7 @@ class OrderItemTest: XCTestCase {
 								orderModifier.modifier_group_id = modifierGroup.id!
 								orderModifier.modifier_id = modifier.id!
 								orderModifier.save({ (err: NSError?) -> Void in
-									XCTAssert(err == nil, "cannot save modifier to orderItem. " + err!.description)
+									XCTAssert(err == nil, "cannot save modifier to orderItem.")
 									expectation.fulfill()
 								})
 							})

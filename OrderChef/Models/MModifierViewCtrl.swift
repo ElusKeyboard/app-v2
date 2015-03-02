@@ -55,15 +55,7 @@ class MModifierViewCtrl: UITableViewController, RefreshDelegate, TextFieldCellDe
 		self.navigationController!.pushViewController(vc, animated: true)
 	}
 	
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 2
-	}
-	
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return section == 0 ? 2 : modifier.modifiers.count + 1
-	}
-	
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+	func createModifier(indexPath: NSIndexPath) {
 		var vc = MModifierSingleViewCtrl(nibName: groupedTableNibName, bundle: nil)
 		
 		if indexPath.row != self.modifier.modifiers.count {
@@ -73,6 +65,33 @@ class MModifierViewCtrl: UITableViewController, RefreshDelegate, TextFieldCellDe
 		vc.modifier.group_id = self.modifier.id!
 		
 		self.navigationController!.pushViewController(vc, animated: true)
+	}
+	
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 2
+	}
+	
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return section == 0 ? 2 : modifier.modifiers.count + 1
+	}
+	
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		if self.modifier.id == nil {
+			// save before adding new group
+			SVProgressHUD.showProgress(0.0, status: "Saving Modifier")
+			self.modifier.save({ (err: NSError?) -> Void in
+				if err != nil {
+					return SVProgressHUD.showErrorWithStatus("Could not save modifier")
+				}
+				
+				SVProgressHUD.dismiss()
+				self.createModifier(indexPath)
+			})
+			
+			return
+		}
+		
+		self.createModifier(indexPath)
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

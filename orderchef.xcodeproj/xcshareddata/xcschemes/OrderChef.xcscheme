@@ -57,7 +57,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0CB93E8F1AA16693005F66B1"
-               BuildableName = "oc-tests.xctest"
+               BuildableName = "orderchef-tests.xctest"
                BlueprintName = "orderchef-tests"
                ReferencedContainer = "container:orderchef.xcodeproj">
             </BuildableReference>
@@ -95,7 +95,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0CB93E8F1AA16693005F66B1"
-               BuildableName = "oc-tests.xctest"
+               BuildableName = "orderchef-tests.xctest"
                BlueprintName = "orderchef-tests"
                ReferencedContainer = "container:orderchef.xcodeproj">
             </BuildableReference>

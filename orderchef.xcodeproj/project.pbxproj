@@ -141,7 +141,7 @@
 		4F5ACE391A6166AD009AC555 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		4F5ACE401A618153009AC555 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = Models/Table.swift; sourceTree = "<group>"; };
 		4F5ACE421A618267009AC555 /* TablesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TablesViewCtrl.swift; path = Controllers/TablesViewCtrl.swift; sourceTree = "<group>"; };
-		4F5ACE5F1A618B88009AC555 /* OrderChef-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OrderChef-Bridging-Header.h"; sourceTree = "<group>"; };
+		4F5ACE5F1A618B88009AC555 /* orderchef-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "orderchef-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F88CCAD1A7CFCFB001747FF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		4F88CCAE1A7CFCFB001747FF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		4FA145A21A7D6EC000154D27 /* AddItemToOrderViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddItemToOrderViewCtrl.swift; path = Controllers/AddItemToOrderViewCtrl.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 		4FDF4E731A77E2CD00D981AC /* TableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableType.swift; path = Models/TableType.swift; sourceTree = "<group>"; };
 		4FDF4E751A77E85100D981AC /* MTableTypesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MTableTypesViewCtrl.swift; path = Controllers/MTableTypesViewCtrl.swift; sourceTree = "<group>"; };
 		4FDF4E771A77E85C00D981AC /* MTableTypeViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MTableTypeViewCtrl.swift; path = Controllers/MTableTypeViewCtrl.swift; sourceTree = "<group>"; };
-		4FE651591A616447006AE6EC /* orderchef.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orderchef.temp_caseinsensitive_rename.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FE651591A616447006AE6EC /* orderchef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orderchef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE6515D1A616447006AE6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FE6515E1A616447006AE6EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FE651651A616447006AE6EC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 				4F5ACE461A6186AB009AC555 /* Cells */,
 				4F5ACE3B1A617527009AC555 /* Controllers */,
 				4FE651801A616505006AE6EC /* Models */,
-				4FE6515B1A616447006AE6EC /* OrderChef */,
+				4FE6515B1A616447006AE6EC /* orderchef */,
 				0CB93E911AA16693005F66B1 /* orderchef-tests */,
 				4FE6515A1A616447006AE6EC /* Products */,
 				4F5ACE491A618980009AC555 /* Deps */,
@@ -377,13 +377,13 @@
 		4FE6515A1A616447006AE6EC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4FE651591A616447006AE6EC /* orderchef.temp_caseinsensitive_rename.app */,
+				4FE651591A616447006AE6EC /* orderchef.app */,
 				0CB93E901AA16693005F66B1 /* orderchef-tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4FE6515B1A616447006AE6EC /* OrderChef */ = {
+		4FE6515B1A616447006AE6EC /* orderchef */ = {
 			isa = PBXGroup;
 			children = (
 				4FE6515E1A616447006AE6EC /* AppDelegate.swift */,
@@ -392,6 +392,7 @@
 				4FE651651A616447006AE6EC /* Images.xcassets */,
 				4FE6515C1A616447006AE6EC /* Supporting Files */,
 			);
+			name = orderchef;
 			path = OrderChef;
 			sourceTree = "<group>";
 		};
@@ -399,7 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				4FE6515D1A616447006AE6EC /* Info.plist */,
-				4F5ACE5F1A618B88009AC555 /* OrderChef-Bridging-Header.h */,
+				4F5ACE5F1A618B88009AC555 /* orderchef-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -459,7 +460,7 @@
 			);
 			name = orderchef;
 			productName = OrderChef;
-			productReference = 4FE651591A616447006AE6EC /* orderchef.temp_caseinsensitive_rename.app */;
+			productReference = 4FE651591A616447006AE6EC /* orderchef.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -654,8 +655,8 @@
 				INFOPLIST_FILE = "orderchef-tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "orderchef-tests";
-				SWIFT_OBJC_BRIDGING_HEADER = "OrderChef/OrderChef-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrderChef.app/OrderChef";
+				SWIFT_OBJC_BRIDGING_HEADER = "orderchef/orderchef-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/orderchef.temp_caseinsensitive_rename.app/orderchef.temp_caseinsensitive_rename";
 			};
 			name = Debug;
 		};
@@ -670,8 +671,8 @@
 				INFOPLIST_FILE = "orderchef-tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "orderchef-tests";
-				SWIFT_OBJC_BRIDGING_HEADER = "OrderChef/OrderChef-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrderChef.app/OrderChef";
+				SWIFT_OBJC_BRIDGING_HEADER = "orderchef/orderchef-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/orderchef.temp_caseinsensitive_rename.app/orderchef.temp_caseinsensitive_rename";
 			};
 			name = Release;
 		};
@@ -766,8 +767,8 @@
 				INFOPLIST_FILE = OrderChef/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_NAME = orderchef.temp_caseinsensitive_rename;
-				SWIFT_OBJC_BRIDGING_HEADER = "OrderChef/OrderChef-Bridging-Header.h";
+				PRODUCT_NAME = orderchef;
+				SWIFT_OBJC_BRIDGING_HEADER = "orderchef/orderchef-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -783,8 +784,8 @@
 				INFOPLIST_FILE = OrderChef/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_NAME = orderchef.temp_caseinsensitive_rename;
-				SWIFT_OBJC_BRIDGING_HEADER = "OrderChef/OrderChef-Bridging-Header.h";
+				PRODUCT_NAME = orderchef;
+				SWIFT_OBJC_BRIDGING_HEADER = "orderchef/orderchef-Bridging-Header.h";
 			};
 			name = Release;
 		};

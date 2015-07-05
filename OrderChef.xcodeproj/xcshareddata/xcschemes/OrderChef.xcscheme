@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4FE651581A616447006AE6EC"
-               BuildableName = "OrderChef.app"
-               BlueprintName = "OrderChef"
-               ReferencedContainer = "container:OrderChef.xcodeproj">
+               BuildableName = "orderchef.temp_caseinsensitive_rename.app"
+               BlueprintName = "orderchef"
+               ReferencedContainer = "container:orderchef.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "4FE6516D1A616447006AE6EC"
                BuildableName = "OrderChefTests.xctest"
                BlueprintName = "OrderChefTests"
-               ReferencedContainer = "container:OrderChef.xcodeproj">
+               ReferencedContainer = "container:orderchef.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "0CB93E801AA1664E005F66B1"
                BuildableName = "OrderChef Tests.xctest"
                BlueprintName = "OrderChef Tests"
-               ReferencedContainer = "container:OrderChef.xcodeproj">
+               ReferencedContainer = "container:orderchef.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -57,9 +57,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0CB93E8F1AA16693005F66B1"
-               BuildableName = "orderchef-tests.xctest"
+               BuildableName = "oc-tests.xctest"
                BlueprintName = "orderchef-tests"
-               ReferencedContainer = "container:OrderChef.xcodeproj">
+               ReferencedContainer = "container:orderchef.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -77,7 +77,7 @@
                BlueprintIdentifier = "4FE6516D1A616447006AE6EC"
                BuildableName = "OrderChefTests.xctest"
                BlueprintName = "OrderChefTests"
-               ReferencedContainer = "container:OrderChef.xcodeproj">
+               ReferencedContainer = "container:orderchef.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -87,7 +87,7 @@
                BlueprintIdentifier = "0CB93E801AA1664E005F66B1"
                BuildableName = "OrderChef Tests.xctest"
                BlueprintName = "OrderChef Tests"
-               ReferencedContainer = "container:OrderChef.xcodeproj">
+               ReferencedContainer = "container:orderchef.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -95,9 +95,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0CB93E8F1AA16693005F66B1"
-               BuildableName = "orderchef-tests.xctest"
+               BuildableName = "oc-tests.xctest"
                BlueprintName = "orderchef-tests"
-               ReferencedContainer = "container:OrderChef.xcodeproj">
+               ReferencedContainer = "container:orderchef.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -105,9 +105,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FE651581A616447006AE6EC"
-            BuildableName = "OrderChef.app"
-            BlueprintName = "OrderChef"
-            ReferencedContainer = "container:OrderChef.xcodeproj">
+            BuildableName = "orderchef.temp_caseinsensitive_rename.app"
+            BlueprintName = "orderchef"
+            ReferencedContainer = "container:orderchef.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -120,13 +120,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FE651581A616447006AE6EC"
-            BuildableName = "OrderChef.app"
-            BlueprintName = "OrderChef"
-            ReferencedContainer = "container:OrderChef.xcodeproj">
+            BuildableName = "orderchef.temp_caseinsensitive_rename.app"
+            BlueprintName = "orderchef"
+            ReferencedContainer = "container:orderchef.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -138,13 +139,14 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FE651581A616447006AE6EC"
-            BuildableName = "OrderChef.app"
-            BlueprintName = "OrderChef"
-            ReferencedContainer = "container:OrderChef.xcodeproj">
+            BuildableName = "orderchef.temp_caseinsensitive_rename.app"
+            BlueprintName = "orderchef"
+            ReferencedContainer = "container:orderchef.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

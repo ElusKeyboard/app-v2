@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:OrderChef.xcodeproj">
+      location = "self:/Users/m/p/orderchef_2/OrderChef/orderchef.xcodeproj">
    </FileRef>
 </Workspace>

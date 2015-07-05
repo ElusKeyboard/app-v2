@@ -158,7 +158,7 @@
 		4FDF4E731A77E2CD00D981AC /* TableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableType.swift; path = Models/TableType.swift; sourceTree = "<group>"; };
 		4FDF4E751A77E85100D981AC /* MTableTypesViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MTableTypesViewCtrl.swift; path = Controllers/MTableTypesViewCtrl.swift; sourceTree = "<group>"; };
 		4FDF4E771A77E85C00D981AC /* MTableTypeViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MTableTypeViewCtrl.swift; path = Controllers/MTableTypeViewCtrl.swift; sourceTree = "<group>"; };
-		4FE651591A616447006AE6EC /* OrderChef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrderChef.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FE651591A616447006AE6EC /* orderchef.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orderchef.temp_caseinsensitive_rename.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE6515D1A616447006AE6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FE6515E1A616447006AE6EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FE651651A616447006AE6EC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -377,7 +377,7 @@
 		4FE6515A1A616447006AE6EC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4FE651591A616447006AE6EC /* OrderChef.app */,
+				4FE651591A616447006AE6EC /* orderchef.temp_caseinsensitive_rename.app */,
 				0CB93E901AA16693005F66B1 /* orderchef-tests.xctest */,
 			);
 			name = Products;
@@ -444,9 +444,9 @@
 			productReference = 0CB93E901AA16693005F66B1 /* orderchef-tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4FE651581A616447006AE6EC /* OrderChef */ = {
+		4FE651581A616447006AE6EC /* orderchef */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4FE651781A616447006AE6EC /* Build configuration list for PBXNativeTarget "OrderChef" */;
+			buildConfigurationList = 4FE651781A616447006AE6EC /* Build configuration list for PBXNativeTarget "orderchef" */;
 			buildPhases = (
 				4FE651551A616447006AE6EC /* Sources */,
 				4FE651561A616447006AE6EC /* Frameworks */,
@@ -457,9 +457,9 @@
 			);
 			dependencies = (
 			);
-			name = OrderChef;
+			name = orderchef;
 			productName = OrderChef;
-			productReference = 4FE651591A616447006AE6EC /* OrderChef.app */;
+			productReference = 4FE651591A616447006AE6EC /* orderchef.temp_caseinsensitive_rename.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -481,7 +481,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4FE651541A616447006AE6EC /* Build configuration list for PBXProject "OrderChef" */;
+			buildConfigurationList = 4FE651541A616447006AE6EC /* Build configuration list for PBXProject "orderchef" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -494,7 +494,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4FE651581A616447006AE6EC /* OrderChef */,
+				4FE651581A616447006AE6EC /* orderchef */,
 				0CB93E8F1AA16693005F66B1 /* orderchef-tests */,
 			);
 		};
@@ -622,7 +622,7 @@
 /* Begin PBXTargetDependency section */
 		0CB93E971AA16693005F66B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4FE651581A616447006AE6EC /* OrderChef */;
+			target = 4FE651581A616447006AE6EC /* orderchef */;
 			targetProxy = 0CB93E961AA16693005F66B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -653,7 +653,7 @@
 				);
 				INFOPLIST_FILE = "orderchef-tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "orderchef-tests";
 				SWIFT_OBJC_BRIDGING_HEADER = "OrderChef/OrderChef-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrderChef.app/OrderChef";
 			};
@@ -669,7 +669,7 @@
 				);
 				INFOPLIST_FILE = "orderchef-tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "orderchef-tests";
 				SWIFT_OBJC_BRIDGING_HEADER = "OrderChef/OrderChef-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrderChef.app/OrderChef";
 			};
@@ -766,7 +766,7 @@
 				INFOPLIST_FILE = OrderChef/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = orderchef.temp_caseinsensitive_rename;
 				SWIFT_OBJC_BRIDGING_HEADER = "OrderChef/OrderChef-Bridging-Header.h";
 			};
 			name = Debug;
@@ -783,7 +783,7 @@
 				INFOPLIST_FILE = OrderChef/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = orderchef.temp_caseinsensitive_rename;
 				SWIFT_OBJC_BRIDGING_HEADER = "OrderChef/OrderChef-Bridging-Header.h";
 			};
 			name = Release;
@@ -800,7 +800,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4FE651541A616447006AE6EC /* Build configuration list for PBXProject "OrderChef" */ = {
+		4FE651541A616447006AE6EC /* Build configuration list for PBXProject "orderchef" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4FE651761A616447006AE6EC /* Debug */,
@@ -809,7 +809,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4FE651781A616447006AE6EC /* Build configuration list for PBXNativeTarget "OrderChef" */ = {
+		4FE651781A616447006AE6EC /* Build configuration list for PBXNativeTarget "orderchef" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4FE651791A616447006AE6EC /* Debug */,

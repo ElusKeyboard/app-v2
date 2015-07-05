@@ -29,7 +29,7 @@ class AddItemToOrderViewCtrl: UITableViewController, RefreshDelegate {
 	}
 	
 	func done() {
-		self.navigationController!.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 2] as UIViewController, animated: true)
+		self.navigationController!.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 2] as! UIViewController, animated: true)
 		self.navigationController!.popViewControllerAnimated(true)
 	}
 	

@@ -13,8 +13,8 @@ class OrderType {
 	
 	func parse (res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.name = res["name"] as String
-		self.description = res["description"] as String
+		self.name = res["name"] as! String
+		self.description = res["description"] as! String
 	}
 	
 	func json() -> [NSObject: AnyObject] {

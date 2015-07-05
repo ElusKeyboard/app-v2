@@ -18,8 +18,8 @@ class OrderGroup {
 	
 	func parse(res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.table_id = res["table_id"] as Int
-		self.cleared = res["cleared"] as Bool
+		self.table_id = res["table_id"] as! Int
+		self.cleared = res["cleared"] as! Bool
 		
 		let date: Int? = res["cleared_when"] as? Int
 		if date != nil {

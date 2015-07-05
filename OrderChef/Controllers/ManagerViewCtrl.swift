@@ -106,7 +106,7 @@ class ManagerViewCtrl: UITableViewController {
 				name = storage.venue_name!
 			}
 			
-			return name + " — orderchef v" + versionNumber
+			return name + " — orderchef v" + (versionNumber as String)
 		}
 		
 		return nil

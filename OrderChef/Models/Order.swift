@@ -20,8 +20,8 @@ class Order {
 	
 	func parse(res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.type_id = res["type_id"] as Int
-		self.group_id = res["group_id"] as Int
+		self.type_id = res["type_id"] as! Int
+		self.group_id = res["group_id"] as! Int
 		
 		for ot in storage.order_types {
 			if ot.id != nil && ot.id! == self.type_id {

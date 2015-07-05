@@ -97,7 +97,7 @@ class MConfigViewCtrl: UITableViewController, TextFieldCellDelegate {
 				
 				if self.navigationController == nil {
 					// we're not presented inside managerVC
-					var delegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+					var delegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 					delegate.setRootVC()
 				}
 			}, nil)

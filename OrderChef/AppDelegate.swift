@@ -4,7 +4,7 @@ import Fabric
 import Crashlytics
 
 let iOS8 = floor(NSFoundationVersionNumber) > floor(NSFoundationVersionNumber_iOS_7_1)
-let versionNumber = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as NSString
+let versionNumber = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! NSString
 let mainColour = UIColor(red: 0.203, green: 0.444, blue: 0.768, alpha: 1.0)
 
 let groupedTableNibName = "GroupedTableView"

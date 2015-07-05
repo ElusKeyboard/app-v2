@@ -17,10 +17,10 @@ class Table {
 	
 	func parse (res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.name = res["name"] as String
+		self.name = res["name"] as! String
 		self.table_number = res["table_number"] as? String
 		self.location = res["location"] as? String
-		self.table_type_id = res["type_id"] as Int
+		self.table_type_id = res["type_id"] as! Int
 	}
 	
 	func json() -> [NSObject: AnyObject] {

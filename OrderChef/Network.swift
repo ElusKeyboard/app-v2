@@ -55,7 +55,7 @@ func makeRequest (endpoint: String, method: String?) -> NSMutableURLRequest {
 }
 
 func readSettings () -> Bool {
-	var docDir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
+	var docDir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
 	
 	var err: NSError?
 	var contents = NSData(contentsOfFile: docDir + "/settings.json", options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err)
@@ -81,7 +81,7 @@ func saveSettings () -> Bool {
 	settings["venue_name"] = storage.venue_name
 	settings["server_ip"] = storage.server_ip
 	
-	var docDir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
+	var docDir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
 	
 	var err: NSError?
 	var jsonData = NSJSONSerialization.dataWithJSONObject(settings, options: NSJSONWritingOptions.allZeros, error: &err)
@@ -150,7 +150,7 @@ func doRequest (request: NSMutableURLRequest, callback: (err: NSError?, data: An
 			return
 		}
 		
-		var httpRes = res as NSHTTPURLResponse
+		var httpRes = res as! NSHTTPURLResponse
 		var cookie = httpRes.allHeaderFields["set-cookie"] as? String
 		if cookie != nil {
 			sessionCookie = cookie!.componentsSeparatedByString(";")[0] as String

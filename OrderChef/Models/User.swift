@@ -16,8 +16,8 @@ class User {
 	
 	func parse (res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.name = res["name"] as String
-		self.manager = res["manager"] as Bool
+		self.name = res["name"] as! String
+		self.manager = res["manager"] as! Bool
 		
 		let date: Int? = res["last_login"] as? Int
 		if date != nil {
@@ -26,8 +26,8 @@ class User {
 	}
 	
 	class func find(_id: NSString, callback: (user: User?) -> Void) {
-		doRequest(makeRequest("/user/" + _id, nil), { (err: NSError?, data: AnyObject?) -> Void in
-			var json: [NSString: AnyObject] = data as [NSString: AnyObject]
+		doRequest(makeRequest("/user/" + (_id as String), nil), { (err: NSError?, data: AnyObject?) -> Void in
+			var json: [NSString: AnyObject] = data as! [NSString: AnyObject]
 			var user = User(res: json)
 			callback(user: user)
 		}, nil)

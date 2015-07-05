@@ -21,8 +21,8 @@ class ConfigModifierGroup {
 
 	func parse(res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.name = res["name"] as String
-		self.choiceRequired = res["choice_required"] as Bool
+		self.name = res["name"] as! String
+		self.choiceRequired = res["choice_required"] as! Bool
 	}
 
 	func json() -> [NSString: AnyObject] {
@@ -117,9 +117,9 @@ class ConfigModifier {
 	
 	func parse(res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.name = res["name"] as String
-		self.price = res["price"] as Float
-		self.group_id = res["group_id"] as Int
+		self.name = res["name"] as! String
+		self.price = res["price"] as! Float
+		self.group_id = res["group_id"] as! Int
 	}
 	
 	func json() -> [NSString: AnyObject] {

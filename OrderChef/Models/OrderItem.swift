@@ -20,8 +20,8 @@ class OrderItem {
 	
 	func parse(res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.item_id = res["item_id"] as Int
-		self.order_id = res["order_id"] as Int
+		self.item_id = res["item_id"] as! Int
+		self.order_id = res["order_id"] as! Int
 		self.notes = res["notes"] as? String
 		
 		for it in storage.items {
@@ -103,9 +103,9 @@ class OrderItemModifier {
 	
 	func parse(res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.order_item_id = res["order_item_id"] as Int
-		self.modifier_group_id = res["modifier_group_id"] as Int
-		self.modifier_id = res["modifier_id"] as Int
+		self.order_item_id = res["order_item_id"] as! Int
+		self.modifier_group_id = res["modifier_group_id"] as! Int
+		self.modifier_id = res["modifier_id"] as! Int
 	}
 	
 	func json() -> [NSObject: AnyObject] {
@@ -125,7 +125,9 @@ class OrderItemModifier {
 			return
 		}
 		
-		var url = "/order/" + String(self.order_id) + "/item/" + String(self.order_item_id) + "/modifiers"
+		let order_id = String(self.order_id)
+		let order_item_id = String(self.order_item_id)
+		var url = "/order/" + order_id + "/item/" + order_item_id + "/modifiers"
 		
 		doPostRequest(makeRequest(url, "POST"), { (err: NSError?, data: AnyObject?) -> Void in
 			if err != nil {

@@ -21,14 +21,14 @@ class Item {
 	
 	func parse(res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.name = res["name"] as String
+		self.name = res["name"] as! String
 		self.description = res["description"] as? String
 		let price: Float? = res["price"] as? Float
 		if price != nil {
 			self.price = price!
 		}
 		
-		self.category_id = res["category_id"] as Int
+		self.category_id = res["category_id"] as! Int
 	}
 	
 	func json() -> [NSString: AnyObject] {

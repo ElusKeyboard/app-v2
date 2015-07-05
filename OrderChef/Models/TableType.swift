@@ -14,7 +14,7 @@ class TableType {
 	
 	func parse (res: [NSString: AnyObject]) {
 		self.id = res["id"] as? Int
-		self.name = res["name"] as String
+		self.name = res["name"] as! String
 	}
 	
 	func json() -> [NSObject: AnyObject] {

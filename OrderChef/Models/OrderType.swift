@@ -33,9 +33,9 @@ class OrderType {
 			url = "/config/order-type/" + String(self.id!)
 		}
 		
-		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (statusCode: Int, data: AnyObject?) -> Void in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("cannot save order type", statusCode))
 			}
 			
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
@@ -47,16 +47,16 @@ class OrderType {
 		}, self.json())
 	}
 	
-	func remove(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/config/order-type/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
-			callback(err: err)
+	func remove(callback: (statusCode: Int) -> Void) {
+		doRequest(makeRequest("/config/order-type/" + String(self.id!), "DELETE"), { (statusCode: Int, data: AnyObject?) -> Void in
+			callback(statusCode: statusCode)
 		}, nil)
 	}
 	
 	class func getAll(callback: (err: NSError?, list: [OrderType]) -> Void) {
-		doRequest(makeRequest("/config/order-types", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err, list: [])
+		doRequest(makeRequest("/config/order-types", "GET"), { (statusCode: Int, data: AnyObject?) -> Void in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot get order types", statusCode), list: [])
 			}
 			
 			var json: [[NSString: AnyObject]]? = data as? [[NSString: AnyObject]]

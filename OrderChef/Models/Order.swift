@@ -49,9 +49,9 @@ class Order {
 	}
 	
 	func addItem(item: Item, callback: (err: NSError?, orderItem: OrderItem?) -> Void) {
-		doPostRequest(makeRequest("/order/" + String(self.id!) + "/items", "POST"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err, orderItem: nil)
+		doPostRequest(makeRequest("/order/" + String(self.id!) + "/items", "POST"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot add item to order", statusCode), orderItem: nil)
 			}
 			
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
@@ -68,9 +68,9 @@ class Order {
 	}
 	
 	func getItems(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/order/" + String(self.id!) + "/items", nil), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doRequest(makeRequest("/order/" + String(self.id!) + "/items", nil), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot get order items", statusCode))
 			}
 			
 			var json: [[NSString: AnyObject]]? = data as? [[NSString: AnyObject]]

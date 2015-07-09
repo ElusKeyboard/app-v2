@@ -41,9 +41,9 @@ class Table {
 			url = "/table/" + String(self.id!)
 		}
 		
-		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot save table", statusCode))
 			}
 			
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
@@ -56,15 +56,15 @@ class Table {
 	}
 	
 	func remove(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/table/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
-			callback(err: err)
+		doRequest(makeRequest("/table/" + String(self.id!), "DELETE"), { (statusCode, data) in
+			callback(err: statusCode >= 400 ? makeNetworkError("Cannot remove table", statusCode) : nil)
 		}, nil)
 	}
 	
 	class func getAll(callback: (err: NSError?, list: [Table]) -> Void) {
-		doRequest(makeRequest("/tables", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err, list: [])
+		doRequest(makeRequest("/tables", "GET"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot get tables", statusCode), list: [])
 			}
 			
 			var json: [[NSString: AnyObject]]? = data as? [[NSString: AnyObject]]
@@ -80,9 +80,9 @@ class Table {
 	}
 	
 	func getGroup(callback: (err: NSError?, group: OrderGroup?) -> Void) {
-		doRequest(makeRequest("/table/" + String(self.id!) + "/group", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err, group: nil)
+		doRequest(makeRequest("/table/" + String(self.id!) + "/group", "GET"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot get group for table", statusCode), group: nil)
 			}
 			
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]

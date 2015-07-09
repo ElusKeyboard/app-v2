@@ -50,9 +50,9 @@ class SharedStorage {
 	// MARK: - Update methods
 	
 	func updateSettings(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/config/settings", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doRequest(makeRequest("/config/settings", "GET"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot update settings", statusCode))
 			}
 			
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
@@ -70,8 +70,8 @@ class SharedStorage {
 			settings["venue_name"] = self.venue_name!
 		}
 		
-		doPostRequest(makeRequest("/config/settings", "POST"), { (err: NSError?, data: AnyObject?) -> Void in
-			callback(err: err)
+		doPostRequest(makeRequest("/config/settings", "POST"), { (statusCode, data) in
+			callback(err: statusCode >= 400 ? makeNetworkError("Cannot set settings", statusCode) : nil)
 		}, settings)
 	}
 	

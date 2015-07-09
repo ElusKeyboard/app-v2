@@ -41,9 +41,9 @@ class ConfigModifierGroup {
 			url = "/config/modifier/" + String(self.id!)
 		}
 
-		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot save modifier", statusCode))
 			}
 
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
@@ -56,8 +56,8 @@ class ConfigModifierGroup {
 	}
 
 	func remove(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/config/modifier/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
-			callback(err: err)
+		doRequest(makeRequest("/config/modifier/" + String(self.id!), "DELETE"), { (statusCode, data) in
+			callback(err: statusCode >= 400 ? makeNetworkError("Cannot remove modifier", statusCode) : nil)
 		}, nil)
 	}
 
@@ -67,10 +67,10 @@ class ConfigModifierGroup {
 		}
 		
 		var request = makeRequest("/config/modifier/" + String(self.id!) + "/items", "GET")
-		doRequest(request, { (err: NSError?, data: AnyObject?) -> Void in
+		doRequest(request, { (statusCode, data) in
 			self.modifiers = []
-			if err != nil {
-				return callback(err: err)
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot get modifiers", statusCode))
 			}
 
 			var json: [[NSString: AnyObject]]? = data as? [[NSString: AnyObject]]
@@ -85,9 +85,9 @@ class ConfigModifierGroup {
 	}
 	
 	class func getModifiers(callback: (err: NSError?, modifiers: [ConfigModifierGroup]) -> Void) {
-		doRequest(makeRequest("/config/modifiers", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err, modifiers: [])
+		doRequest(makeRequest("/config/modifiers", "GET"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot get modifiers", statusCode), modifiers: [])
 			}
 			
 			var json: [[NSString: AnyObject]]? = data as? [[NSString: AnyObject]]
@@ -139,9 +139,9 @@ class ConfigModifier {
 			url = "/config/modifier/" + String(self.group_id) + "/item/" + String(self.id!)
 		}
 		
-		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot save modifier", statusCode))
 			}
 			
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
@@ -154,8 +154,8 @@ class ConfigModifier {
 	}
 	
 	func remove(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/config/modifier/" + String(self.group_id) + "/item/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
-			callback(err: err)
+		doRequest(makeRequest("/config/modifier/" + String(self.group_id) + "/item/" + String(self.id!), "DELETE"), { (statusCode, data) in
+			callback(err: statusCode >= 400 ? makeNetworkError("Cannot remove modifier", statusCode) : nil)
 		}, nil)
 	}
 }

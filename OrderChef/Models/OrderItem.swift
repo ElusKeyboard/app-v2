@@ -46,9 +46,9 @@ class OrderItem {
 	func save(callback: (err: NSError?) -> Void) {
 		var url = "/order/" + String(self.order_id) + "/item/" + String(self.id!)
 		
-		doPostRequest(makeRequest(url, "PUT"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doPostRequest(makeRequest(url, "PUT"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot save order item", statusCode))
 			}
 			
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
@@ -61,15 +61,15 @@ class OrderItem {
 	}
 	
 	func remove(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/order/" + String(self.order_id) + "/item/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
-			callback(err: err)
+		doRequest(makeRequest("/order/" + String(self.order_id) + "/item/" + String(self.id!), "DELETE"), { (statusCode, data) in
+			callback(err: statusCode >= 400 ? makeNetworkError("Cannot remove item", statusCode) : nil)
 		}, nil)
 	}
 	
 	func getModifiers(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/order/" + String(self.order_id) + "/item/" + String(self.id!) + "/modifiers", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doRequest(makeRequest("/order/" + String(self.order_id) + "/item/" + String(self.id!) + "/modifiers", "GET"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot get modifiers", statusCode))
 			}
 			
 			var json: [[NSString: AnyObject]]? = data as? [[NSString: AnyObject]]
@@ -129,9 +129,9 @@ class OrderItemModifier {
 		let order_item_id = String(self.order_item_id)
 		var url = "/order/" + order_id + "/item/" + order_item_id + "/modifiers"
 		
-		doPostRequest(makeRequest(url, "POST"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doPostRequest(makeRequest(url, "POST"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot save modifier", statusCode))
 			}
 			
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
@@ -144,8 +144,8 @@ class OrderItemModifier {
 	}
 	
 	func remove(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/order/" + String(self.order_id) + "/item/" + String(self.order_item_id) + "/modifier/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
-			callback(err: err)
+		doRequest(makeRequest("/order/" + String(self.order_id) + "/item/" + String(self.order_item_id) + "/modifier/" + String(self.id!), "DELETE"), { (statusCode, data) in
+			callback(err: statusCode >= 400 ? makeNetworkError("Cannot remove order item", statusCode) : nil)
 		}, nil)
 	}
 }

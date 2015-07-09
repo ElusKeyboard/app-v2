@@ -49,9 +49,9 @@ class Item {
 			url = "/item/" + String(self.id!)
 		}
 		
-		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot save item", statusCode))
 			}
 			
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
@@ -64,15 +64,15 @@ class Item {
 	}
 	
 	func remove(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/item/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
-			callback(err: err)
+		doRequest(makeRequest("/item/" + String(self.id!), "DELETE"), { (statusCode, data) in
+			callback(err: statusCode >= 400 ? makeNetworkError("Cannot delete item", statusCode) : nil)
 		}, nil)
 	}
 	
 	func getModifiers(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/item/" + String(self.id!) + "/modifiers", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doRequest(makeRequest("/item/" + String(self.id!) + "/modifiers", "GET"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot get modifiers for item", statusCode))
 			}
 			
 			var json: [Int]? = data as? [Int]
@@ -85,17 +85,17 @@ class Item {
 	}
 	
 	func setModifiers(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/item/" + String(self.id!) + "/modifiers", "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doRequest(makeRequest("/item/" + String(self.id!) + "/modifiers", "DELETE"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot set modifiers", statusCode))
 			}
 			
 			var numCalled = 0
 			var didErr: NSError? = nil
 			for modifier in self.modifiers {
-				doPostRequest(makeRequest("/item/" + String(self.id!) + "/modifiers", "POST"), { (err: NSError?, data: AnyObject?) -> Void in
-					if err != nil {
-						didErr = err
+				doPostRequest(makeRequest("/item/" + String(self.id!) + "/modifiers", "POST"), { (statusCode, data) in
+					if statusCode >= 400 {
+						didErr = makeNetworkError("Cannot set modifier", statusCode)
 					}
 					
 					if ++numCalled >= self.modifiers.count {
@@ -111,9 +111,9 @@ class Item {
 	}
 	
 	class func getItems(callback: (err: NSError?, items: [Item]) -> Void) {
-		doRequest(makeRequest("/items", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err, items: [])
+		doRequest(makeRequest("/items", "GET"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot get items", statusCode), items: [])
 			}
 			
 			var json: [[NSString: AnyObject]]? = data as? [[NSString: AnyObject]]

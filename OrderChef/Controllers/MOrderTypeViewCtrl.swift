@@ -92,11 +92,11 @@ class MOrderTypeViewCtrl: UITableViewController, TextFieldCellDelegate {
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if indexPath.section == 2 {
 			// Delete
-			order_type.remove({ (err: NSError?) -> Void in
+			order_type.remove({ (statusCode: Int) -> Void in
 				tableView.deselectRowAtIndexPath(indexPath, animated: true)
 				
-				if err != nil {
-					return SVProgressHUD.showErrorWithStatus(err!.description)
+				if statusCode >= 400 {
+					return SVProgressHUD.showErrorWithStatus("Cannot remove order type")
 				}
 				
 				self.navigationController!.popViewControllerAnimated(true)

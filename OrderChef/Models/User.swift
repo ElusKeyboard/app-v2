@@ -26,7 +26,7 @@ class User {
 	}
 	
 	class func find(_id: NSString, callback: (user: User?) -> Void) {
-		doRequest(makeRequest("/user/" + (_id as String), nil), { (err: NSError?, data: AnyObject?) -> Void in
+		doRequest(makeRequest("/user/" + (_id as String), nil), { (statusCode, data) in
 			var json: [NSString: AnyObject] = data as! [NSString: AnyObject]
 			var user = User(res: json)
 			callback(user: user)

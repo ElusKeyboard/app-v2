@@ -36,9 +36,9 @@ class Category {
 			url = "/categories/" + String(self.id!)
 		}
 		
-		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err)
+		doPostRequest(makeRequest(url, self.id == nil ? "POST" : "PUT"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot save category", statusCode))
 			}
 			
 			var json: [NSString: AnyObject]? = data as? [NSString: AnyObject]
@@ -51,15 +51,15 @@ class Category {
 	}
 	
 	func remove(callback: (err: NSError?) -> Void) {
-		doRequest(makeRequest("/category/" + String(self.id!), "DELETE"), { (err: NSError?, data: AnyObject?) -> Void in
-			callback(err: err)
+		doRequest(makeRequest("/category/" + String(self.id!), "DELETE"), { (statusCode, data) in
+			callback(err: statusCode >= 400 ? makeNetworkError("Cannot remove category", statusCode) : nil)
 		}, nil)
 	}
 	
 	class func getCategories(callback: (err: NSError?, categories: [Category]) -> Void) {
-		doRequest(makeRequest("/categories", "GET"), { (err: NSError?, data: AnyObject?) -> Void in
-			if err != nil {
-				return callback(err: err, categories: [])
+		doRequest(makeRequest("/categories", "GET"), { (statusCode, data) in
+			if statusCode >= 400 {
+				return callback(err: makeNetworkError("Cannot get categories", statusCode), categories: [])
 			}
 			
 			var json: [[NSString: AnyObject]]? = data as? [[NSString: AnyObject]]

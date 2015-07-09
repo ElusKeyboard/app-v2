@@ -85,8 +85,8 @@ class MConfigViewCtrl: UITableViewController, TextFieldCellDelegate {
 			
 			SVProgressHUD.showProgress(0.0, status: "Testing server")
 			
-			doRequest(NSMutableURLRequest(URL: url!), { (err: NSError?, data: AnyObject?) -> Void in
-				if err != nil {
+			doRequest(NSMutableURLRequest(URL: url!), { (statusCode, data) in
+				if statusCode >= 400 {
 					SVProgressHUD.showErrorWithStatus("Server Not Responding")
 					tableView.deselectRowAtIndexPath(indexPath, animated: true)
 					return

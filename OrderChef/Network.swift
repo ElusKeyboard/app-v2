@@ -1,4 +1,3 @@
-
 import Foundation
 import MapKit
 
@@ -11,12 +10,17 @@ var sessionCookie: String?
 var queueRequests: Bool = false
 var queuedRequests: [Request] = []
 
+typealias networkCallback = (statusCode: Int, data: AnyObject?) -> Void
+func makeNetworkError(description: String, code: Int?) -> NSError {
+	return NSError(domain: description, code: code == nil ? code! : 400, userInfo: nil)
+}
+
 class Request: NSObject {
 	var request: NSMutableURLRequest
-	var callback: (err: NSError?, data: AnyObject?) -> Void
+	var callback: networkCallback
 	var body: NSData?
 	
-	init(request: NSMutableURLRequest, callback: (err: NSError?, data: AnyObject?) -> Void, body: NSData?) {
+	init(request: NSMutableURLRequest, callback: networkCallback, body: NSData?) {
 		self.request = request
 		self.callback = callback
 		self.body = body
@@ -117,37 +121,53 @@ func unqueueRequests() {
 	queuedRequests = []
 }
 
-func doPostRequest (request: NSMutableURLRequest, callback: (err: NSError?, data: AnyObject?) -> Void, body: [NSObject: AnyObject]) {
+func doPostRequest (request: NSMutableURLRequest, callback: networkCallback, body: [NSObject: AnyObject]) {
 	var err: NSError?
 	let data = NSJSONSerialization.dataWithJSONObject(body, options: nil, error: &err)
 	
 	doRequest(request, callback, data)
 }
 
-func callInMainThread (err: NSError?, data: AnyObject?, callback: (err: NSError?, data: AnyObject?) -> Void) {
+func callInMainThread (statusCode: Int, data: AnyObject?, callback: networkCallback) {
 	dispatch_async(dispatch_get_main_queue(), { () -> Void in
 		UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-		callback(err:err, data: data)
+		callback(statusCode: statusCode, data: data)
 	})
 }
 
-func doRequest (request: NSMutableURLRequest, callback: (err: NSError?, data: AnyObject?) -> Void, body: NSData?) -> NSURLSessionDataTask? {
-	if queueRequests {
-		var req: Request! = Request(request: request, callback: callback, body: body)
-		queuedRequests.append(req)
-		
-		return nil
-	}
-	
+func doGET (url: String, callback: networkCallback) {
+	doRequest(makeRequest(url, "GET"), callback, nil)
+}
+
+func doPOST (url: String, callback: networkCallback, body: [NSObject: AnyObject]) {
+	doPostRequest(makeRequest(url, "POST"), callback, body)
+}
+
+func doRequest (request: NSMutableURLRequest, callback: networkCallback, body: NSData?) -> NSURLSessionDataTask? {
+	return doRequest(request, callback, body, false, nil)
+}
+
+func doRequest (request: NSMutableURLRequest, callback: networkCallback, body: NSData?, raw: Bool, delegate: NSURLSessionTaskDelegate?) -> NSURLSessionDataTask? {
 	if body != nil {
 		request.HTTPBody = body
 	}
 	
 	UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-	let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data: NSData!, res: NSURLResponse!, err) -> Void in
+	
+	var session = NSURLSession.sharedSession()
+	if delegate != nil {
+		session = NSURLSession(configuration: nil, delegate: delegate, delegateQueue: nil)
+	}
+	
+	let task = session.dataTaskWithRequest(request) { (data: NSData!, res: NSURLResponse!, err) -> Void in
 		if err != nil {
-			callInMainThread(err, nil, callback)
-			return
+			if res != nil {
+				println(request.HTTPMethod + " " + res.URL!.absoluteString!)
+			} else {
+				println(request.HTTPMethod + " Request Failed. Err: \(err)")
+			}
+			
+			return callInMainThread(0, nil, callback)
 		}
 		
 		var httpRes = res as! NSHTTPURLResponse
@@ -155,26 +175,30 @@ func doRequest (request: NSMutableURLRequest, callback: (err: NSError?, data: An
 		if cookie != nil {
 			sessionCookie = cookie!.componentsSeparatedByString(";")[0] as String
 		}
+//		var cookie = httpRes.allHeaderFields["Use-Authorization"] as? String
+//		if cookie != nil {
+//			sessionCookie = cookie!.componentsSeparatedByString(";")[0] as String
+//			saveSettings()
+//			println("Setting cookie: \(sessionCookie!)")
+//		}
 		
 		var statusCode = httpRes.statusCode
-		if statusCode >= 400 {
-			callInMainThread(NSError(domain: kNetworkDomainError, code: 0, userInfo: nil), nil, callback)
-			
-			return
-		}
+		println(request.HTTPMethod + " " + String(statusCode) + " " + res.URL!.absoluteString!)
 		
 		var jsonData: NSData = (NSString(data: data
 			, encoding: NSUTF8StringEncoding)!).dataUsingEncoding(NSUTF8StringEncoding)!
-		var e: NSError? = nil
 		
-		var json: AnyObject? = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions(0), error: &e)
-		if e != nil {
-			callInMainThread(err, nil, callback)
-			
-			return
+		if (raw) {
+			return callInMainThread(statusCode, jsonData, callback)
 		}
 		
-		callInMainThread(nil, json, callback)
+		var e: NSError? = nil
+		var json: AnyObject? = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions(0), error: &e)
+		if e != nil {
+			return callInMainThread(statusCode, nil, callback)
+		}
+		
+		callInMainThread(statusCode, json, callback)
 	}
 	
 	task.resume()

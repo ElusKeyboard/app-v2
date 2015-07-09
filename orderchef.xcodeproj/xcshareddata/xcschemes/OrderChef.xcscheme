@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4FE651581A616447006AE6EC"
-               BuildableName = "orderchef.temp_caseinsensitive_rename.app"
+               BuildableName = "orderchef.app"
                BlueprintName = "orderchef"
                ReferencedContainer = "container:orderchef.xcodeproj">
             </BuildableReference>
@@ -105,7 +105,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FE651581A616447006AE6EC"
-            BuildableName = "orderchef.temp_caseinsensitive_rename.app"
+            BuildableName = "orderchef.app"
             BlueprintName = "orderchef"
             ReferencedContainer = "container:orderchef.xcodeproj">
          </BuildableReference>
@@ -125,7 +125,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FE651581A616447006AE6EC"
-            BuildableName = "orderchef.temp_caseinsensitive_rename.app"
+            BuildableName = "orderchef.app"
             BlueprintName = "orderchef"
             ReferencedContainer = "container:orderchef.xcodeproj">
          </BuildableReference>
@@ -144,7 +144,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FE651581A616447006AE6EC"
-            BuildableName = "orderchef.temp_caseinsensitive_rename.app"
+            BuildableName = "orderchef.app"
             BlueprintName = "orderchef"
             ReferencedContainer = "container:orderchef.xcodeproj">
          </BuildableReference>

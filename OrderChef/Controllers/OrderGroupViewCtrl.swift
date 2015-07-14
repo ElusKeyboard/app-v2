@@ -115,7 +115,7 @@ class OrderGroupViewCtrl: UITableViewController, RefreshDelegate {
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		if indexPath.section == 0 {
 			// Create order.
-			var vc = MOrderTypesViewCtrl(nibName: plainTableNibName, bundle: nil)
+			var vc = OrderTypesViewCtrl(nibName: plainTableNibName, bundle: nil)
 			
 			self.newOrder = Order()
 			self.newOrder!.group = self.orderGroup

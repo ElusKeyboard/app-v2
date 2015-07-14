@@ -33,7 +33,7 @@ class TablesViewCtrl: UITableViewController, RefreshDelegate {
 	}
 	
 	func openManager() {
-		var vc = ManagerViewCtrl(nibName: groupedTableNibName, bundle: nil)
+		var vc = ManagerViewCtrl(nibName: "PlainView", bundle: nil)
 		var nvc: UINavigationController = UINavigationController(rootViewController: vc)
 		
 		self.presentViewController(nvc, animated: true, completion: nil)
